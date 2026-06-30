@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { CalendarDays, UtensilsCrossed, ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import HeroCanvas from "./three/HeroCanvas";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -32,6 +33,19 @@ export default function Hero() {
         />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal-950 to-transparent" />
       </div>
+
+      {/* Immersive 3D accent (desktop, motion-safe only) */}
+      <HeroCanvas />
+
+      {/* Contrast scrim — keeps hero text WCAG-AA legible over the 3D form */}
+      <div
+        className="absolute inset-0 -z-[4] bg-[radial-gradient(60%_50%_at_45%_50%,rgba(16,14,12,0.78)_0%,rgba(16,14,12,0.35)_55%,transparent_100%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 -z-[4] h-48 bg-gradient-to-t from-charcoal-950 to-transparent"
+        aria-hidden="true"
+      />
 
       <div className="container-px w-full py-28 text-center">
         <motion.span {...fade(0)} className="eyebrow">

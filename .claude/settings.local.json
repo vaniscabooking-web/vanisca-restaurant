@@ -34,7 +34,13 @@
       "Bash(npm install *)",
       "Bash(node -p \"require\\('./node_modules/next/package.json'\\).version\")",
       "Bash(npm run *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Update Next.js to 15.5.19 \\(patched, clears security advisory\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Update Next.js to 15.5.19 \\(patched, clears security advisory\\) *)",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__list_deployments",
+      "Bash(node -p \"['next','next-intl','three','@react-three/fiber','eslint','eslint-config-next'].map\\(p=>p+': '+require\\(p+'/package.json'\\).version\\).join\\('\\\\n'\\)\")",
+      "Bash(npm ls *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"TSC_DONE_EXIT_$?\")",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Elevate to luxury standard: 3D hero accent, scroll progress, menu scroll-spy, ESLint gate *)"
     ]
   }
 }

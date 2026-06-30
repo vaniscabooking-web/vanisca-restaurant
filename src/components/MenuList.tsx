@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Star, Fish, Leaf, Flame } from "lucide-react";
 import { menu, type MenuLocale, type MenuTag } from "@/data/menu";
@@ -17,11 +17,17 @@ export default function MenuList() {
   const locale = useLocale() as MenuLocale;
   const t = useTranslations("menu");
   const [active, setActive] = useState<string>(menu[0].id);
+  const navRef = useRef<HTMLElement>(null);
+  const clickLock = useRef(false);
 
   const categories = useMemo(() => menu, []);
 
   const scrollTo = (id: string) => {
     setActive(id);
+    // Briefly ignore scroll-spy so the clicked chip stays selected during the
+    // smooth scroll instead of flickering through intermediate sections.
+    clickLock.current = true;
+    window.setTimeout(() => (clickLock.current = false), 700);
     const el = document.getElementById(`cat-${id}`);
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 120;
@@ -29,10 +35,40 @@ export default function MenuList() {
     }
   };
 
+  // Scroll-spy: highlight the category currently in view.
+  useEffect(() => {
+    const sections = categories
+      .map((c) => document.getElementById(`cat-${c.id}`))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (clickLock.current) return;
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id.replace("cat-", ""));
+      },
+      { rootMargin: "-128px 0px -65% 0px", threshold: 0 },
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [categories]);
+
+  // Keep the active chip visible within the horizontal category bar.
+  useEffect(() => {
+    const bar = navRef.current;
+    if (!bar) return;
+    const chip = bar.querySelector<HTMLElement>(`[data-cat="${active}"]`);
+    chip?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+  }, [active]);
+
   return (
     <div>
       {/* Sticky category nav */}
       <nav
+        ref={navRef}
         className="sticky top-[68px] z-30 -mx-5 mb-12 border-y border-white/10 bg-charcoal-950/85 px-5 py-3 backdrop-blur-md sm:-mx-8 sm:px-8"
         aria-label="Menu categories"
       >
@@ -41,6 +77,8 @@ export default function MenuList() {
             <li key={cat.id}>
               <button
                 type="button"
+                data-cat={cat.id}
+                aria-current={active === cat.id ? "true" : undefined}
                 onClick={() => scrollTo(cat.id)}
                 className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   active === cat.id

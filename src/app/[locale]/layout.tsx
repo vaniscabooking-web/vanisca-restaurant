@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import ScrollProgress from "@/components/ScrollProgress";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -108,6 +109,7 @@ export default async function LocaleLayout({
           >
             Skip
           </a>
+          <ScrollProgress />
           <Navbar />
           <main id="main">{children}</main>
           <Footer />
