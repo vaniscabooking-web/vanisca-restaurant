@@ -16,7 +16,9 @@
       "Bash(git symbolic-ref *)",
       "Bash(git config *)",
       "Bash(git add *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Initial commit: Vanisca Restaurant trilingual site + reservation system *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Initial commit: Vanisca Restaurant trilingual site + reservation system *)",
+      "Bash(git rm *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Add .gitattributes to normalize line endings *)"
     ]
   }
 }
