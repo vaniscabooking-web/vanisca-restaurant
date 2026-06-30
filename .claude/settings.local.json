@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --version; npm --version; git --version; \\(Get-Command gh -ErrorAction SilentlyContinue\\).Source; \\(Get-Command npx -ErrorAction SilentlyContinue\\).Source)",
+      "PowerShell(npm install --no-fund --no-audit 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__list_credentials",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__search_workflows",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__get_sdk_reference",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__get_workflow_best_practices",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__search_nodes",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__get_node_types",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__validate_workflow",
+      "mcp__0c74b15a-e5e9-47e7-a4e9-fc885f16a572__create_workflow_from_code",
+      "Bash(git init *)",
+      "Bash(git symbolic-ref *)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Initial commit: Vanisca Restaurant trilingual site + reservation system *)"
+    ]
+  }
+}

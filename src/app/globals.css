@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #100e0c;
+  --foreground: #f5efe4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Arabic / RTL: use the dedicated Arabic font stack */
+  [dir="rtl"] body,
+  [lang="ar"] body {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: #c8a45c;
+    color: #100e0c;
+  }
+
+  :focus-visible {
+    outline: 2px solid #e3c889;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .heading-display {
+    @apply font-display tracking-tight;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient px-7 py-3 text-sm font-semibold uppercase tracking-wider text-charcoal-950 shadow-lg shadow-gold/20 transition-all duration-300 hover:shadow-xl hover:shadow-gold/30 hover:brightness-105 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-all duration-300 hover:border-gold hover:bg-gold/10;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.25em] text-gold;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-sm;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #100e0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #a07e3c;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c8a45c;
+}

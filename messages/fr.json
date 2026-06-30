@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Vanisca — Restaurant méditerranéen à Agadir",
+    "description": "Cuisine méditerranéenne raffinée au cœur d'Agadir. Pâtes fraîches, fruits de mer, viandes d'exception et pizzas au feu de bois dans un cadre chaleureux et élégant. Réservez votre table.",
+    "keywords": "restaurant Agadir, restaurant méditerranéen Agadir, fruits de mer Agadir, pâtes Agadir, pizza Agadir, Vanisca, réserver restaurant Agadir"
+  },
+  "nav": {
+    "home": "Accueil",
+    "menu": "Menu",
+    "gallery": "Galerie",
+    "about": "À propos",
+    "contact": "Contact",
+    "reserve": "Réserver"
+  },
+  "hero": {
+    "eyebrow": "Restaurant méditerranéen · Agadir",
+    "title": "L'art de la table méditerranéenne",
+    "subtitle": "Une cuisine généreuse et raffinée, des produits de la mer aux pâtes fraîches, dans un écrin de bois et de cuivre au cœur d'Agadir.",
+    "ctaReserve": "Réserver une table",
+    "ctaMenu": "Découvrir le menu"
+  },
+  "about": {
+    "eyebrow": "Notre maison",
+    "title": "Une expérience culinaire d'exception",
+    "body": "Chez Vanisca, chaque plat est une invitation au voyage en Méditerranée. Nos chefs subliment les produits frais de la mer, les pâtes faites maison et les viandes sélectionnées avec une exigence absolue. Dans un décor où le bois sculpté rencontre la lueur chaude du cuivre, nous vous offrons bien plus qu'un repas : un moment.",
+    "stat1Label": "Fait maison",
+    "stat1Value": "100%",
+    "stat2Label": "Spécialités",
+    "stat2Value": "60+",
+    "stat3Label": "Au cœur d'Agadir",
+    "stat3Value": "Sonaba"
+  },
+  "highlights": {
+    "title": "Nos signatures",
+    "subtitle": "Quelques incontournables de notre carte",
+    "items": {
+      "seafood": {
+        "title": "Fruits de mer",
+        "desc": "Gambas, calamars, poulpe et poissons grillés à la perfection."
+      },
+      "pasta": {
+        "title": "Pâtes & Risotto",
+        "desc": "Pâtes fraîches et risottos crémeux aux truffes et fruits de mer."
+      },
+      "pizza": {
+        "title": "Pizzas",
+        "desc": "Pâte fine et garnitures généreuses, cuites avec soin."
+      },
+      "desserts": {
+        "title": "Desserts",
+        "desc": "Tiramisu, cheesecake San Sebastián et fondants gourmands."
+      }
+    }
+  },
+  "menu": {
+    "title": "Notre Menu",
+    "subtitle": "Une carte méditerranéenne, généreuse et de saison",
+    "currency": "DH",
+    "downloadNote": "Les prix sont indiqués en dirhams marocains (DH).",
+    "filterAll": "Tout",
+    "tags": {
+      "signature": "Signature",
+      "seafood": "Fruits de mer",
+      "vegetarian": "Végétarien",
+      "spicy": "Épicé"
+    },
+    "categories": {
+      "starters-cold": "Entrées froides",
+      "starters-hot": "Entrées chaudes",
+      "soup": "Soupes",
+      "pasta": "Pâtes",
+      "calzone": "Calzone",
+      "risotto": "Risotto",
+      "lasagne": "Lasagnes",
+      "meat": "Viandes",
+      "chicken": "Volaille",
+      "fish": "Poissons",
+      "pizza": "Pizzas",
+      "juice": "Jus frais",
+      "smoothies": "Smoothies",
+      "drinks": "Boissons",
+      "desserts": "Desserts"
+    }
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "L'atmosphère Vanisca en images"
+  },
+  "reservation": {
+    "eyebrow": "Réservation",
+    "title": "Réservez votre table",
+    "subtitle": "Réservez en quelques instants. Nous vous confirmerons rapidement.",
+    "form": {
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "phone": "Téléphone",
+      "phonePlaceholder": "06 11 70 00 33",
+      "whatsapp": "WhatsApp (optionnel)",
+      "whatsappPlaceholder": "Numéro WhatsApp",
+      "email": "E-mail (optionnel)",
+      "emailPlaceholder": "vous@exemple.com",
+      "date": "Date",
+      "time": "Heure",
+      "guests": "Nombre de personnes",
+      "guest": "personne",
+      "guestsPlural": "personnes",
+      "occasion": "Occasion (optionnel)",
+      "occasionPlaceholder": "Anniversaire, dîner d'affaires…",
+      "message": "Demande particulière (optionnel)",
+      "messagePlaceholder": "Allergies, placement, etc.",
+      "attachment": "Pièce jointe (optionnel)",
+      "attachmentHint": "Image ou PDF, max 5 Mo",
+      "submit": "Confirmer la réservation",
+      "submitting": "Envoi en cours…"
+    },
+    "success": {
+      "title": "Réservation envoyée !",
+      "body": "Merci. Nous avons bien reçu votre demande et reviendrons vers vous très vite pour confirmer."
+    },
+    "error": {
+      "title": "Une erreur est survenue",
+      "body": "Votre réservation n'a pas pu être envoyée. Réessayez ou contactez-nous directement par téléphone ou WhatsApp."
+    },
+    "validation": {
+      "nameRequired": "Veuillez indiquer votre nom.",
+      "phoneRequired": "Veuillez indiquer un numéro de téléphone valide.",
+      "dateRequired": "Veuillez choisir une date.",
+      "timeRequired": "Veuillez choisir une heure.",
+      "guestsRequired": "Veuillez indiquer le nombre de personnes.",
+      "emailInvalid": "Adresse e-mail invalide.",
+      "fileTooLarge": "Le fichier dépasse 5 Mo.",
+      "fileType": "Format de fichier non autorisé."
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Nous contacter",
+    "subtitle": "Une question ? Écrivez-nous, nous vous répondrons rapidement.",
+    "infoTitle": "Informations",
+    "addressLabel": "Adresse",
+    "address": "Quartier Sonaba, Agadir, Maroc",
+    "phoneLabel": "Téléphone",
+    "whatsappLabel": "WhatsApp",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Horaires",
+    "hours": "Tous les jours · 12h00 – 00h00",
+    "followUs": "Suivez-nous",
+    "form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi…"
+    },
+    "success": "Merci ! Votre message a bien été envoyé.",
+    "error": "Échec de l'envoi. Réessayez plus tard."
+  },
+  "cta": {
+    "title": "Une table vous attend",
+    "subtitle": "Vivez l'expérience Vanisca dès ce soir.",
+    "button": "Réserver maintenant"
+  },
+  "footer": {
+    "tagline": "Cuisine méditerranéenne raffinée au cœur d'Agadir.",
+    "navTitle": "Navigation",
+    "contactTitle": "Contact",
+    "hoursTitle": "Horaires",
+    "hours": "Tous les jours · 12h00 – 00h00",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Conçu avec soin à Agadir."
+  },
+  "common": {
+    "loading": "Chargement…",
+    "backToTop": "Haut de page",
+    "skipToContent": "Aller au contenu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "callUs": "Appeler",
+    "messageWhatsapp": "WhatsApp"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil"
+  }
+}

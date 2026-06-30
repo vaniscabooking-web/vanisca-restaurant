@@ -1,0 +1,84 @@
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { Phone, MessageCircle, Clock, MapPin } from "lucide-react";
+import ReservationForm from "@/components/ReservationForm";
+import { siteConfig, telUrl, whatsappUrl } from "@/lib/site";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "reservation" });
+  return { title: t("title"), description: t("subtitle") };
+}
+
+export default async function ReservationPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("reservation");
+  const tc = await getTranslations("contact");
+
+  return (
+    <div className="pt-28">
+      <div className="container-px grid gap-12 pb-24 pt-8 lg:grid-cols-[1fr_1.1fr]">
+        {/* Intro / info */}
+        <div>
+          <span className="eyebrow">{t("eyebrow")}</span>
+          <h1 className="heading-display mt-3 text-4xl font-semibold text-cream sm:text-5xl">
+            {t("title")}
+          </h1>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-cream/70 sm:text-lg">
+            {t("subtitle")}
+          </p>
+
+          <ul className="mt-9 space-y-4 text-cream/80">
+            <li className="flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
+                <Clock className="h-5 w-5" />
+              </span>
+              {tc("hours")}
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
+                <MapPin className="h-5 w-5" />
+              </span>
+              {tc("address")}
+            </li>
+            <li>
+              <a
+                href={telUrl}
+                className="flex items-center gap-3 transition-colors hover:text-gold"
+              >
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
+                  <Phone className="h-5 w-5" />
+                </span>
+                {siteConfig.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={whatsappUrl("Bonjour Vanisca, je souhaite réserver une table.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 transition-colors hover:text-gold"
+              >
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
+                  <MessageCircle className="h-5 w-5" />
+                </span>
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ReservationForm />
+      </div>
+    </div>
+  );
+}

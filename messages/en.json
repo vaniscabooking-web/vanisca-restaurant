@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Vanisca — Mediterranean Restaurant in Agadir",
+    "description": "Refined Mediterranean cuisine in the heart of Agadir. Fresh pasta, seafood, premium meats and wood-fired pizzas in a warm, elegant setting. Reserve your table.",
+    "keywords": "Agadir restaurant, Mediterranean restaurant Agadir, seafood Agadir, pasta Agadir, pizza Agadir, Vanisca, book restaurant Agadir"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "reserve": "Reserve"
+  },
+  "hero": {
+    "eyebrow": "Mediterranean Restaurant · Agadir",
+    "title": "The art of Mediterranean dining",
+    "subtitle": "Generous, refined cuisine — from the freshest seafood to handmade pasta — in a setting of carved wood and warm copper in the heart of Agadir.",
+    "ctaReserve": "Reserve a table",
+    "ctaMenu": "Explore the menu"
+  },
+  "about": {
+    "eyebrow": "Our house",
+    "title": "An exceptional culinary experience",
+    "body": "At Vanisca, every dish is an invitation to journey across the Mediterranean. Our chefs elevate the freshest seafood, house-made pasta and carefully selected meats with uncompromising standards. In a space where carved wood meets the warm glow of copper, we offer far more than a meal — we offer a moment.",
+    "stat1Label": "House-made",
+    "stat1Value": "100%",
+    "stat2Label": "Specialties",
+    "stat2Value": "60+",
+    "stat3Label": "Heart of Agadir",
+    "stat3Value": "Sonaba"
+  },
+  "highlights": {
+    "title": "Our signatures",
+    "subtitle": "A few must-tries from our menu",
+    "items": {
+      "seafood": {
+        "title": "Seafood",
+        "desc": "Prawns, calamari, octopus and fish grilled to perfection."
+      },
+      "pasta": {
+        "title": "Pasta & Risotto",
+        "desc": "Fresh pasta and creamy risottos with truffle and seafood."
+      },
+      "pizza": {
+        "title": "Pizzas",
+        "desc": "Thin crust and generous toppings, baked with care."
+      },
+      "desserts": {
+        "title": "Desserts",
+        "desc": "Tiramisu, San Sebastián cheesecake and indulgent fondants."
+      }
+    }
+  },
+  "menu": {
+    "title": "Our Menu",
+    "subtitle": "A generous, seasonal Mediterranean carte",
+    "currency": "DH",
+    "downloadNote": "Prices are shown in Moroccan dirhams (DH).",
+    "filterAll": "All",
+    "tags": {
+      "signature": "Signature",
+      "seafood": "Seafood",
+      "vegetarian": "Vegetarian",
+      "spicy": "Spicy"
+    },
+    "categories": {
+      "starters-cold": "Cold Starters",
+      "starters-hot": "Hot Starters",
+      "soup": "Soups",
+      "pasta": "Pasta",
+      "calzone": "Calzone",
+      "risotto": "Risotto",
+      "lasagne": "Lasagne",
+      "meat": "Meat",
+      "chicken": "Poultry",
+      "fish": "Fish",
+      "pizza": "Pizza",
+      "juice": "Fresh Juices",
+      "smoothies": "Smoothies",
+      "drinks": "Drinks",
+      "desserts": "Desserts"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "The Vanisca atmosphere in pictures"
+  },
+  "reservation": {
+    "eyebrow": "Reservation",
+    "title": "Reserve your table",
+    "subtitle": "Book in just a moment. We'll confirm shortly.",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "phone": "Phone",
+      "phonePlaceholder": "06 11 70 00 33",
+      "whatsapp": "WhatsApp (optional)",
+      "whatsappPlaceholder": "WhatsApp number",
+      "email": "Email (optional)",
+      "emailPlaceholder": "you@example.com",
+      "date": "Date",
+      "time": "Time",
+      "guests": "Number of guests",
+      "guest": "guest",
+      "guestsPlural": "guests",
+      "occasion": "Occasion (optional)",
+      "occasionPlaceholder": "Birthday, business dinner…",
+      "message": "Special request (optional)",
+      "messagePlaceholder": "Allergies, seating, etc.",
+      "attachment": "Attachment (optional)",
+      "attachmentHint": "Image or PDF, max 5 MB",
+      "submit": "Confirm reservation",
+      "submitting": "Sending…"
+    },
+    "success": {
+      "title": "Reservation sent!",
+      "body": "Thank you. We've received your request and will get back to you very soon to confirm."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "Your reservation could not be sent. Please try again or contact us directly by phone or WhatsApp."
+    },
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "phoneRequired": "Please enter a valid phone number.",
+      "dateRequired": "Please choose a date.",
+      "timeRequired": "Please choose a time.",
+      "guestsRequired": "Please enter the number of guests.",
+      "emailInvalid": "Invalid email address.",
+      "fileTooLarge": "The file exceeds 5 MB.",
+      "fileType": "File format not allowed."
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "subtitle": "Have a question? Write to us and we'll reply quickly.",
+    "infoTitle": "Information",
+    "addressLabel": "Address",
+    "address": "Sonaba district, Agadir, Morocco",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hours": "Every day · 12:00 PM – 12:00 AM",
+    "followUs": "Follow us",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send message",
+      "submitting": "Sending…"
+    },
+    "success": "Thank you! Your message has been sent.",
+    "error": "Sending failed. Please try again later."
+  },
+  "cta": {
+    "title": "A table awaits you",
+    "subtitle": "Experience Vanisca tonight.",
+    "button": "Reserve now"
+  },
+  "footer": {
+    "tagline": "Refined Mediterranean cuisine in the heart of Agadir.",
+    "navTitle": "Navigation",
+    "contactTitle": "Contact",
+    "hoursTitle": "Hours",
+    "hours": "Every day · 12:00 PM – 12:00 AM",
+    "rights": "All rights reserved.",
+    "madeWith": "Crafted with care in Agadir."
+  },
+  "common": {
+    "loading": "Loading…",
+    "backToTop": "Back to top",
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "callUs": "Call",
+    "messageWhatsapp": "WhatsApp"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has been moved.",
+    "home": "Back to home"
+  }
+}

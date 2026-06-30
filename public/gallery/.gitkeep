@@ -1,0 +1,2 @@
+# Drop real restaurant photos here (e.g. facade.jpg, terrace.jpg) and reference them
+# via the `src` field in src/components/Gallery.tsx.
