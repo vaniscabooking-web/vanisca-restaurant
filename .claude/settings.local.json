@@ -18,7 +18,23 @@
       "Bash(git add *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Initial commit: Vanisca Restaurant trilingual site + reservation system *)",
       "Bash(git rm *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Add .gitattributes to normalize line endings *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Add .gitattributes to normalize line endings *)",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__list_teams",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__list_projects",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(echo \"global helper: $\\(git config --global --get credential.helper\\)\")",
+      "Bash(echo \"system helper: $\\(git config --system --get credential.helper 2>/dev/null\\)\")",
+      "Bash(command -v gh)",
+      "Bash(echo \"gh: $\\(command -v gh || echo none\\)\")",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__deploy_to_vercel",
+      "Bash(command -v vercel)",
+      "Bash(npx vercel *)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('base64url'\\)\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -p \"require\\('./node_modules/next/package.json'\\).version\")",
+      "Bash(npm run *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Update Next.js to 15.5.19 \\(patched, clears security advisory\\) *)"
     ]
   }
 }
