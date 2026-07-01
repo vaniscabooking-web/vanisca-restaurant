@@ -51,7 +51,13 @@
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_workflow_details",
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__execute_workflow",
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_execution",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Redesign: Michelin-star cinematic luxury visual identity *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Redesign: Michelin-star cinematic luxury visual identity *)",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__get_project",
+      "Bash(curl -s -H \"Authorization: Lh09KsHlYWMWGcDFA9BxiAFUggOkId7qlusMXQU8QwRIdcxy4t6egiAO\" \"https://api.pexels.com/v1/search?query=risotto&per_page=2&orientation=landscape\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\);process.stdin.on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);console.log\\('OK total_results:',j.total_results,'| returned:',j.photos?.length\\);console.log\\('sample:',j.photos?.[0]?.src?.large?.slice\\(0,60\\),'| by',j.photos?.[0]?.photographer\\);}catch\\(e\\){console.log\\('ERR',d.slice\\(0,200\\)\\);}}\\)\")",
+      "Bash(PEXELS_API_KEY=\"Lh09KsHlYWMWGcDFA9BxiAFUggOkId7qlusMXQU8QwRIdcxy4t6egiAO\" node --experimental-strip-types scripts/gen-dish-images.ts)",
+      "Bash(node -e ' *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: unique professional photo for every dish \\(Pexels\\) *)"
     ]
   }
 }

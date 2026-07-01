@@ -6,6 +6,8 @@
  * image. IDs are stable Unsplash photo IDs.
  */
 
+import dishImagesData from "@/data/dish-images.json";
+
 const BASE = "https://images.unsplash.com/photo-";
 
 /** Build an optimized Unsplash URL at a target width/quality. */
@@ -90,8 +92,19 @@ function hash(str: string): number {
   return Math.abs(h);
 }
 
-/** Deterministic premium image URL for a dish, based on its category. */
+/**
+ * Unique per-dish photography (generated from Pexels, one distinct photo per
+ * dish). Falls back to the curated category pool if a dish is not in the map.
+ */
+const DISH_IMAGES = dishImagesData as Record<
+  string,
+  { src: string; alt: string; credit: string; creditUrl: string }
+>;
+
+/** Premium image URL for a specific dish (unique per dish). */
 export function dishImage(categoryId: string, dishId: string, w = 600): string {
+  const mapped = DISH_IMAGES[dishId];
+  if (mapped?.src) return mapped.src;
   const pool = categoryPools[categoryId] ?? [IMG.gourmet, IMG.plate];
   return unsplash(pool[hash(dishId) % pool.length], w);
 }

@@ -1,0 +1,632 @@
+{
+  "fantasia-legumes": {
+    "src": "https://images.pexels.com/photos/251599/pexels-photo-251599.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Plates of goat cheese with arugula and balsamic reduction, perfect for appetizers or a light meal.",
+    "credit": "Expect Best",
+    "creditUrl": "https://www.pexels.com/@expect-best-79873"
+  },
+  "tomate-mozzarella": {
+    "src": "https://images.pexels.com/photos/8963464/pexels-photo-8963464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Colorful vegetable and ham rolls garnished with cherry tomatoes and lettuce, perfect for a healthy meal.",
+    "credit": "RDNE Stock project",
+    "creditUrl": "https://www.pexels.com/@rdne"
+  },
+  "avocat-crevettes": {
+    "src": "https://images.pexels.com/photos/5157112/pexels-photo-5157112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Elegant presentation of gourmet dish with greens, radish, and dips on a plate.",
+    "credit": "Rene Terp",
+    "creditUrl": "https://www.pexels.com/@reneterp"
+  },
+  "cesar-gambas": {
+    "src": "https://images.pexels.com/photos/1833330/pexels-photo-1833330.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A fresh and colorful vegetable salad with gourmet cheese, perfect for summer dining.",
+    "credit": "Valeria Boltneva",
+    "creditUrl": "https://www.pexels.com/@valeriya"
+  },
+  "salade-vanisca": {
+    "src": "https://images.pexels.com/photos/5859436/pexels-photo-5859436.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A carefully plated gourmet salad highlighted by natural light on a wooden table.",
+    "credit": "Claudia Schmalz",
+    "creditUrl": "https://www.pexels.com/@claudia-schmalz-3928374"
+  },
+  "salade-fruits-mer": {
+    "src": "https://images.pexels.com/photos/5713758/pexels-photo-5713758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A gourmet seafood dish with scallops, vibrant sauce, and fresh berries elegantly presented.",
+    "credit": "Farhad Ibrahimzade",
+    "creditUrl": "https://www.pexels.com/@farhad"
+  },
+  "gratin-aubergines": {
+    "src": "https://images.pexels.com/photos/13065206/pexels-photo-13065206.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of seasoned shrimp with green peppers and onions in sauce on a white plate.",
+    "credit": "Marvin  Sacdalan",
+    "creditUrl": "https://www.pexels.com/@marvin-sacdalan-276316567"
+  },
+  "croustini-chevre": {
+    "src": "https://images.pexels.com/photos/32149292/pexels-photo-32149292.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of spicy crawfish dish garnished with fresh herbs. Vibrant and colorful seafood cuisine.",
+    "credit": "Change C.C",
+    "creditUrl": "https://www.pexels.com/@change-c-c-974768353"
+  },
+  "brochettes-gambas": {
+    "src": "https://images.pexels.com/photos/17600199/pexels-photo-17600199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious seafood platter featuring herb-crusted shrimp with cherry tomatoes, garnished with fresh dill.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "poulpe-provencale": {
+    "src": "https://images.pexels.com/photos/36009124/pexels-photo-36009124.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious spicy grilled shrimp garnished with herbs and served with red chili peppers.",
+    "credit": "Milton Das",
+    "creditUrl": "https://www.pexels.com/@miltonphotography"
+  },
+  "crevettes-pilpil": {
+    "src": "https://images.pexels.com/photos/8973356/pexels-photo-8973356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Mouthwatering shrimp soup served in a white bowl, perfect for a gourmet meal.",
+    "credit": "Shardar Tarikul Islam",
+    "creditUrl": "https://www.pexels.com/@shardar-tarikul-islam-84327533"
+  },
+  "gratin-fruits-mer": {
+    "src": "https://images.pexels.com/photos/16357830/pexels-photo-16357830.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a savory seafood chowder with shrimp and mussels in a black bowl.",
+    "credit": "Nadin Sh",
+    "creditUrl": "https://www.pexels.com/@nadin-sh-78971847"
+  },
+  "soupe-oignon": {
+    "src": "https://images.pexels.com/photos/24186408/pexels-photo-24186408.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A gourmet soup dish featuring green peas and rice in a white bowl, perfect for food photography.",
+    "credit": "Change C.C",
+    "creditUrl": "https://www.pexels.com/@change-c-c-974768353"
+  },
+  "creme-legumes": {
+    "src": "https://images.pexels.com/photos/8743888/pexels-photo-8743888.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A delicious bowl of pumpkin soup served with croutons, garnished with basil leaves.",
+    "credit": "Farhad Ibrahimzade",
+    "creditUrl": "https://www.pexels.com/@farhad"
+  },
+  "soupe-poisson": {
+    "src": "https://images.pexels.com/photos/19193024/pexels-photo-19193024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A gourmet creamy soup garnished with crispy toppings is beautifully served on white porcelain.",
+    "credit": "Nadin Sh",
+    "creditUrl": "https://www.pexels.com/@nadin-sh-78971847"
+  },
+  "pomodoro": {
+    "src": "https://images.pexels.com/photos/546945/pexels-photo-546945.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of spaghetti carbonara topped with grated Parmesan cheese on a plate, perfect for Italian cuisine lovers.",
+    "credit": "Maurijn Pach",
+    "creditUrl": "https://www.pexels.com/@maurijn-pach-166875"
+  },
+  "arrabiata": {
+    "src": "https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of creamy pasta with herbs, offering a delicious Italian meal.",
+    "credit": "Engin Akyurt",
+    "creditUrl": "https://www.pexels.com/@enginakyurt"
+  },
+  "verdura": {
+    "src": "https://images.pexels.com/photos/31637791/pexels-photo-31637791.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a delicious spaghetti dish in tomato sauce with mushrooms and herbs, served in Tokyo.",
+    "credit": "Gu Ko",
+    "creditUrl": "https://www.pexels.com/@gu-ko-2150570603"
+  },
+  "al-tonno": {
+    "src": "https://images.pexels.com/photos/1527603/pexels-photo-1527603.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of delicious Italian pasta dish with kidney beans and rich sauce.",
+    "credit": "Engin Akyurt",
+    "creditUrl": "https://www.pexels.com/@enginakyurt"
+  },
+  "alfredo": {
+    "src": "https://images.pexels.com/photos/8917285/pexels-photo-8917285.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Appetizing pasta served with mushrooms and a stylish pesto drizzle on a minimalistic plate.",
+    "credit": "Vincenzo Malagoli",
+    "creditUrl": "https://www.pexels.com/@zenzazione"
+  },
+  "carbonara": {
+    "src": "https://images.pexels.com/photos/31637793/pexels-photo-31637793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious spaghetti with rich tomato sauce served on an artistic plate, fork ready to dig in.",
+    "credit": "Gu Ko",
+    "creditUrl": "https://www.pexels.com/@gu-ko-2150570603"
+  },
+  "al-tartufo": {
+    "src": "https://images.pexels.com/photos/27976900/pexels-photo-27976900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious shrimp linguine served with a rich tomato sauce, perfect for seafood lovers.",
+    "credit": "Andre",
+    "creditUrl": "https://www.pexels.com/@andre-124356440"
+  },
+  "bolognaise": {
+    "src": "https://images.pexels.com/photos/26207761/pexels-photo-26207761.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Top view of spaghetti with tomato sauce garnished with parsley, served on a blue plate.",
+    "credit": "Esra Korkmaz",
+    "creditUrl": "https://www.pexels.com/@esrakorkmaz"
+  },
+  "cinque-formaggi": {
+    "src": "https://images.pexels.com/photos/1487511/pexels-photo-1487511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious creamy penne pasta with mushrooms and parsley on a rustic table setting.",
+    "credit": "Engin Akyurt",
+    "creditUrl": "https://www.pexels.com/@enginakyurt"
+  },
+  "pesto-gambas": {
+    "src": "https://images.pexels.com/photos/27644035/pexels-photo-27644035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious pasta with tomato sauce and fresh basil in a modern setting.",
+    "credit": "Enzo Iorio",
+    "creditUrl": "https://www.pexels.com/@enzo-iorio-381015179"
+  },
+  "mare-rosa": {
+    "src": "https://images.pexels.com/photos/27644043/pexels-photo-27644043.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Top view of delicious Italian pasta with tomatoes and basil on a rustic black plate.",
+    "credit": "Enzo Iorio",
+    "creditUrl": "https://www.pexels.com/@enzo-iorio-381015179"
+  },
+  "al-salmone": {
+    "src": "https://images.pexels.com/photos/31637792/pexels-photo-31637792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of savory spaghetti Bolognese garnished with fresh herbs on a decorative plate.",
+    "credit": "Gu Ko",
+    "creditUrl": "https://www.pexels.com/@gu-ko-2150570603"
+  },
+  "frutti-di-mare-pasta": {
+    "src": "https://images.pexels.com/photos/27662751/pexels-photo-27662751.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious spiral pasta with roasted cherry tomatoes and pesto sauce on a rustic black plate.",
+    "credit": "Enzo Iorio",
+    "creditUrl": "https://www.pexels.com/@enzo-iorio-381015179"
+  },
+  "calzone-tonno": {
+    "src": "https://images.pexels.com/photos/263085/pexels-photo-263085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious homemade calzone with gooey cheese on a plate, captured in a close-up shot.",
+    "credit": "Pixabay",
+    "creditUrl": "https://www.pexels.com/@pixabay"
+  },
+  "calzone-charcuterie": {
+    "src": "https://images.pexels.com/photos/11654222/pexels-photo-11654222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A delicious calzone served with a fresh vegetable salad on a white plate. Perfect for food photography.",
+    "credit": "adrian vieriu",
+    "creditUrl": "https://www.pexels.com/@printexstar"
+  },
+  "calzone-pollo": {
+    "src": "https://images.pexels.com/photos/13457628/pexels-photo-13457628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious calzone surrounded by fresh ingredients on a rustic kitchen table in Riga, Latvia.",
+    "credit": "Vilnis Husko",
+    "creditUrl": "https://www.pexels.com/@vhusko"
+  },
+  "calzone-vanisca": {
+    "src": "https://images.pexels.com/photos/10935261/pexels-photo-10935261.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Tasty calzone served on an elegant plate with fresh green herbs in the background.",
+    "credit": "Qamar Rehman",
+    "creditUrl": "https://www.pexels.com/@qamar-rehman-94539242"
+  },
+  "risotto-truffe": {
+    "src": "https://images.pexels.com/photos/8864543/pexels-photo-8864543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious steak topped with sauce served with creamy mushroom risotto. Italian cuisine on a white plate.",
+    "credit": "Vinícius Caricatte",
+    "creditUrl": "https://www.pexels.com/@caricatte"
+  },
+  "risotto-champignons": {
+    "src": "https://images.pexels.com/photos/5175549/pexels-photo-5175549.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious herb-infused risotto served with crusty bread, garnished with cheese and fresh herbs.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "risotto-poulet": {
+    "src": "https://images.pexels.com/photos/1484513/pexels-photo-1484513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious gourmet scallops served on black risotto with tomato and garnish.",
+    "credit": "Valeria Boltneva",
+    "creditUrl": "https://www.pexels.com/@valeriya"
+  },
+  "risotto-gambas": {
+    "src": "https://images.pexels.com/photos/31710628/pexels-photo-31710628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant seafood risotto garnished with fresh herbs and chili, served on a rustic wooden table.",
+    "credit": "Nano Erdozain",
+    "creditUrl": "https://www.pexels.com/@nano-erdozain-120534369"
+  },
+  "risotto-fruits-mer": {
+    "src": "https://images.pexels.com/photos/17402673/pexels-photo-17402673.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious chicken risotto served on a white plate with creamy sauce and chives garnish.",
+    "credit": "Nadin Sh",
+    "creditUrl": "https://www.pexels.com/@nadin-sh-78971847"
+  },
+  "risotto-saumon": {
+    "src": "https://images.pexels.com/photos/15082312/pexels-photo-15082312.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A delicious plate of shrimp risotto garnished with herbs and flowers, perfect for gourmet dining.",
+    "credit": "Marilena Baltzaki",
+    "creditUrl": "https://www.pexels.com/@marilena-baltzaki-346260"
+  },
+  "lasagne-bolognaise": {
+    "src": "https://images.pexels.com/photos/5724557/pexels-photo-5724557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A freshly baked lasagna with golden cheese crust captured from above in a foil tray.",
+    "credit": "Christian Moises Pahati",
+    "creditUrl": "https://www.pexels.com/@christian-moises-pahati-3856199"
+  },
+  "lasagne-fruits-mer": {
+    "src": "https://images.pexels.com/photos/33312938/pexels-photo-33312938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Homemade lasagna garnished with tomato and basil sauce, perfect for Italian cuisine lovers.",
+    "credit": "Büşra Yurt",
+    "creditUrl": "https://www.pexels.com/@busra-yurt-2148943872"
+  },
+  "lasagne-saumon": {
+    "src": "https://images.pexels.com/photos/16845653/pexels-photo-16845653.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Indulge in a mouthwatering serving of baked lasagna topped with melted cheese and served with garlic bread.",
+    "credit": "Huzaifa Bukhari",
+    "creditUrl": "https://www.pexels.com/@huzaifabukhari"
+  },
+  "meli-melo": {
+    "src": "https://images.pexels.com/photos/27643017/pexels-photo-27643017.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious grilled steak served with fries and green peppers, a perfect dinner meal.",
+    "credit": "Nano Erdozain",
+    "creditUrl": "https://www.pexels.com/@nano-erdozain-120534369"
+  },
+  "emince-boeuf": {
+    "src": "https://images.pexels.com/photos/17615602/pexels-photo-17615602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious grilled beef served with zucchini, cherry tomatoes, and herbs on a rustic ceramic plate.",
+    "credit": "Rasul Yarichev",
+    "creditUrl": "https://www.pexels.com/@rasul70"
+  },
+  "entrecote": {
+    "src": "https://images.pexels.com/photos/16444386/pexels-photo-16444386.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A top view of grilled beef steak with mixed vegetables and sauce on a plate.",
+    "credit": "Dextar Vision",
+    "creditUrl": "https://www.pexels.com/@dextarvision"
+  },
+  "medaillon-veau": {
+    "src": "https://images.pexels.com/photos/27643030/pexels-photo-27643030.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a juicy grilled steak with fries and greens. Perfect meal for steak lovers.",
+    "credit": "Nano Erdozain",
+    "creditUrl": "https://www.pexels.com/@nano-erdozain-120534369"
+  },
+  "filet-mignon": {
+    "src": "https://images.pexels.com/photos/27643022/pexels-photo-27643022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Grilled beef steak served with french fries and green peppers on a black plate.",
+    "credit": "Nano Erdozain",
+    "creditUrl": "https://www.pexels.com/@nano-erdozain-120534369"
+  },
+  "souris-agneau": {
+    "src": "https://images.pexels.com/photos/11714372/pexels-photo-11714372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A delicious grilled steak with fries and vegetables, perfect for a tasty meal.",
+    "credit": "mustafa türkeri",
+    "creditUrl": "https://www.pexels.com/@farklimavi"
+  },
+  "emince-poulet": {
+    "src": "https://images.pexels.com/photos/6111928/pexels-photo-6111928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a gourmet chicken dish with wild rice, mushrooms, and greens on a white plate.",
+    "credit": "Piotr Arnoldes",
+    "creditUrl": "https://www.pexels.com/@piotr-arnoldes-7862031"
+  },
+  "pollo-parmigiana": {
+    "src": "https://images.pexels.com/photos/8504688/pexels-photo-8504688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A beautifully plated gourmet dish featuring zucchini ribbons, risotto, and garnish on a white ceramic plate.",
+    "credit": "Mohamed Hergafi",
+    "creditUrl": "https://www.pexels.com/@hergafi"
+  },
+  "poulet-farci": {
+    "src": "https://images.pexels.com/photos/24186393/pexels-photo-24186393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A beautifully plated whole cooked chicken displayed on a dark elegant plate indoors.",
+    "credit": "Change C.C",
+    "creditUrl": "https://www.pexels.com/@change-c-c-974768353"
+  },
+  "brochettes-poisson": {
+    "src": "https://images.pexels.com/photos/37261964/pexels-photo-37261964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious Asian dish with rice, grilled fish, and vegetables on a wooden plate.",
+    "credit": "Gu Ko",
+    "creditUrl": "https://www.pexels.com/@gu-ko-2150570603"
+  },
+  "saint-pierre": {
+    "src": "https://images.pexels.com/photos/14537684/pexels-photo-14537684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Gourmet grilled salmon served with roasted vegetables and lemon slice on a white plate.",
+    "credit": "Cristian Mihaila",
+    "creditUrl": "https://www.pexels.com/@crysnet"
+  },
+  "gambas-charmoula": {
+    "src": "https://images.pexels.com/photos/5192412/pexels-photo-5192412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Top view of a meal featuring grilled fish with green sauce and mashed potatoes on a white plate.",
+    "credit": "Maor Attias",
+    "creditUrl": "https://www.pexels.com/@maorattias"
+  },
+  "poelee-pecheur": {
+    "src": "https://images.pexels.com/photos/19615775/pexels-photo-19615775.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant plate featuring grilled fish and assorted vegetables at a gourmet restaurant.",
+    "credit": "Valeria Boltneva",
+    "creditUrl": "https://www.pexels.com/@valeriya"
+  },
+  "calamar-saute": {
+    "src": "https://images.pexels.com/photos/20802564/pexels-photo-20802564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a gourmet grilled fish dish with delicate presentation on a ceramic plate.",
+    "credit": "Change C.C",
+    "creditUrl": "https://www.pexels.com/@change-c-c-974768353"
+  },
+  "pave-saumon": {
+    "src": "https://images.pexels.com/photos/16845479/pexels-photo-16845479.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A beautifully plated salmon dish with vibrant vegetables and sauce, perfect for a gourmet dining experience.",
+    "credit": "Huzaifa Bukhari",
+    "creditUrl": "https://www.pexels.com/@huzaifabukhari"
+  },
+  "trio-poisson": {
+    "src": "https://images.pexels.com/photos/9459005/pexels-photo-9459005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a delicious grilled fish served on a white plate with a fork and glass of wine.",
+    "credit": "Stephen Andrews",
+    "creditUrl": "https://www.pexels.com/@stephentcandrews"
+  },
+  "paupiette-sole": {
+    "src": "https://images.pexels.com/photos/5041493/pexels-photo-5041493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A colorful and appetizing fish and rice dish with fresh vegetables, perfect for lunch.",
+    "credit": "Jesus Cabrera",
+    "creditUrl": "https://www.pexels.com/@jcabrera"
+  },
+  "marmite-poisson": {
+    "src": "https://images.pexels.com/photos/36701472/pexels-photo-36701472.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A beautifully plated salmon dish with vegetables and sauce served al fresco, highlighting vibrant culinary presentation.",
+    "credit": "Anil  Sharma",
+    "creditUrl": "https://www.pexels.com/@shootsaga"
+  },
+  "assortiment-vanisca": {
+    "src": "https://images.pexels.com/photos/15059689/pexels-photo-15059689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of gourmet fish dish with creamy sauce, potatoes, and red garnish.",
+    "credit": "Collab Media",
+    "creditUrl": "https://www.pexels.com/@collab-media-173741945"
+  },
+  "margarita": {
+    "src": "https://images.pexels.com/photos/19786209/pexels-photo-19786209.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A mouthwatering spread of pizzas and chicken wings with a refreshing drink, perfect for sharing.",
+    "credit": "Amar  Preciado",
+    "creditUrl": "https://www.pexels.com/@amar"
+  },
+  "ortolino": {
+    "src": "https://images.pexels.com/photos/5903230/pexels-photo-5903230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of two flavorful pizzas with fresh toppings on a wooden table.",
+    "credit": "ROMAN ODINTSOV",
+    "creditUrl": "https://www.pexels.com/@roman-odintsov"
+  },
+  "tunara": {
+    "src": "https://images.pexels.com/photos/31596394/pexels-photo-31596394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a fresh Margherita pizza with tomatoes and basil. Perfect for Italian cuisine promotions.",
+    "credit": "Sonali Mehta",
+    "creditUrl": "https://www.pexels.com/@sonali-mehta-1514525371"
+  },
+  "portofino": {
+    "src": "https://images.pexels.com/photos/31094832/pexels-photo-31094832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of two delicious pizzas with pepperoni and onions on a wooden table.",
+    "credit": "pedro furtado",
+    "creditUrl": "https://www.pexels.com/@pedrofurtadoo"
+  },
+  "pepperoni": {
+    "src": "https://images.pexels.com/photos/9993754/pexels-photo-9993754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Freshly baked pizzas with melted cheese on a kitchen counter, ideal for foodies.",
+    "credit": "Diamond Multimedia Films",
+    "creditUrl": "https://www.pexels.com/@diamond-multimedia-films-125324165"
+  },
+  "quattro-formaggi": {
+    "src": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Trio of gourmet pizzas with unique toppings near a wood-fired oven, ideal for food enthusiasts.",
+    "credit": "Narda Yescas",
+    "creditUrl": "https://www.pexels.com/@narda-yescas-724842"
+  },
+  "funghi": {
+    "src": "https://images.pexels.com/photos/8471699/pexels-photo-8471699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Appetizing pizzas with white wine served on a rustic wooden table, perfect for culinary enthusiasts.",
+    "credit": "Cup of  Couple",
+    "creditUrl": "https://www.pexels.com/@cup-of-couple"
+  },
+  "pizza-pollo": {
+    "src": "https://images.pexels.com/photos/5903317/pexels-photo-5903317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of assorted pizzas with mushrooms, pepperoni, and olives on a wooden table.",
+    "credit": "ROMAN ODINTSOV",
+    "creditUrl": "https://www.pexels.com/@roman-odintsov"
+  },
+  "beef-amore": {
+    "src": "https://images.pexels.com/photos/5903378/pexels-photo-5903378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of three mouthwatering pizzas with mushrooms and pepperoni on a wooden table.",
+    "credit": "ROMAN ODINTSOV",
+    "creditUrl": "https://www.pexels.com/@roman-odintsov"
+  },
+  "salmone-pizza": {
+    "src": "https://images.pexels.com/photos/19130050/pexels-photo-19130050.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Tantalizing selection of gourmet pizzas with fresh toppings in Mexico City's vibrant dining scene.",
+    "credit": "Jonathan Hidalgo",
+    "creditUrl": "https://www.pexels.com/@unkdevil"
+  },
+  "frutti-di-mare-pizza": {
+    "src": "https://images.pexels.com/photos/5848281/pexels-photo-5848281.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious gourmet pizzas with varied toppings sliced and arranged on a marble surface from a top-down perspective.",
+    "credit": "Polina Tankilevitch",
+    "creditUrl": "https://www.pexels.com/@polina-tankilevitch"
+  },
+  "jus-orange": {
+    "src": "https://images.pexels.com/photos/2479242/pexels-photo-2479242.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A refreshing glass of berry juice surrounded by fresh strawberries and red currants. Perfect for a healthy lifestyle.",
+    "credit": "Ylanite Koppens",
+    "creditUrl": "https://www.pexels.com/@nietjuhart"
+  },
+  "jus-carotte": {
+    "src": "https://images.pexels.com/photos/8215113/pexels-photo-8215113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Colorful assortment of fresh fruit juices and fruits on a sunny outdoor table, perfect for summer refreshment.",
+    "credit": "Kindel Media",
+    "creditUrl": "https://www.pexels.com/@kindelmedia"
+  },
+  "jus-betterave": {
+    "src": "https://images.pexels.com/photos/8215110/pexels-photo-8215110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant display of assorted fruit juices and fresh fruits with a lush garden backdrop.",
+    "credit": "Kindel Media",
+    "creditUrl": "https://www.pexels.com/@kindelmedia"
+  },
+  "jus-pomme": {
+    "src": "https://images.pexels.com/photos/17612820/pexels-photo-17612820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Fresh orange juice served in a glass with ice and a whole orange on a black background.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "jus-banane": {
+    "src": "https://images.pexels.com/photos/31822992/pexels-photo-31822992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Colorful fruit juices on a wooden table in a Mexican restaurant in Salamanca, Mexico.",
+    "credit": "Allan González",
+    "creditUrl": "https://www.pexels.com/@allanglezg"
+  },
+  "jus-citron": {
+    "src": "https://images.pexels.com/photos/18071816/pexels-photo-18071816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Bright and fresh breakfast setup featuring orange juice and a variety of fruits on a neatly arranged table.",
+    "credit": "Jaycee300s",
+    "creditUrl": "https://www.pexels.com/@jaycee300s-3059779"
+  },
+  "jus-kiwi": {
+    "src": "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Bright and refreshing citrus juice in a glass with fresh lemon and orange slices.",
+    "credit": "AS Photography",
+    "creditUrl": "https://www.pexels.com/@asphotography"
+  },
+  "jus-fraise": {
+    "src": "https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Vibrant mango smoothie served in a glass, perfect for a healthy refreshment.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "jus-ananas": {
+    "src": "https://images.pexels.com/photos/11009205/pexels-photo-11009205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant display of fresh fruit juices in the sunlight with various garnishes.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "jus-mangue": {
+    "src": "https://images.pexels.com/photos/6412586/pexels-photo-6412586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Minimalist photo of a glass of orange juice with a refreshing slice and straw.",
+    "credit": "Tymur Khakimov",
+    "creditUrl": "https://www.pexels.com/@timmoor"
+  },
+  "panache": {
+    "src": "https://images.pexels.com/photos/2994/healthy-fruits-morning-kitchen.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Bright overhead shot of fresh orange juice and oranges on a wooden table, symbolizing health and freshness.",
+    "credit": "Breakingpic",
+    "creditUrl": "https://www.pexels.com/@breakingpic"
+  },
+  "jus-avocat": {
+    "src": "https://images.pexels.com/photos/3558/morning-breakfast-orange-juice.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a refreshing glass of orange juice on a wooden table, perfect for summer.",
+    "credit": "JÉSHOOTS",
+    "creditUrl": "https://www.pexels.com/@jeshoots"
+  },
+  "happy-juice": {
+    "src": "https://images.pexels.com/photos/28117065/pexels-photo-28117065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Vibrant strawberry smoothies garnished with pineapple leaves, perfect for summer refreshment.",
+    "credit": "Erick Arce",
+    "creditUrl": "https://www.pexels.com/@erick-arce-3617574"
+  },
+  "sunny": {
+    "src": "https://images.pexels.com/photos/16096610/pexels-photo-16096610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant array of healthy fruit smoothies in wine glasses, perfect for a balanced diet.",
+    "credit": "Ngoc Binh Ha",
+    "creditUrl": "https://www.pexels.com/@ngoc-binh-ha-200617504"
+  },
+  "happy-pink": {
+    "src": "https://images.pexels.com/photos/12119029/pexels-photo-12119029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Refreshing tropical fruit smoothies topped with fresh mint, perfect for a summer treat.",
+    "credit": "Long Nguyễn",
+    "creditUrl": "https://www.pexels.com/@makeyourday"
+  },
+  "garden-mix": {
+    "src": "https://images.pexels.com/photos/4113138/pexels-photo-4113138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Two glasses of watermelon lime smoothies with mint, perfect for summer refreshments.",
+    "credit": "Leah Rolando",
+    "creditUrl": "https://www.pexels.com/@leah-rolando-2394241"
+  },
+  "exotique": {
+    "src": "https://images.pexels.com/photos/1098758/pexels-photo-1098758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a person holding a creamy strawberry smoothie in a glass, perfect for a refreshing treat.",
+    "credit": "Lisa from Pexels",
+    "creditUrl": "https://www.pexels.com/@fotios-photos"
+  },
+  "antidote": {
+    "src": "https://images.pexels.com/photos/104662/pexels-photo-104662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious pear and rhubarb smoothie in a glass on a wooden table, perfect for summer refreshment.",
+    "credit": "freestocks.org",
+    "creditUrl": "https://www.pexels.com/@freestocks"
+  },
+  "bahama": {
+    "src": "https://images.pexels.com/photos/14930534/pexels-photo-14930534.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Vibrant smoothies in glasses with fresh fruit garnishes, promoting a healthy lifestyle.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "mango-banana": {
+    "src": "https://images.pexels.com/photos/17612788/pexels-photo-17612788.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious strawberry smoothie served in a tall glass, perfect for a refreshing summer drink.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "booster": {
+    "src": "https://images.pexels.com/photos/8394976/pexels-photo-8394976.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Colorful fruit smoothies with mint leaves on a wooden table, perfect for summer refreshment.",
+    "credit": "Jovie Pujadas Ladura",
+    "creditUrl": "https://www.pexels.com/@jovie-pujadas-ladura-2033951"
+  },
+  "sunshine": {
+    "src": "https://images.pexels.com/photos/17612777/pexels-photo-17612777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A vibrant strawberry smoothie topped with fresh fruit, perfect for a healthy lifestyle.",
+    "credit": "Shameel mukkath",
+    "creditUrl": "https://www.pexels.com/@shameel-mukkath-3421394"
+  },
+  "sidi-ali-33": {
+    "src": "https://images.pexels.com/photos/3933152/pexels-photo-3933152.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of wine and water glasses arranged on a table in a cozy restaurant setting.",
+    "credit": "Tanya Gorelova",
+    "creditUrl": "https://www.pexels.com/@tanya-gorelova-2199357"
+  },
+  "eau-50": {
+    "src": "https://images.pexels.com/photos/169391/pexels-photo-169391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Delicious orange cocktails with cranberries and herbs on a tray, served by waiter at an outdoor event.",
+    "credit": "Ainis Jankauskas",
+    "creditUrl": "https://www.pexels.com/@ainis-jankauskas-45749"
+  },
+  "eau-75": {
+    "src": "https://images.pexels.com/photos/17527769/pexels-photo-17527769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A dimly lit dinner table with a glass of juice and table setting, creating a warm atmosphere.",
+    "credit": "Kha Ruxury",
+    "creditUrl": "https://www.pexels.com/@kha-ruxury-287153"
+  },
+  "oulmes-25": {
+    "src": "https://images.pexels.com/photos/7703248/pexels-photo-7703248.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of refreshing iced tea with citrus slices, perfect for summer.",
+    "credit": "KOREAN JH",
+    "creditUrl": "https://www.pexels.com/@korean-jh-30666766"
+  },
+  "oulmes-1l": {
+    "src": "https://images.pexels.com/photos/2104568/pexels-photo-2104568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Elegant setup with wine glasses and a candle, perfect for dining ambiance.",
+    "credit": "Zak Chapman",
+    "creditUrl": "https://www.pexels.com/@naimbic"
+  },
+  "soda": {
+    "src": "https://images.pexels.com/photos/34627179/pexels-photo-34627179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Close-up of a person offering a glass of dark beverage with ice, indoors.",
+    "credit": "Gera Cejas",
+    "creditUrl": "https://www.pexels.com/@gera-cejas-3616330"
+  },
+  "cafe-nespresso": {
+    "src": "https://images.pexels.com/photos/225236/pexels-photo-225236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A cold gin and tonic with lemon slice on a summer patio, perfect for refreshment.",
+    "credit": "picjumbo.com",
+    "creditUrl": "https://www.pexels.com/@picjumbo-com-55570"
+  },
+  "tiramisu": {
+    "src": "https://images.pexels.com/photos/16544183/pexels-photo-16544183.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A visually appetizing assortment of gourmet desserts delicately arranged on a white plate, featuring chocolate mousse, cheesecake, and strawberry compote.",
+    "credit": "Bernhard HAGEN",
+    "creditUrl": "https://www.pexels.com/@bernhard-hagen-45078018"
+  },
+  "creme-brulee": {
+    "src": "https://images.pexels.com/photos/14438012/pexels-photo-14438012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Gourmet croissant with ice cream served on a blue ceramic plate, Kuala Lumpur.",
+    "credit": "Rayz Wong",
+    "creditUrl": "https://www.pexels.com/@rayz-wong-361276705"
+  },
+  "fondant-chocolat": {
+    "src": "https://images.pexels.com/photos/35546720/pexels-photo-35546720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Artistic dessert arrangement on a white plate with minimalist chocolate garnish.",
+    "credit": "Loifotos",
+    "creditUrl": "https://www.pexels.com/@loifotos"
+  },
+  "fondant-pistache": {
+    "src": "https://images.pexels.com/photos/15671425/pexels-photo-15671425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "Elegant presentation of berry pastries and cheese served on white platters in a restaurant setting.",
+    "credit": "Luis Becerra  Fotógrafo",
+    "creditUrl": "https://www.pexels.com/@luisbecerrafotografo"
+  },
+  "cheesecake": {
+    "src": "https://images.pexels.com/photos/5471996/pexels-photo-5471996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "alt": "A beautifully plated dessert trio featuring creme brulee, a cookie, and fresh strawberries.",
+    "credit": "Ines Iachelini",
+    "creditUrl": "https://www.pexels.com/@ines-iachelini-301791"
+  }
+}
