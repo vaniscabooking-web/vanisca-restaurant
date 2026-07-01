@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #100e0c;
-  --foreground: #f5efe4;
+  --background: #0d0b09;
+  --foreground: #f4eee2;
 }
 
 @layer base {
@@ -29,16 +29,15 @@
 
   ::selection {
     background-color: #c8a45c;
-    color: #100e0c;
+    color: #0d0b09;
   }
 
   :focus-visible {
-    outline: 2px solid #e3c889;
+    outline: 2px solid #e6cd93;
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* Respect users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -58,26 +57,70 @@
 
   .heading-display {
     @apply font-display tracking-tight;
+    font-optical-sizing: auto;
   }
 
   .text-gradient-gold {
     @apply bg-gold-gradient bg-clip-text text-transparent;
   }
 
+  /* Premium primary button with a soft light-sweep on hover */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient px-7 py-3 text-sm font-semibold uppercase tracking-wider text-charcoal-950 shadow-lg shadow-gold/20 transition-all duration-300 hover:shadow-xl hover:shadow-gold/30 hover:brightness-105 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold-gradient px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-950 shadow-lg shadow-gold/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-gold-glow focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700;
+  }
+  .btn-primary:hover::after {
+    @apply translate-x-full;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-all duration-300 hover:border-gold hover:bg-gold/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10;
   }
 
   .eyebrow {
-    @apply inline-block text-xs font-semibold uppercase tracking-[0.25em] text-gold;
+    @apply inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-luxe text-gold;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-gold/60;
+  }
+
+  /* Glassmorphism surface — frosted, subtle brass edge */
+  .glass {
+    @apply border border-white/10 bg-white/[0.05] backdrop-blur-xl;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
   }
 
   .card-surface {
-    @apply rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-sm;
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur-md;
+  }
+
+  /* Hairline gold divider */
+  .rule-gold {
+    @apply h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Subtle marble / paper grain, tiled — used on light & dark passages */
+  .bg-marble {
+    background-color: #0d0b09;
+    background-image:
+      radial-gradient(60% 60% at 20% 10%, rgba(124, 132, 90, 0.08) 0%, transparent 60%),
+      radial-gradient(50% 50% at 85% 30%, rgba(200, 164, 92, 0.08) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .text-shadow-luxe {
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
 }
 
@@ -87,10 +130,10 @@
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #100e0c;
+  background: #0d0b09;
 }
 ::-webkit-scrollbar-thumb {
-  background: #a07e3c;
+  background: #876a3c;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {

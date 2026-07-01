@@ -34,10 +34,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/10 bg-charcoal-950/90 py-3 shadow-lg backdrop-blur-md"
-          : "bg-transparent py-5"
+          ? "glass border-b border-white/10 py-3 shadow-luxe"
+          : "border-b border-transparent bg-transparent py-5"
       }`}
     >
       <nav className="container-px flex items-center justify-between" aria-label="Primary">
@@ -46,10 +46,10 @@ export default function Navbar() {
           className="group flex flex-col leading-none"
           aria-label={`${"Vanisca"} — ${t("home")}`}
         >
-          <span className="heading-display text-2xl font-bold tracking-wide text-cream">
-            Vanisca
+          <span className="heading-display text-2xl font-semibold tracking-[0.12em] text-cream transition-colors group-hover:text-gold">
+            VANISCA
           </span>
-          <span className="text-[0.6rem] uppercase tracking-[0.35em] text-gold/80">
+          <span className="text-[0.55rem] uppercase tracking-[0.5em] text-gold/80">
             Agadir
           </span>
         </Link>
@@ -61,7 +61,7 @@ export default function Navbar() {
               <li key={item.key}>
                 <Link
                   href={item.href}
-                  className={`relative text-sm font-medium uppercase tracking-wide transition-colors hover:text-gold ${
+                  className={`relative text-xs font-medium uppercase tracking-[0.18em] transition-colors hover:text-gold ${
                     isActive(item.href) ? "text-gold" : "text-cream/80"
                   }`}
                 >
@@ -97,7 +97,7 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       <div
-        className={`fixed inset-0 top-[64px] z-40 origin-top bg-charcoal-950/98 backdrop-blur-md transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 top-[64px] z-40 origin-top bg-charcoal-950/95 backdrop-blur-2xl transition-all duration-300 lg:hidden ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >

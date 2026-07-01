@@ -40,7 +40,18 @@
       "Bash(npm ls *)",
       "Bash(npx tsc *)",
       "Bash(echo \"TSC_DONE_EXIT_$?\")",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Elevate to luxury standard: 3D hero accent, scroll progress, menu scroll-spy, ESLint gate *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Elevate to luxury standard: 3D hero accent, scroll progress, menu scroll-spy, ESLint gate *)",
+      "mcp__19e08041-422e-4ad4-8e32-9033818551a6__get_deployment_build_logs",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__list_credentials",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__search_workflows",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__explore_node_resources",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__validate_workflow",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__create_workflow_from_code",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__publish_workflow",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_workflow_details",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__execute_workflow",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_execution",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Redesign: Michelin-star cinematic luxury visual identity *)"
     ]
   }
 }

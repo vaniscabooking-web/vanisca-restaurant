@@ -14,12 +14,17 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-charcoal-950">
-      <div className="container-px grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative bg-marble">
+      {/* Top gold hairline */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      <div className="container-px grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <span className="heading-display text-2xl font-bold text-cream">
+          <span className="heading-display text-3xl font-semibold tracking-wide text-cream">
             Vanisca
+          </span>
+          <span className="mt-1 block text-[0.55rem] uppercase tracking-[0.5em] text-gold/80">
+            Agadir
           </span>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/60">
             {t("footer.tagline")}

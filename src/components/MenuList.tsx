@@ -4,7 +4,9 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Star, Fish, Leaf, Flame } from "lucide-react";
 import { menu, type MenuLocale, type MenuTag } from "@/data/menu";
+import { dishImage } from "@/lib/images";
 import Reveal from "./Reveal";
+import LuxeImage from "./LuxeImage";
 
 const TAG_META: Record<MenuTag, { icon: typeof Star; className: string }> = {
   signature: { icon: Star, className: "text-gold" },
@@ -24,8 +26,6 @@ export default function MenuList() {
 
   const scrollTo = (id: string) => {
     setActive(id);
-    // Briefly ignore scroll-spy so the clicked chip stays selected during the
-    // smooth scroll instead of flickering through intermediate sections.
     clickLock.current = true;
     window.setTimeout(() => (clickLock.current = false), 700);
     const el = document.getElementById(`cat-${id}`);
@@ -66,10 +66,10 @@ export default function MenuList() {
 
   return (
     <div>
-      {/* Sticky category nav */}
+      {/* Sticky category nav (glass) */}
       <nav
         ref={navRef}
-        className="sticky top-[68px] z-30 -mx-5 mb-12 border-y border-white/10 bg-charcoal-950/85 px-5 py-3 backdrop-blur-md sm:-mx-8 sm:px-8"
+        className="glass sticky top-[68px] z-30 -mx-5 mb-14 border-y border-white/10 px-5 py-3 sm:-mx-8 sm:px-8"
         aria-label="Menu categories"
       >
         <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -80,7 +80,7 @@ export default function MenuList() {
                 data-cat={cat.id}
                 aria-current={active === cat.id ? "true" : undefined}
                 onClick={() => scrollTo(cat.id)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wide transition-colors ${
                   active === cat.id
                     ? "bg-gold-gradient text-charcoal-950"
                     : "text-cream/70 hover:bg-white/5 hover:text-cream"
@@ -94,14 +94,14 @@ export default function MenuList() {
       </nav>
 
       {/* Sections */}
-      <div className="space-y-16">
+      <div className="space-y-20">
         {categories.map((cat) => (
           <section key={cat.id} id={`cat-${cat.id}`} aria-labelledby={`h-${cat.id}`}>
             <Reveal>
-              <div className="mb-7 flex items-center gap-4">
+              <div className="mb-8 flex items-center gap-4">
                 <h2
                   id={`h-${cat.id}`}
-                  className="heading-display text-2xl font-semibold text-cream sm:text-3xl"
+                  className="heading-display text-3xl font-semibold text-cream sm:text-4xl"
                 >
                   {t(`categories.${cat.id}`)}
                 </h2>
@@ -109,11 +109,24 @@ export default function MenuList() {
               </div>
             </Reveal>
 
-            <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
+            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cat.items.map((item, i) => (
-                <Reveal as="li" key={item.id} delay={(i % 2) * 0.05}>
-                  <div className="group flex items-baseline gap-3">
-                    <div className="min-w-0 flex-1">
+                <Reveal as="li" key={item.id} delay={(i % 3) * 0.05}>
+                  <article className="group h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/30 hover:bg-white/[0.04]">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <LuxeImage
+                        src={dishImage(cat.id, item.id)}
+                        alt={item.name[locale]}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent" />
+                      <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold text-gold shadow-lg backdrop-blur-sm">
+                        {item.price} {t("currency")}
+                      </span>
+                    </div>
+                    <div className="p-5">
                       <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold text-cream">
                         <span>{item.name[locale]}</span>
                         {item.tags?.map((tag) => {
@@ -131,19 +144,12 @@ export default function MenuList() {
                         })}
                       </h3>
                       {item.description && (
-                        <p className="mt-1 text-sm leading-relaxed text-cream/55">
+                        <p className="mt-1.5 text-sm leading-relaxed text-cream/55">
                           {item.description[locale]}
                         </p>
                       )}
                     </div>
-                    <span
-                      className="mx-2 hidden flex-1 translate-y-[-3px] border-b border-dotted border-white/15 sm:block"
-                      aria-hidden="true"
-                    />
-                    <span className="whitespace-nowrap font-semibold text-gradient-gold">
-                      {item.price} {t("currency")}
-                    </span>
-                  </div>
+                  </article>
                 </Reveal>
               ))}
             </ul>
@@ -151,7 +157,7 @@ export default function MenuList() {
         ))}
       </div>
 
-      <p className="mt-14 text-center text-sm text-cream/50">{t("downloadNote")}</p>
+      <p className="mt-16 text-center text-sm text-cream/50">{t("downloadNote")}</p>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, getMessages, setRequestLocale } from "next-intl/server";
-import { Playfair_Display, Inter, Cairo } from "next/font/google";
+import { Cormorant_Garamond, Inter, Cairo } from "next/font/google";
 import { routing, localeMeta, type Locale } from "@/i18n/routing";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
@@ -11,8 +11,9 @@ import FloatingActions from "@/components/FloatingActions";
 import ScrollProgress from "@/components/ScrollProgress";
 import "../globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -98,7 +99,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${playfair.variable} ${inter.variable} ${cairo.variable}`}
+      className={`${cormorant.variable} ${inter.variable} ${cairo.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">

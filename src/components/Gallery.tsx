@@ -1,65 +1,56 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { X } from "lucide-react";
 import Reveal from "./Reveal";
+import LuxeImage from "./LuxeImage";
+import { galleryPool, unsplash } from "@/lib/images";
 
-/**
- * Gallery tiles. Each tile renders a real image when `src` is provided
- * (drop files in /public/gallery and fill the `src` field), otherwise an
- * elegant warm gradient placeholder so the layout is never broken.
- */
-export interface GalleryTile {
+interface Tile {
   id: string;
   label: string;
-  /** Optional real image, e.g. "/gallery/salle.jpg". */
-  src?: string;
-  /** Tailwind gradient classes for the placeholder. */
-  tone: string;
-  /** Make this tile span two rows on larger screens. */
+  src: string;
+  full: string;
   tall?: boolean;
 }
 
-export const galleryTiles: GalleryTile[] = [
-  { id: "facade", label: "Façade", tone: "from-[#3a2414] to-[#100e0c]", tall: true },
-  { id: "ceiling", label: "Architecture", tone: "from-[#5a3a1c] to-[#1a1714]" },
-  { id: "terrace", label: "Terrasse", tone: "from-[#2a2018] to-[#0d0b09]" },
-  { id: "kitchen", label: "Cuisine ouverte", tone: "from-[#6b3f1f] to-[#1a1714]", tall: true },
-  { id: "seafood", label: "Fruits de mer", tone: "from-[#4a2e18] to-[#100e0c]" },
-  { id: "pasta", label: "Pâtes fraîches", tone: "from-[#3d2814] to-[#1a1714]" },
-  { id: "ambiance", label: "Ambiance", tone: "from-[#52331a] to-[#0d0b09]" },
-  { id: "dessert", label: "Desserts", tone: "from-[#3a2414] to-[#15110d]" },
+const LABELS = [
+  "Salle & lumière",
+  "Dressage",
+  "Ambiance",
+  "Cuisine ouverte",
+  "Fruits de mer",
+  "Pâtes fraîches",
+  "L'expérience",
+  "Douceurs",
 ];
 
-function Tile({ tile, onOpen }: { tile: GalleryTile; onOpen?: (t: GalleryTile) => void }) {
-  const span = tile.tall ? "row-span-2 aspect-[3/4] sm:aspect-auto" : "aspect-[4/3]";
+const tiles: Tile[] = galleryPool.map((g, i) => ({
+  id: g.id,
+  label: LABELS[i] ?? "Vanisca",
+  src: unsplash(g.id, 700),
+  full: unsplash(g.id, 1600, 78),
+  tall: i === 0 || i === 3,
+}));
+
+function GalleryTile({ tile, onOpen }: { tile: Tile; onOpen: (t: Tile) => void }) {
+  const span = tile.tall ? "aspect-[3/4]" : "aspect-[4/3]";
   return (
     <button
       type="button"
-      onClick={() => onOpen?.(tile)}
-      className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 ${span}`}
+      onClick={() => onOpen(tile)}
+      className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-luxe ${span}`}
       aria-label={tile.label}
     >
-      {tile.src ? (
-        <Image
-          src={tile.src}
-          alt={tile.label}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      ) : (
-        <div
-          className={`h-full w-full bg-gradient-to-br ${tile.tone} transition-transform duration-500 group-hover:scale-105`}
-        >
-          <div className="flex h-full items-center justify-center">
-            <span className="heading-display text-5xl font-bold text-gold/20">V</span>
-          </div>
-        </div>
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      <span className="absolute bottom-3 start-4 translate-y-2 text-sm font-medium text-cream opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+      <LuxeImage
+        src={tile.src}
+        alt={tile.label}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="absolute bottom-4 start-4 translate-y-2 text-sm font-medium tracking-wide text-cream opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
         {tile.label}
       </span>
     </button>
@@ -67,23 +58,26 @@ function Tile({ tile, onOpen }: { tile: GalleryTile; onOpen?: (t: GalleryTile) =
 }
 
 export default function Gallery({ limit }: { limit?: number }) {
-  const tiles = limit ? galleryTiles.slice(0, limit) : galleryTiles;
-  const [active, setActive] = useState<GalleryTile | null>(null);
+  const shown = limit ? tiles.slice(0, limit) : tiles;
+  const [active, setActive] = useState<Tile | null>(null);
 
   return (
     <>
-      <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-4 lg:grid-cols-4">
-        {tiles.map((tile, i) => (
-          <Reveal key={tile.id} delay={(i % 4) * 0.06} className={tile.tall ? "sm:row-span-2" : ""}>
-            <Tile tile={tile} onOpen={setActive} />
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {shown.map((tile, i) => (
+          <Reveal
+            key={tile.id}
+            delay={(i % 4) * 0.06}
+            className={tile.tall ? "row-span-1 sm:row-span-2" : ""}
+          >
+            <GalleryTile tile={tile} onOpen={setActive} />
           </Reveal>
         ))}
       </div>
 
-      {/* Lightbox */}
       {active && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 p-4 backdrop-blur"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={active.label}
@@ -98,21 +92,13 @@ export default function Gallery({ limit }: { limit?: number }) {
             <X className="h-5 w-5" />
           </button>
           <div
-            className="relative aspect-[4/3] w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10"
+            className="relative aspect-[3/2] w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 shadow-luxe"
             onClick={(e) => e.stopPropagation()}
           >
-            {active.src ? (
-              <Image src={active.src} alt={active.label} fill className="object-cover" />
-            ) : (
-              <div className={`h-full w-full bg-gradient-to-br ${active.tone}`}>
-                <div className="flex h-full flex-col items-center justify-center gap-3">
-                  <span className="heading-display text-7xl font-bold text-gold/30">V</span>
-                  <span className="text-sm uppercase tracking-[0.3em] text-cream/60">
-                    {active.label}
-                  </span>
-                </div>
-              </div>
-            )}
+            <LuxeImage src={active.full} alt={active.label} fill className="object-cover" />
+            <span className="absolute bottom-5 start-6 heading-display text-2xl text-cream">
+              {active.label}
+            </span>
           </div>
         </div>
       )}

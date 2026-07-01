@@ -4,7 +4,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { CalendarDays, UtensilsCrossed, ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import LuxeImage from "./LuxeImage";
 import HeroCanvas from "./three/HeroCanvas";
+import { heroImages } from "@/lib/images";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -13,62 +15,65 @@ export default function Hero() {
   const fade = (delay: number) => ({
     initial: reduce ? false : { opacity: 0, y: 24 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-      {/* Background: warm wood/copper ambiance built from layered gradients */}
-      <div className="absolute inset-0 -z-10 bg-charcoal-950" aria-hidden="true">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,#3a2414_0%,#1a1714_45%,#100e0c_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_80%_20%,rgba(200,164,92,0.18)_0%,transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_15%_80%,rgba(181,118,74,0.16)_0%,transparent_60%)]" />
-        {/* Subtle texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M0 40h80M40 0v80' stroke='%23ffffff' stroke-width='0.5'/%3E%3C/svg%3E\")",
-          }}
+      {/* Cinematic photographic background with a slow Ken-Burns push-in */}
+      <div className="absolute inset-0 -z-20" aria-hidden="true">
+        <LuxeImage
+          src={heroImages[0]}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="h-full w-full object-cover motion-safe:animate-ken-burns"
+          fallbackTone="from-[#3a2a18] via-[#171310] to-[#0d0b09]"
         />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal-950 to-transparent" />
       </div>
 
-      {/* Immersive 3D accent (desktop, motion-safe only) */}
-      <HeroCanvas />
+      {/* Cinematic colour grade + vignette + contrast scrims */}
+      <div
+        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_0%,rgba(13,11,9,0.35)_0%,rgba(13,11,9,0.62)_55%,rgba(13,11,9,0.92)_100%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal-950 via-charcoal-950/40 to-charcoal-950/70"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 shadow-[inset_0_0_180px_60px_rgba(0,0,0,0.75)]"
+        aria-hidden="true"
+      />
 
-      {/* Contrast scrim — keeps hero text WCAG-AA legible over the 3D form */}
-      <div
-        className="absolute inset-0 -z-[4] bg-[radial-gradient(60%_50%_at_45%_50%,rgba(16,14,12,0.78)_0%,rgba(16,14,12,0.35)_55%,transparent_100%)]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 -z-[4] h-48 bg-gradient-to-t from-charcoal-950 to-transparent"
-        aria-hidden="true"
-      />
+      {/* Subtle 3D metallic shimmer (desktop, motion-safe) — kept faint for elegance */}
+      <div className="absolute inset-0 -z-[5] opacity-40 mix-blend-screen" aria-hidden="true">
+        <HeroCanvas />
+      </div>
 
       <div className="container-px w-full py-28 text-center">
-        <motion.span {...fade(0)} className="eyebrow">
+        <motion.span {...fade(0)} className="eyebrow mx-auto justify-center">
           {t("eyebrow")}
         </motion.span>
 
         <motion.h1
-          {...fade(0.1)}
-          className="heading-display mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold leading-tight text-cream sm:text-6xl md:text-7xl"
+          {...fade(0.12)}
+          className="heading-display text-shadow-luxe mx-auto mt-6 max-w-4xl text-balance text-5xl font-medium leading-[1.05] text-cream sm:text-7xl md:text-[5.5rem]"
         >
           {t("title")}
         </motion.h1>
 
         <motion.p
-          {...fade(0.2)}
-          className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-cream/75 sm:text-lg"
+          {...fade(0.24)}
+          className="mx-auto mt-7 max-w-2xl text-pretty text-base font-light leading-relaxed text-cream/80 sm:text-lg"
         >
           {t("subtitle")}
         </motion.p>
 
         <motion.div
-          {...fade(0.3)}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          {...fade(0.36)}
+          className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link href="/reservation" className="btn-primary w-full sm:w-auto">
             <CalendarDays className="h-4 w-4" aria-hidden="true" />
@@ -84,7 +89,7 @@ export default function Hero() {
       <motion.div
         initial={reduce ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 1.1, duration: 1 }}
         className="absolute inset-x-0 bottom-6 flex justify-center"
         aria-hidden="true"
       >

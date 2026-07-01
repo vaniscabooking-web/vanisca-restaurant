@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
 import Reveal from "./Reveal";
+import LuxeImage from "./LuxeImage";
+import { aboutImage } from "@/lib/images";
 
 export default function About() {
   const t = useTranslations("about");
@@ -11,22 +13,32 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative bg-marble py-24 sm:py-32">
       <div className="container-px grid items-center gap-14 lg:grid-cols-2">
         {/* Visual */}
         <Reveal className="order-last lg:order-first">
           <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(120%_120%_at_30%_10%,#3a2414_0%,#1a1714_55%,#100e0c_100%)] shadow-2xl">
-              <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
-                <span className="heading-display text-7xl font-bold text-gradient-gold">
-                  V
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-luxe">
+              <LuxeImage
+                src={aboutImage}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent" />
+              <div className="absolute bottom-5 start-6">
+                <span className="heading-display text-4xl font-semibold text-cream">
+                  Vanisca
                 </span>
-                <span className="text-xs uppercase tracking-[0.4em] text-cream/50">
-                  Vanisca · Agadir
+                <span className="mt-1 block text-[0.6rem] uppercase tracking-[0.4em] text-gold/90">
+                  Agadir · Sonaba
                 </span>
               </div>
             </div>
-            <div className="absolute -bottom-6 -end-6 hidden h-32 w-32 rounded-2xl border border-gold/30 bg-gold/5 backdrop-blur sm:block" />
+            {/* Floating glass accent for depth */}
+            <div className="glass absolute -bottom-6 -end-6 hidden h-32 w-32 rounded-2xl sm:block" />
+            <div className="absolute -top-5 -start-5 hidden h-20 w-20 rounded-full border border-gold/20 sm:block" />
           </div>
         </Reveal>
 

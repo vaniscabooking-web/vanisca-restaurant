@@ -2,6 +2,8 @@ import { useTranslations } from "next-intl";
 import { Fish, Wheat, Pizza, IceCream2 } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import LuxeImage from "./LuxeImage";
+import { highlightImages } from "@/lib/images";
 
 const ICONS = {
   seafood: Fish,
@@ -24,16 +26,29 @@ export default function Highlights() {
             const Icon = ICONS[key];
             return (
               <Reveal key={key} delay={i * 0.08}>
-                <article className="card-surface group h-full p-7 transition-all duration-300 hover:-translate-y-1 hover:border-gold/30 hover:bg-white/[0.05]">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 text-gold transition-colors group-hover:bg-gold/20">
-                    <Icon className="h-7 w-7" aria-hidden="true" />
-                  </span>
-                  <h3 className="heading-display mt-5 text-xl font-semibold text-cream">
-                    {t(`items.${key}.title`)}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-cream/65">
-                    {t(`items.${key}.desc`)}
-                  </p>
+                <article className="group h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/30">
+                  {/* Photo */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <LuxeImage
+                      src={highlightImages[key]}
+                      alt={t(`items.${key}.title`)}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/20 to-transparent" />
+                    <span className="absolute start-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-charcoal-950/80 text-gold backdrop-blur-sm">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="heading-display text-xl font-semibold text-cream">
+                      {t(`items.${key}.title`)}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-cream/65">
+                      {t(`items.${key}.desc`)}
+                    </p>
+                  </div>
                 </article>
               </Reveal>
             );
