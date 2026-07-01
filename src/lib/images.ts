@@ -96,15 +96,12 @@ function hash(str: string): number {
  * Unique per-dish photography (generated from Pexels, one distinct photo per
  * dish). Falls back to the curated category pool if a dish is not in the map.
  */
-const DISH_IMAGES = dishImagesData as Record<
-  string,
-  { src: string; alt: string; credit: string; creditUrl: string }
->;
+const DISH_IMAGES = dishImagesData as Record<string, string>;
 
 /** Premium image URL for a specific dish (unique per dish). */
 export function dishImage(categoryId: string, dishId: string, w = 600): string {
   const mapped = DISH_IMAGES[dishId];
-  if (mapped?.src) return mapped.src;
+  if (mapped) return mapped;
   const pool = categoryPools[categoryId] ?? [IMG.gourmet, IMG.plate];
   return unsplash(pool[hash(dishId) % pool.length], w);
 }

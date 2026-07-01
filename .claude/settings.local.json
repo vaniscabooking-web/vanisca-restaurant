@@ -59,7 +59,8 @@
       "Bash(node -e ' *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: unique professional photo for every dish \\(Pexels\\) *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Website polish + Facebook integration *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Add full-screen R3F 3D animated background *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Add full-screen R3F 3D animated background *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Content: remove unverified/fabricated copy; keep only authentic details *)"
     ]
   }
 }

@@ -18,9 +18,6 @@ export const siteConfig = {
   facebook: process.env.NEXT_PUBLIC_FACEBOOK ?? "vaniscarestaurant",
   city: "Agadir",
   country: "Maroc",
-  district: "Sonaba",
-  // Geo coordinates for the Sonaba area, Agadir (approximate — refine if needed).
-  geo: { lat: 30.4202, lng: -9.5982 },
 } as const;
 
 export const whatsappUrl = (text?: string) =>

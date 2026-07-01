@@ -32,7 +32,7 @@ export default function About() {
                   Vanisca
                 </span>
                 <span className="mt-1 block text-[0.6rem] uppercase tracking-[0.4em] text-gold/90">
-                  Agadir · Sonaba
+                  Agadir
                 </span>
               </div>
             </div>

@@ -46,9 +46,9 @@ const CATEGORY_QUERIES: Record<string, string[]> = {
 };
 
 const GENERAL_QUERIES = [
-  "fine dining plated food",
+  "plated food",
   "gourmet restaurant dish",
-  "michelin star plating",
+  "elegant food plating",
 ];
 
 async function search(query: string, page = 1): Promise<PexelsPhoto[]> {
@@ -65,10 +65,8 @@ async function search(query: string, page = 1): Promise<PexelsPhoto[]> {
 }
 
 const used = new Set<number>();
-const out: Record<
-  string,
-  { src: string; alt: string; credit: string; creditUrl: string }
-> = {};
+// Map of dishId -> image URL only (kept minimal; no third-party alt/credit text).
+const out: Record<string, string> = {};
 
 // Pre-fetch a general overflow pool.
 const general: PexelsPhoto[] = [];
@@ -98,12 +96,7 @@ for (const cat of menu) {
     }
     if (photo) {
       used.add(photo.id);
-      out[item.id] = {
-        src: photo.src.large2x || photo.src.large,
-        alt: photo.alt || item.name.en,
-        credit: photo.photographer,
-        creditUrl: photo.photographer_url,
-      };
+      out[item.id] = photo.src.large2x || photo.src.large;
       assigned++;
     } else {
       missing++;

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Vanisca — Mediterranean Restaurant in Agadir",
-    "description": "Refined Mediterranean cuisine in the heart of Agadir. Fresh pasta, seafood, premium meats and wood-fired pizzas in a warm, elegant setting. Reserve your table.",
+    "description": "Restaurant in Agadir: fresh pasta, seafood, pizza, risotto and Mediterranean cuisine. Book your table.",
     "keywords": "Agadir restaurant, Mediterranean restaurant Agadir, seafood Agadir, pasta Agadir, pizza Agadir, Vanisca, book restaurant Agadir"
   },
   "nav": {
@@ -13,22 +13,22 @@
     "reserve": "Reserve"
   },
   "hero": {
-    "eyebrow": "Mediterranean Restaurant · Agadir",
-    "title": "The art of Mediterranean dining",
-    "subtitle": "Generous, refined cuisine — from the freshest seafood to handmade pasta — in a setting of carved wood and warm copper in the heart of Agadir.",
+    "eyebrow": "Restaurant · Agadir",
+    "title": "Welcome to Vanisca",
+    "subtitle": "Fresh pasta, seafood, pizza and Mediterranean cuisine, in Agadir.",
     "ctaReserve": "Reserve a table",
     "ctaMenu": "Explore the menu"
   },
   "about": {
-    "eyebrow": "Our house",
-    "title": "An exceptional culinary experience",
-    "body": "At Vanisca, every dish is an invitation to journey across the Mediterranean. Our chefs elevate the freshest seafood, house-made pasta and carefully selected meats with uncompromising standards. In a space where carved wood meets the warm glow of copper, we offer far more than a meal — we offer a moment.",
-    "stat1Label": "House-made",
-    "stat1Value": "100%",
-    "stat2Label": "Specialties",
-    "stat2Value": "60+",
-    "stat3Label": "Heart of Agadir",
-    "stat3Value": "Sonaba"
+    "eyebrow": "About",
+    "title": "Mediterranean cuisine in Agadir",
+    "body": "Vanisca welcomes you in Agadir with a Mediterranean menu: starters, pasta, risotto, pizza, meat, fish and desserts. Book your table or contact us for any request.",
+    "stat1Label": "Dishes on the menu",
+    "stat1Value": "100+",
+    "stat2Label": "Categories",
+    "stat2Value": "15",
+    "stat3Label": "Morocco",
+    "stat3Value": "Agadir"
   },
   "highlights": {
     "title": "Our signatures",
@@ -138,12 +138,12 @@
     "subtitle": "Have a question? Write to us and we'll reply quickly.",
     "infoTitle": "Information",
     "addressLabel": "Address",
-    "address": "Sonaba district, Agadir, Morocco",
+    "address": "Agadir, Morocco",
     "phoneLabel": "Phone",
     "whatsappLabel": "WhatsApp",
     "emailLabel": "Email",
     "hoursLabel": "Hours",
-    "hours": "Every day · 12:00 PM – 12:00 AM",
+    "hours": "Contact us",
     "followUs": "Follow us",
     "form": {
       "name": "Name",
@@ -158,15 +158,15 @@
   },
   "cta": {
     "title": "A table awaits you",
-    "subtitle": "Experience Vanisca tonight.",
+    "subtitle": "Book your table today.",
     "button": "Reserve now"
   },
   "footer": {
-    "tagline": "Refined Mediterranean cuisine in the heart of Agadir.",
+    "tagline": "Restaurant in Agadir — Mediterranean cuisine.",
     "navTitle": "Navigation",
     "contactTitle": "Contact",
     "hoursTitle": "Hours",
-    "hours": "Every day · 12:00 PM – 12:00 AM",
+    "hours": "Contact us",
     "rights": "All rights reserved.",
     "madeWith": "Crafted with care in Agadir."
   },
