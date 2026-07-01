@@ -9,12 +9,15 @@
 
 @layer base {
   html {
+    /* Base backdrop — the fixed 3D canvas layers over this and shows through
+       any content area that does not paint its own background. */
+    background-color: var(--background);
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--background);
+    background-color: transparent;
     color: var(--foreground);
     font-feature-settings: "liga" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
