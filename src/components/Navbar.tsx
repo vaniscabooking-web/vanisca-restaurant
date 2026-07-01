@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Menu, X, CalendarDays } from "lucide-react";
+import { Menu, X, CalendarDays, Facebook } from "lucide-react";
 import { Link, usePathname } from "@/i18n/routing";
-import { navItems } from "@/lib/site";
+import { navItems, facebookUrl } from "@/lib/site";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
@@ -73,6 +73,15 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <a
+            href={facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook — Vanisca Restaurant"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-cream/80 transition-colors hover:border-gold hover:text-gold"
+          >
+            <Facebook className="h-4 w-4" aria-hidden="true" />
+          </a>
           <LanguageSwitcher />
           <Link href="/reservation" className="btn-primary !px-5 !py-2.5">
             <CalendarDays className="h-4 w-4" aria-hidden="true" />
@@ -121,6 +130,17 @@ export default function Navbar() {
               <CalendarDays className="h-4 w-4" aria-hidden="true" />
               {t("reserve")}
             </Link>
+          </li>
+          <li className="mt-4 flex justify-center">
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook — Vanisca Restaurant"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-cream/80 transition-colors hover:border-gold hover:text-gold"
+            >
+              <Facebook className="h-5 w-5" aria-hidden="true" />
+            </a>
           </li>
         </ul>
       </div>

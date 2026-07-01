@@ -57,7 +57,8 @@
       "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\);process.stdin.on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);console.log\\('OK total_results:',j.total_results,'| returned:',j.photos?.length\\);console.log\\('sample:',j.photos?.[0]?.src?.large?.slice\\(0,60\\),'| by',j.photos?.[0]?.photographer\\);}catch\\(e\\){console.log\\('ERR',d.slice\\(0,200\\)\\);}}\\)\")",
       "Bash(PEXELS_API_KEY=\"Lh09KsHlYWMWGcDFA9BxiAFUggOkId7qlusMXQU8QwRIdcxy4t6egiAO\" node --experimental-strip-types scripts/gen-dish-images.ts)",
       "Bash(node -e ' *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: unique professional photo for every dish \\(Pexels\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: unique professional photo for every dish \\(Pexels\\) *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Website polish + Facebook integration *)"
     ]
   }
 }

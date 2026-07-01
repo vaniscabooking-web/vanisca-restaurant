@@ -1,5 +1,13 @@
 import { useTranslations } from "next-intl";
-import { Phone, Mail, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Instagram,
+  MessageCircle,
+  Facebook,
+} from "lucide-react";
 import { Link } from "@/i18n/routing";
 import {
   navItems,
@@ -7,6 +15,7 @@ import {
   whatsappUrl,
   telUrl,
   instagramUrl,
+  facebookUrl,
 } from "@/lib/site";
 
 export default function Footer() {
@@ -30,6 +39,15 @@ export default function Footer() {
             {t("footer.tagline")}
           </p>
           <div className="mt-5 flex gap-3">
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook — Vanisca Restaurant"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-cream/80 transition-colors hover:border-gold hover:text-gold"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
             <a
               href={instagramUrl}
               target="_blank"

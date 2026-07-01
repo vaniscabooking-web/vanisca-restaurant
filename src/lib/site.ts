@@ -14,6 +14,8 @@ export const siteConfig = {
   // WhatsApp in international format without "+" for wa.me links.
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "212528202202",
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? "vaniscarestaurant",
+  // Facebook page slug/username (override with NEXT_PUBLIC_FACEBOOK if different).
+  facebook: process.env.NEXT_PUBLIC_FACEBOOK ?? "vaniscarestaurant",
   city: "Agadir",
   country: "Maroc",
   district: "Sonaba",
@@ -33,6 +35,17 @@ export const telUrl = `tel:+${
 }`;
 
 export const instagramUrl = `https://instagram.com/${siteConfig.instagram}`;
+
+/**
+ * Official Facebook page. If `facebook` looks like a full URL it is used as-is,
+ * otherwise it is treated as a page username. Falls back to a name search so the
+ * link always resolves to the right page.
+ */
+export const facebookUrl = siteConfig.facebook.startsWith("http")
+  ? siteConfig.facebook
+  : /^\d+$/.test(siteConfig.facebook)
+    ? `https://www.facebook.com/profile.php?id=${siteConfig.facebook}`
+    : `https://www.facebook.com/${siteConfig.facebook}`;
 
 /** Primary navigation — `key` maps to a `nav.*` translation. */
 export const navItems = [

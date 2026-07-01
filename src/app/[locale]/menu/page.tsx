@@ -23,7 +23,7 @@ export default async function MenuPage({
   const t = await getTranslations("menu");
 
   return (
-    <div className="pt-28">
+    <div className="bg-marble pt-28">
       <div className="container-px pb-8 pt-8 text-center">
         <SectionHeading eyebrow="Vanisca" title={t("title")} subtitle={t("subtitle")} />
       </div>

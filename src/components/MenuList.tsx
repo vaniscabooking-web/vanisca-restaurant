@@ -112,22 +112,24 @@ export default function MenuList() {
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cat.items.map((item, i) => (
                 <Reveal as="li" key={item.id} delay={(i % 3) * 0.05}>
-                  <article className="group h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/30 hover:bg-white/[0.04]">
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-white/[0.05] hover:shadow-gold-glow">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <LuxeImage
                         src={dishImage(cat.id, item.id)}
                         alt={item.name[locale]}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.12]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/85 via-charcoal-950/10 to-transparent" />
+                      {/* Gold accent line revealed on hover */}
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gold-gradient transition-transform duration-500 group-hover:scale-x-100" />
                       <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold text-gold shadow-lg backdrop-blur-sm">
                         {item.price} {t("currency")}
                       </span>
                     </div>
-                    <div className="p-5">
-                      <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold text-cream">
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold text-cream transition-colors group-hover:text-gold-light">
                         <span>{item.name[locale]}</span>
                         {item.tags?.map((tag) => {
                           const { icon: Icon, className } = TAG_META[tag];
@@ -144,7 +146,7 @@ export default function MenuList() {
                         })}
                       </h3>
                       {item.description && (
-                        <p className="mt-1.5 text-sm leading-relaxed text-cream/55">
+                        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-cream/55">
                           {item.description[locale]}
                         </p>
                       )}

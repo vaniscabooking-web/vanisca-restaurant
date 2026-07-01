@@ -7,6 +7,7 @@ import {
   Clock,
   MessageCircle,
   Instagram,
+  Facebook,
 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import {
@@ -14,6 +15,7 @@ import {
   telUrl,
   whatsappUrl,
   instagramUrl,
+  facebookUrl,
 } from "@/lib/site";
 
 export async function generateMetadata({
@@ -55,7 +57,7 @@ export default async function ContactPage({
   ];
 
   return (
-    <div className="pt-28">
+    <div className="bg-marble pt-28">
       <div className="container-px pb-10 pt-8">
         <span className="eyebrow">{t("eyebrow")}</span>
         <h1 className="heading-display mt-3 text-4xl font-semibold text-cream sm:text-5xl">
@@ -112,14 +114,24 @@ export default async function ContactPage({
             <h2 className="text-sm font-semibold uppercase tracking-wider text-gold">
               {t("followUs")}
             </h2>
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-cream transition-colors hover:border-gold hover:text-gold"
-            >
-              <Instagram className="h-4 w-4" /> @{siteConfig.instagram}
-            </a>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a
+                href={facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-cream transition-colors hover:border-gold hover:text-gold"
+              >
+                <Facebook className="h-4 w-4" /> Facebook
+              </a>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-cream transition-colors hover:border-gold hover:text-gold"
+              >
+                <Instagram className="h-4 w-4" /> @{siteConfig.instagram}
+              </a>
+            </div>
           </div>
         </div>
 

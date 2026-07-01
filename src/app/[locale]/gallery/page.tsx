@@ -23,7 +23,7 @@ export default async function GalleryPage({
   const t = await getTranslations("gallery");
 
   return (
-    <div className="pt-28">
+    <div className="bg-marble pt-28">
       <div className="container-px pb-10 pt-8 text-center">
         <SectionHeading eyebrow="Vanisca" title={t("title")} subtitle={t("subtitle")} />
       </div>

@@ -1,6 +1,12 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { siteConfig, telUrl, whatsappUrl, instagramUrl } from "@/lib/site";
+import {
+  siteConfig,
+  telUrl,
+  whatsappUrl,
+  instagramUrl,
+  facebookUrl,
+} from "@/lib/site";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Highlights from "@/components/Highlights";
@@ -54,7 +60,7 @@ export default async function HomePage({
       opens: "12:00",
       closes: "00:00",
     },
-    sameAs: [instagramUrl, whatsappUrl()],
+    sameAs: [facebookUrl, instagramUrl, whatsappUrl()],
     acceptsReservations: "True",
   };
 

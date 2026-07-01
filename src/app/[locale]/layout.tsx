@@ -71,6 +71,7 @@ export async function generateMetadata({
       description: t("description"),
       url: `${siteConfig.url}/${locale}`,
       locale,
+      alternateLocale: routing.locales.filter((l) => l !== locale),
     },
     twitter: {
       card: "summary_large_image",
