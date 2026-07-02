@@ -139,6 +139,32 @@
   .tilt-card:hover .tilt-sheen {
     opacity: 1;
   }
+
+  /* Hero backdrop: floating golden dust motes */
+  .hero-dust {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(230, 205, 147, 0.9) 0%, rgba(230, 205, 147, 0) 70%);
+    opacity: 0;
+    animation-name: dust-float;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform, opacity;
+  }
+
+  /* Hero backdrop: slow warm light sheen drifting across */
+  .hero-light-shift {
+    position: absolute;
+    inset: -10%;
+    background: radial-gradient(
+      55% 70% at 30% 40%,
+      rgba(200, 164, 92, 0.14) 0%,
+      transparent 65%
+    );
+    mix-blend-mode: screen;
+    animation: light-shift 22s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
 }
 
 @layer utilities {
@@ -158,6 +184,35 @@
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
+
+@keyframes dust-float {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--dust-o, 0.45);
+  }
+  85% {
+    opacity: var(--dust-o, 0.45);
+  }
+  100% {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+}
+
+@keyframes light-shift {
+  0%,
+  100% {
+    transform: translateX(-6%) translateY(-2%);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(6%) translateY(2%);
+    opacity: 0.9;
   }
 }
 

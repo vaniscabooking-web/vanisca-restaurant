@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { CalendarDays, UtensilsCrossed, ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import HeroBackdrop from "./HeroBackdrop";
 
 /**
  * Full-screen hero over the 3D background.
@@ -19,6 +20,9 @@ export default function Hero() {
 
   return (
     <section className="relative h-[100svh] w-full overflow-hidden">
+      {/* Cinematic animated background layer (background only — UI untouched) */}
+      <HeroBackdrop />
+
       {/* Glass UI */}
       <div className="container-px flex h-full items-center justify-center">
         <motion.div

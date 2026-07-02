@@ -68,7 +68,12 @@
       "Bash(git -c commit.gpgsign=false commit -q -m 'Glass utility: adopt provided recipe \\(white 0.08, blur 20px, radius 20px\\) *)",
       "Bash(git -c commit.gpgsign=false commit -q -m '3D rig: adopt camera-parallax easing formula *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: 3D tilt-card system \\(tilt, depth shadow, hover glow\\) *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m '3D perf: light diet, drei Preload, canvas fade-in *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m '3D perf: light diet, drei Preload, canvas fade-in *)",
+      "mcp__abe7ec72-02c0-49bd-bd81-643c4d263284__generate_image",
+      "mcp__abe7ec72-02c0-49bd-bd81-643c4d263284__job_display",
+      "Bash(curl -s -o public/hero-cinematic.png --max-time 60 \"https://d8j0ntlcm91z4.cloudfront.net/user_3Fawmw5NgBW4as9adrPHtEY0vRJ/hf_20260702_125522_f353e632-2568-43d3-95d1-655e1d2a7114.png\")",
+      "Bash(awk '{print $5\" bytes\"}')",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: cinematic animated architectural backdrop \\(background layer only\\) *)"
     ]
   }
 }
