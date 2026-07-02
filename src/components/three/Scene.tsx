@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef, useEffect, useState, type ReactNode } from "react";
-import { Environment } from "@react-three/drei";
+import { Environment, Preload } from "@react-three/drei";
 import * as THREE from "three";
 import FloatingFood from "./FloatingFood";
 import Particles from "./Particles";
@@ -108,9 +108,15 @@ export default function Scene() {
     >
       <Suspense fallback={null}>
         <fogExp2 attach="fog" args={["#0d0b09", 0.045]} />
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[5, 5, 5]} intensity={1.2} castShadow />
-        <pointLight position={[-6, 3, -2]} intensity={40} color="#c8a45c" distance={30} />
+        {/* Light diet: 1 directional + HDR env (desktop). Mobile has no HDR
+            env, so a cheap ambient keeps the objects visible there. */}
+        <directionalLight
+          position={[5, 5, 5]}
+          intensity={isMobile ? 1.4 : 1.2}
+          castShadow={!isMobile}
+          color="#f5e6c8"
+        />
+        {isMobile && <ambientLight intensity={0.5} />}
 
         <PointerRig pointer={pointer}>
           <FloatingFood />
@@ -123,6 +129,9 @@ export default function Scene() {
             <Environment preset="dawn" />
           </Suspense>
         )}
+
+        {/* Upload geometries/materials/textures to the GPU upfront — no first-frame jank. */}
+        <Preload all />
       </Suspense>
     </Canvas>
   );

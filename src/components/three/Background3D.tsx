@@ -16,6 +16,7 @@ const Scene = dynamic(() => import("./Scene"), {
  */
 export default function Background3D() {
   const [enabled, setEnabled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     // Respect data-saver mode.
@@ -35,11 +36,21 @@ export default function Background3D() {
     if (webgl) setEnabled(true);
   }, []);
 
+  // Fade the scene in once mounted — the background-appropriate "loader":
+  // the dark page base acts as the fallback until the canvas is ready.
+  useEffect(() => {
+    if (!enabled) return;
+    const t = window.setTimeout(() => setVisible(true), 80);
+    return () => window.clearTimeout(t);
+  }, [enabled]);
+
   if (!enabled) return null;
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 -z-[40]"
+      className={`pointer-events-none fixed inset-0 -z-[40] transition-opacity duration-1000 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
       aria-hidden="true"
     >
       <Scene />

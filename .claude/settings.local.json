@@ -67,7 +67,8 @@
       "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: centered glass card over full-screen 3D scene *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Glass utility: adopt provided recipe \\(white 0.08, blur 20px, radius 20px\\) *)",
       "Bash(git -c commit.gpgsign=false commit -q -m '3D rig: adopt camera-parallax easing formula *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: 3D tilt-card system \\(tilt, depth shadow, hover glow\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Menu: 3D tilt-card system \\(tilt, depth shadow, hover glow\\) *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m '3D perf: light diet, drei Preload, canvas fade-in *)"
     ]
   }
 }
