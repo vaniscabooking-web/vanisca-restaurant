@@ -91,10 +91,13 @@
     @apply h-px w-8 bg-gold/60;
   }
 
-  /* Glassmorphism surface — frosted, subtle brass edge */
+  /* Glassmorphism surface */
   .glass {
-    @apply border border-white/10 bg-white/[0.05] backdrop-blur-xl;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
   }
 
   .card-surface {

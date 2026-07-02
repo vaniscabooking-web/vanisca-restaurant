@@ -69,7 +69,7 @@ export default function MenuList() {
       {/* Sticky category nav (glass) */}
       <nav
         ref={navRef}
-        className="glass sticky top-[68px] z-30 -mx-5 mb-14 border-y border-white/10 px-5 py-3 sm:-mx-8 sm:px-8"
+        className="glass sticky top-[68px] z-30 -mx-5 mb-14 rounded-none border-y border-white/10 px-5 py-3 sm:-mx-8 sm:px-8"
         aria-label="Menu categories"
       >
         <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
