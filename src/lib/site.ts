@@ -10,9 +10,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vanisca.ma",
   // Public-facing contact email (NOT the internal automation address).
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "vanisca.restaurant@gmail.com",
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "0611700033",
+  phone: process.env.NEXT_PUBLIC_PHONE ?? "0528202202",
   // WhatsApp in international format without "+" for wa.me links.
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "212528202202",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "212611700033",
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? "vaniscarestaurant",
   // Facebook page slug/username (override with NEXT_PUBLIC_FACEBOOK if different).
   facebook: process.env.NEXT_PUBLIC_FACEBOOK ?? "vaniscarestaurant",
