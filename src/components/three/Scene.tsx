@@ -104,7 +104,7 @@ export default function Scene() {
         <pointLight position={[-6, 3, -2]} intensity={40} color="#c8a45c" distance={30} />
 
         <PointerRig pointer={pointer}>
-          <FloatingFood mobile={isMobile} />
+          <FloatingFood />
           <Particles count={isMobile ? 1800 : 4800} />
         </PointerRig>
 
