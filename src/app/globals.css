@@ -108,6 +108,37 @@
   .rule-gold {
     @apply h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent;
   }
+
+  /* 3D tilt card (see TiltCard.tsx) — depth shadow grows on hover */
+  .tilt-card {
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: box-shadow 0.5s ease;
+  }
+  .tilt-card:hover {
+    box-shadow:
+      0 30px 60px -20px rgba(0, 0, 0, 0.75),
+      0 0 40px -8px rgba(200, 164, 92, 0.35);
+  }
+
+  /* Cursor-following gold sheen */
+  .tilt-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      320px circle at var(--tilt-gx, 50%) var(--tilt-gy, 50%),
+      rgba(230, 205, 147, 0.14),
+      transparent 65%
+    );
+  }
+  .tilt-card:hover .tilt-sheen {
+    opacity: 1;
+  }
 }
 
 @layer utilities {

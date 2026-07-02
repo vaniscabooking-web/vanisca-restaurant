@@ -7,6 +7,7 @@ import { menu, type MenuLocale, type MenuTag } from "@/data/menu";
 import { dishImage } from "@/lib/images";
 import Reveal from "./Reveal";
 import LuxeImage from "./LuxeImage";
+import TiltCard from "./TiltCard";
 
 const TAG_META: Record<MenuTag, { icon: typeof Star; className: string }> = {
   signature: { icon: Star, className: "text-gold" },
@@ -112,7 +113,8 @@ export default function MenuList() {
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cat.items.map((item, i) => (
                 <Reveal as="li" key={item.id} delay={(i % 3) * 0.05}>
-                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-white/[0.05] hover:shadow-gold-glow">
+                  <TiltCard className="h-full rounded-2xl">
+                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-colors duration-500 hover:border-gold/40 hover:bg-white/[0.05]">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <LuxeImage
                         src={dishImage(cat.id, item.id)}
@@ -151,7 +153,8 @@ export default function MenuList() {
                         </p>
                       )}
                     </div>
-                  </article>
+                    </article>
+                  </TiltCard>
                 </Reveal>
               ))}
             </ul>
