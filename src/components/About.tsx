@@ -13,18 +13,26 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative bg-marble py-24 sm:py-32">
-      <div className="container-px grid items-center gap-14 lg:grid-cols-2">
-        {/* Visual */}
-        <Reveal className="order-last lg:order-first">
-          <div className="relative">
+    <section id="about" className="relative overflow-hidden bg-marble py-28 sm:py-36">
+      {/* Editorial ghost numeral */}
+      <span
+        aria-hidden="true"
+        className="heading-display pointer-events-none absolute -top-6 end-4 select-none text-[10rem] font-semibold leading-none text-white/[0.04] sm:text-[16rem]"
+      >
+        01
+      </span>
+
+      <div className="container-px grid items-center gap-16 lg:grid-cols-12">
+        {/* Visual — asymmetric editorial placement */}
+        <Reveal className="order-last lg:order-first lg:col-span-5">
+          <div className="relative lg:-ms-4">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-luxe">
               <LuxeImage
                 src={aboutImage}
                 alt=""
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="h-full w-full object-cover transition-transform duration-[1400ms] hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-5 start-6">
@@ -36,32 +44,31 @@ export default function About() {
                 </span>
               </div>
             </div>
-            {/* Floating glass accent for depth */}
             <div className="glass absolute -bottom-6 -end-6 hidden h-32 w-32 rounded-2xl sm:block" />
             <div className="absolute -top-5 -start-5 hidden h-20 w-20 rounded-full border border-gold/20 sm:block" />
           </div>
         </Reveal>
 
-        {/* Text */}
-        <div>
+        {/* Text — editorial column, offset */}
+        <div className="lg:col-span-6 lg:col-start-7">
           <Reveal>
             <span className="eyebrow">{t("eyebrow")}</span>
-            <h2 className="heading-display mt-3 text-3xl font-semibold text-cream sm:text-4xl md:text-[2.75rem] md:leading-tight">
+            <h2 className="heading-display mt-4 text-balance text-4xl font-medium text-cream sm:text-5xl md:text-[3.6rem] md:leading-[1.06]">
               {t("title")}
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-cream/70 sm:text-lg">
+            <p className="mt-7 max-w-xl text-lg font-light leading-relaxed text-cream/75 sm:text-xl">
               {t("body")}
             </p>
           </Reveal>
 
           <Reveal delay={0.15}>
-            <dl className="mt-10 grid grid-cols-3 gap-6">
+            <dl className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
               {stats.map((s) => (
-                <div key={s.label} className="border-s border-gold/30 ps-4">
-                  <dt className="heading-display text-2xl font-bold text-gradient-gold sm:text-3xl">
+                <div key={s.label}>
+                  <dt className="heading-display text-3xl font-semibold text-gradient-gold sm:text-4xl">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-xs uppercase tracking-wide text-cream/60">
+                  <dd className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-cream/55">
                     {s.label}
                   </dd>
                 </div>

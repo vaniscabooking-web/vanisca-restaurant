@@ -57,7 +57,7 @@ export default async function HomePage({
       {/* Gallery preview */}
       <section className="py-24 sm:py-28">
         <div className="container-px">
-          <SectionHeading eyebrow={t("title")} title={t("subtitle")} />
+          <SectionHeading eyebrow={t("title")} title={t("subtitle")} index="03" />
           <div className="mt-14">
             <Gallery limit={4} />
           </div>

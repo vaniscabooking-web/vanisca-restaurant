@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Star, Fish, Leaf, Flame } from "lucide-react";
 import { menu, type MenuLocale, type MenuTag } from "@/data/menu";
-import { dishImage } from "@/lib/images";
+import { dishImage, categoryImage } from "@/lib/images";
 import Reveal from "./Reveal";
 import LuxeImage from "./LuxeImage";
 import TiltCard from "./TiltCard";
@@ -94,19 +94,35 @@ export default function MenuList() {
         </ul>
       </nav>
 
-      {/* Sections */}
-      <div className="space-y-20">
-        {categories.map((cat) => (
+      {/* Sections — each category opens with a cinematic chapter divider */}
+      <div className="space-y-24">
+        {categories.map((cat, catIdx) => (
           <section key={cat.id} id={`cat-${cat.id}`} aria-labelledby={`h-${cat.id}`}>
             <Reveal>
-              <div className="mb-8 flex items-center gap-4">
-                <h2
-                  id={`h-${cat.id}`}
-                  className="heading-display text-3xl font-semibold text-cream sm:text-4xl"
+              <div className="relative mb-10 h-40 overflow-hidden rounded-3xl border border-white/10 shadow-luxe sm:h-52">
+                <LuxeImage
+                  src={categoryImage(cat.id)}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/95 via-charcoal-950/60 to-charcoal-950/20 rtl:bg-gradient-to-l" />
+                <span
+                  aria-hidden="true"
+                  className="heading-display pointer-events-none absolute -bottom-8 end-4 select-none text-[8rem] font-semibold leading-none text-white/[0.07] sm:text-[11rem] sm:-bottom-12"
                 >
-                  {t(`categories.${cat.id}`)}
-                </h2>
-                <span className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent rtl:bg-gradient-to-l" />
+                  {String(catIdx + 1).padStart(2, "0")}
+                </span>
+                <div className="absolute inset-y-0 start-7 flex flex-col justify-center sm:start-10">
+                  <h2
+                    id={`h-${cat.id}`}
+                    className="heading-display text-3xl font-medium text-cream sm:text-5xl"
+                  >
+                    {t(`categories.${cat.id}`)}
+                  </h2>
+                  <span className="rule-gold mt-4 !mx-0" aria-hidden="true" />
+                </div>
               </div>
             </Reveal>
 
