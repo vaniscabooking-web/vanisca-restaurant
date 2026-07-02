@@ -78,7 +78,8 @@
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_node_types",
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__unpublish_workflow",
       "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__archive_workflow",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Booking payload: multi-attachment + menu items \\(backend only, zero UI change\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Booking payload: multi-attachment + menu items \\(backend only, zero UI change\\) *)",
+      "Bash(node -p \"require\\('lenis/package.json'\\).version\")"
     ]
   }
 }

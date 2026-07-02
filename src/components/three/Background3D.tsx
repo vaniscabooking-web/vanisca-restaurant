@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Loaded only in the browser, after hydration — keeps three.js off the
 // critical path so it never affects LCP.
@@ -44,10 +44,40 @@ export default function Background3D() {
     return () => window.clearTimeout(t);
   }, [enabled]);
 
+  // DSLR rack-focus: fast scrolling softly defocuses the 3D layer, easing
+  // back to sharp as motion settles. Desktop fine-pointers, motion-safe only.
+  const focusRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!enabled) return;
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduce) return;
+
+    let lastY = window.scrollY;
+    let lastT = performance.now();
+    let blur = 0;
+    let raf = 0;
+    const loop = () => {
+      const now = performance.now();
+      const dy = Math.abs(window.scrollY - lastY) / Math.max(now - lastT, 1);
+      lastY = window.scrollY;
+      lastT = now;
+      blur += (Math.min(dy * 1.4, 2.2) - blur) * 0.12;
+      if (focusRef.current) {
+        focusRef.current.style.filter =
+          blur > 0.05 ? `blur(${blur.toFixed(2)}px)` : "";
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [enabled]);
+
   if (!enabled) return null;
 
   return (
     <div
+      ref={focusRef}
       className={`pointer-events-none fixed inset-0 -z-[40] transition-opacity duration-1000 ${
         visible ? "opacity-100" : "opacity-0"
       }`}

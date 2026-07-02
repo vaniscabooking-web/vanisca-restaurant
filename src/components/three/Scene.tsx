@@ -32,36 +32,56 @@ function usePrefersReducedMotion() {
   return reduce;
 }
 
+/** Smoothed scroll state shared with the rig and particles. */
+export type ScrollState = { lastY: number; v: number; p: number };
+
 /**
- * Camera-parallax rig. The camera eases toward the pointer with a 0.05 lerp
- * (±0.5 world-unit amplitude). state.mouse can't be used here: the background
- * canvas is pointer-events-none (so the site stays clickable), which means it
- * never receives pointer events — the same formula is fed by window-level
- * mouse/touch instead. The group keeps only a slow time-based sway.
+ * Cinematic camera rig. Pointer parallax (0.05 lerp, ±0.5 units — state.mouse
+ * can't be used because the click-through canvas never receives pointer
+ * events) plus scroll physics: a slow dolly-in as the page scrolls (inertia
+ * via lerped progress) and a gravitational tilt from smoothed scroll velocity.
  */
 function PointerRig({
   pointer,
+  scroll,
   children,
 }: {
   pointer: React.MutableRefObject<Pointer>;
+  scroll: React.MutableRefObject<ScrollState>;
   children: ReactNode;
 }) {
   const group = useRef<THREE.Group>(null);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
     const p = pointer.current;
+    const s = scroll.current;
+
+    // Smoothed scroll velocity (px/s) and progress (0..1) with inertia.
+    const y = window.scrollY;
+    const max = Math.max(
+      document.documentElement.scrollHeight - window.innerHeight,
+      1,
+    );
+    const instV = (y - s.lastY) / Math.max(delta, 1 / 240);
+    s.lastY = y;
+    s.v += (instV - s.v) * 0.08;
+    s.p += (y / max - s.p) * 0.05;
 
     if (group.current) {
       group.current.rotation.y = Math.sin(t * 0.05) * 0.08;
-      group.current.rotation.x = Math.cos(t * 0.045) * 0.05;
+      // Gravitational pitch: the space leans with scroll momentum.
+      group.current.rotation.x =
+        Math.cos(t * 0.045) * 0.05 +
+        Math.max(-0.09, Math.min(0.09, s.v * 0.00003));
     }
 
     state.camera.position.x +=
       (p.tx * 0.5 - state.camera.position.x) * 0.05;
     state.camera.position.y +=
       (-p.ty * 0.5 - state.camera.position.y) * 0.05;
-    state.camera.position.z = 6 + Math.sin(t * 0.08) * 0.3;
+    // Slow cinematic dolly-in across the page + breathing.
+    state.camera.position.z = 6 - s.p * 1.4 + Math.sin(t * 0.08) * 0.3;
     state.camera.lookAt(0, 0, 0);
   });
 
@@ -70,6 +90,7 @@ function PointerRig({
 
 export default function Scene() {
   const pointer = useRef<Pointer>({ tx: 0, ty: 0 });
+  const scroll = useRef<ScrollState>({ lastY: 0, v: 0, p: 0 });
   const reduce = usePrefersReducedMotion();
   const [isMobile] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768,
@@ -118,9 +139,9 @@ export default function Scene() {
         />
         {isMobile && <ambientLight intensity={0.5} />}
 
-        <PointerRig pointer={pointer}>
+        <PointerRig pointer={pointer} scroll={scroll}>
           <FloatingFood />
-          <Particles count={isMobile ? 1800 : 4800} />
+          <Particles count={isMobile ? 1800 : 4800} scroll={scroll} />
         </PointerRig>
 
         {/* HDR environment lighting; own Suspense so the scene never waits on the CDN. */}

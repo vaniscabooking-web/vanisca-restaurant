@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import ScrollProgress from "@/components/ScrollProgress";
 import Background3D from "@/components/three/Background3D";
+import SmoothScroll from "@/components/SmoothScroll";
 import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -113,6 +114,7 @@ export default async function LocaleLayout({
             Skip
           </a>
           <Background3D />
+          <SmoothScroll />
           <ScrollProgress />
           <Navbar />
           <main id="main">{children}</main>

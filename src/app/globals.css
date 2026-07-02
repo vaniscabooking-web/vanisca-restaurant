@@ -69,7 +69,7 @@
 
   /* Premium primary button with a soft light-sweep on hover */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold-gradient px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-950 shadow-lg shadow-gold/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-gold-glow focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold-gradient px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-950 shadow-lg shadow-gold/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-gold-glow focus-visible:outline-offset-4 active:translate-y-0 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
   }
   .btn-primary::after {
     content: "";
@@ -80,7 +80,7 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10 active:translate-y-0 active:scale-[0.98];
   }
 
   .eyebrow {
@@ -185,6 +185,21 @@
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
+}
+
+/* Hero: slow cinematic light opening — entering the space from darkness */
+@keyframes hero-open {
+  0% {
+    opacity: 0.12;
+    filter: brightness(0.45) saturate(0.85);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) saturate(1);
+  }
+}
+.hero-open {
+  animation: hero-open 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes dust-float {

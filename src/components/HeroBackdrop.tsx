@@ -87,7 +87,7 @@ export default function HeroBackdrop() {
   }, []);
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div className="hero-open absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
       {/* Base render with Ken-Burns; parallax wrapper slightly overscaled so
           the eased translation never exposes edges. */}
       <div ref={parallaxRef} className="absolute inset-0 scale-[1.06]">
