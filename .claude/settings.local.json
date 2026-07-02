@@ -65,7 +65,8 @@
       "Bash(git -c commit.gpgsign=false commit -q -m '3D scene: adopt Scene/FloatingFood/Particles structure with drei Environment *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'FloatingFood: swap to torus-knot + sphere composition *)",
       "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: centered glass card over full-screen 3D scene *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Glass utility: adopt provided recipe \\(white 0.08, blur 20px, radius 20px\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Glass utility: adopt provided recipe \\(white 0.08, blur 20px, radius 20px\\) *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m '3D rig: adopt camera-parallax easing formula *)"
     ]
   }
 }

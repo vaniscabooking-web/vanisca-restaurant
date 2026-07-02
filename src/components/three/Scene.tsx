@@ -18,7 +18,7 @@ import Particles from "./Particles";
  * but reads window-level mouse/touch, so the page stays fully usable.
  */
 
-type Pointer = { x: number; y: number; tx: number; ty: number };
+type Pointer = { tx: number; ty: number };
 
 function usePrefersReducedMotion() {
   const [reduce, setReduce] = useState(false);
@@ -32,7 +32,13 @@ function usePrefersReducedMotion() {
   return reduce;
 }
 
-/** Rotate-only camera rig driven by window mouse/touch (OrbitControls stand-in). */
+/**
+ * Camera-parallax rig. The camera eases toward the pointer with a 0.05 lerp
+ * (±0.5 world-unit amplitude). state.mouse can't be used here: the background
+ * canvas is pointer-events-none (so the site stays clickable), which means it
+ * never receives pointer events — the same formula is fed by window-level
+ * mouse/touch instead. The group keeps only a slow time-based sway.
+ */
 function PointerRig({
   pointer,
   children,
@@ -45,13 +51,16 @@ function PointerRig({
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     const p = pointer.current;
-    p.x += (p.tx - p.x) * 0.045;
-    p.y += (p.ty - p.y) * 0.045;
 
     if (group.current) {
-      group.current.rotation.y = Math.sin(t * 0.05) * 0.08 + p.x * 0.3;
-      group.current.rotation.x = Math.cos(t * 0.045) * 0.05 - p.y * 0.2;
+      group.current.rotation.y = Math.sin(t * 0.05) * 0.08;
+      group.current.rotation.x = Math.cos(t * 0.045) * 0.05;
     }
+
+    state.camera.position.x +=
+      (p.tx * 0.5 - state.camera.position.x) * 0.05;
+    state.camera.position.y +=
+      (-p.ty * 0.5 - state.camera.position.y) * 0.05;
     state.camera.position.z = 6 + Math.sin(t * 0.08) * 0.3;
     state.camera.lookAt(0, 0, 0);
   });
@@ -60,7 +69,7 @@ function PointerRig({
 }
 
 export default function Scene() {
-  const pointer = useRef<Pointer>({ x: 0, y: 0, tx: 0, ty: 0 });
+  const pointer = useRef<Pointer>({ tx: 0, ty: 0 });
   const reduce = usePrefersReducedMotion();
   const [isMobile] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768,
