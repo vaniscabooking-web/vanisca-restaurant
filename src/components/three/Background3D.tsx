@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // Loaded only in the browser, after hydration — keeps three.js off the
 // critical path so it never affects LCP.
-const SceneBackground = dynamic(() => import("./SceneBackground"), {
+const Scene = dynamic(() => import("./Scene"), {
   ssr: false,
 });
 
@@ -42,7 +42,7 @@ export default function Background3D() {
       className="pointer-events-none fixed inset-0 -z-[40]"
       aria-hidden="true"
     >
-      <SceneBackground />
+      <Scene />
     </div>
   );
 }
