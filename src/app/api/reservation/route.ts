@@ -4,6 +4,7 @@ import {
   sanitize,
   ALLOWED_FILE_TYPES,
   MAX_FILE_BYTES,
+  MAX_TOTAL_ATTACH_BYTES,
 } from "@/lib/validation";
 import { rateLimit, clientIp } from "@/lib/rateLimit";
 import { forwardToN8n } from "@/lib/n8n";
@@ -45,10 +46,14 @@ export async function POST(request: Request) {
   }
 
   // 4) Server-side attachment re-validation (never trust the client)
-  if (data.attachment) {
+  const attachments = data.attachments ?? [];
+  let totalBytes = 0;
+  for (const file of attachments) {
+    totalBytes += file.size;
     if (
-      !ALLOWED_FILE_TYPES.includes(data.attachment.type) ||
-      data.attachment.size > MAX_FILE_BYTES
+      !ALLOWED_FILE_TYPES.includes(file.type) ||
+      file.size > MAX_FILE_BYTES ||
+      totalBytes > MAX_TOTAL_ATTACH_BYTES
     ) {
       return NextResponse.json(
         { ok: false, error: "invalid_attachment" },
@@ -69,7 +74,13 @@ export async function POST(request: Request) {
     guests: data.guests,
     occasion: data.occasion ? sanitize(data.occasion) : "",
     message: data.message ? sanitize(data.message) : "",
-    attachment: data.attachment ?? null,
+    menuItems: (data.menuItems ?? []).map(sanitize),
+    attachments: attachments.map((f) => ({
+      name: sanitize(f.name),
+      type: f.type,
+      size: f.size,
+      data: f.data,
+    })),
     meta: {
       submittedAt: new Date().toISOString(),
       ip,

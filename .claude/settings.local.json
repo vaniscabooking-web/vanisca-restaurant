@@ -73,7 +73,12 @@
       "mcp__abe7ec72-02c0-49bd-bd81-643c4d263284__job_display",
       "Bash(curl -s -o public/hero-cinematic.png --max-time 60 \"https://d8j0ntlcm91z4.cloudfront.net/user_3Fawmw5NgBW4as9adrPHtEY0vRJ/hf_20260702_125522_f353e632-2568-43d3-95d1-655e1d2a7114.png\")",
       "Bash(awk '{print $5\" bytes\"}')",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: cinematic animated architectural backdrop \\(background layer only\\) *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: cinematic animated architectural backdrop \\(background layer only\\) *)",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__search_nodes",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__get_node_types",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__unpublish_workflow",
+      "mcp__e4dcac40-1ef5-406d-878b-9552a2b22178__archive_workflow",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Booking payload: multi-attachment + menu items \\(backend only, zero UI change\\) *)"
     ]
   }
 }

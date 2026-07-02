@@ -16,7 +16,12 @@ import {
   Sparkles,
   Paperclip,
 } from "lucide-react";
-import { MAX_FILE_BYTES, ALLOWED_FILE_TYPES } from "@/lib/validation";
+import {
+  MAX_FILE_BYTES,
+  MAX_TOTAL_ATTACH_BYTES,
+  MAX_ATTACHMENTS,
+  ALLOWED_FILE_TYPES,
+} from "@/lib/validation";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -45,10 +50,17 @@ export default function ReservationForm() {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // Client-side file handling + validation
-    let attachment: Record<string, unknown> | null = null;
-    const file = fd.get("attachment") as File | null;
-    if (file && file.size > 0) {
+    // Client-side file handling + validation (multiple attachments supported)
+    const files = (fd.getAll("attachment") as File[]).filter(
+      (f) => f && f.size > 0,
+    );
+    if (files.length > MAX_ATTACHMENTS) {
+      setFieldError(t("validation.fileTooLarge"));
+      return;
+    }
+    let totalBytes = 0;
+    const attachments: Record<string, unknown>[] = [];
+    for (const file of files) {
       if (file.size > MAX_FILE_BYTES) {
         setFieldError(t("validation.fileTooLarge"));
         return;
@@ -57,12 +69,17 @@ export default function ReservationForm() {
         setFieldError(t("validation.fileType"));
         return;
       }
-      attachment = {
+      totalBytes += file.size;
+      if (totalBytes > MAX_TOTAL_ATTACH_BYTES) {
+        setFieldError(t("validation.fileTooLarge"));
+        return;
+      }
+      attachments.push({
         name: file.name,
         type: file.type,
         size: file.size,
         data: await fileToBase64(file),
-      };
+      });
     }
 
     const payload = {
@@ -76,7 +93,7 @@ export default function ReservationForm() {
       occasion: String(fd.get("occasion") ?? ""),
       message: String(fd.get("message") ?? ""),
       company: String(fd.get("company") ?? ""), // honeypot
-      attachment,
+      attachments,
     };
 
     setStatus("submitting");
@@ -267,6 +284,7 @@ export default function ReservationForm() {
             id="attachment"
             name="attachment"
             type="file"
+            multiple
             accept={ALLOWED_FILE_TYPES.join(",")}
             className="block w-full text-sm text-cream/70 file:me-4 file:rounded-full file:border-0 file:bg-gold/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-gold hover:file:bg-gold/25"
           />

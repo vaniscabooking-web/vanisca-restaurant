@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-export const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB
+export const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB per file
+// Total across all attachments. Vercel serverless bodies cap at ~4.5 MB and
+// base64 inflates by ~4/3, so 3 MB raw keeps the request safely under it.
+export const MAX_TOTAL_ATTACH_BYTES = 3 * 1024 * 1024;
+export const MAX_ATTACHMENTS = 4;
 export const ALLOWED_FILE_TYPES = [
   "image/jpeg",
   "image/png",
@@ -30,16 +34,26 @@ export const reservationSchema = z.object({
   message: z.string().trim().max(1000).optional().or(z.literal("")),
   // Honeypot — must be empty (bots tend to fill every field).
   company: z.string().max(0).optional().or(z.literal("")),
-  // Optional base64 attachment metadata.
-  attachment: z
-    .object({
-      name: z.string().max(200),
-      type: z.string().max(100),
-      size: z.number().max(MAX_FILE_BYTES),
-      data: z.string(), // base64 (without data: prefix)
-    })
-    .nullable()
-    .optional(),
+  // Optional pre-selected menu items (dish ids/names). No UI collects these
+  // yet — the field keeps the payload/Sheets contract ready for it.
+  menuItems: z.array(z.string().trim().min(1).max(120)).max(30).optional(),
+  // Optional base64 attachments (multiple images/PDFs per booking).
+  attachments: z
+    .array(
+      z.object({
+        name: z.string().max(200),
+        type: z.string().max(100),
+        size: z.number().max(MAX_FILE_BYTES),
+        data: z.string(), // base64 (without data: prefix)
+      }),
+    )
+    .max(MAX_ATTACHMENTS)
+    .optional()
+    .refine(
+      (arr) =>
+        !arr || arr.reduce((sum, f) => sum + f.size, 0) <= MAX_TOTAL_ATTACH_BYTES,
+      { message: "attachments_total_too_large" },
+    ),
 });
 
 export type ReservationInput = z.infer<typeof reservationSchema>;
