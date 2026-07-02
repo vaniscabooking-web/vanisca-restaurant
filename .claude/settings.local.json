@@ -63,7 +63,8 @@
       "Bash(git -c commit.gpgsign=false commit -q -m 'Content: remove unverified/fabricated copy; keep only authentic details *)",
       "Bash(node -p \"require\\('@react-three/drei/package.json'\\).version\")",
       "Bash(git -c commit.gpgsign=false commit -q -m '3D scene: adopt Scene/FloatingFood/Particles structure with drei Environment *)",
-      "Bash(git -c commit.gpgsign=false commit -q -m 'FloatingFood: swap to torus-knot + sphere composition *)"
+      "Bash(git -c commit.gpgsign=false commit -q -m 'FloatingFood: swap to torus-knot + sphere composition *)",
+      "Bash(git -c commit.gpgsign=false commit -q -m 'Hero: centered glass card over full-screen 3D scene *)"
     ]
   }
 }
