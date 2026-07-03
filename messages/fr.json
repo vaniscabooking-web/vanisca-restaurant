@@ -190,7 +190,8 @@
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "callUs": "Appeler",
-    "messageWhatsapp": "WhatsApp"
+    "messageWhatsapp": "WhatsApp",
+    "whatsappBooking": "Bonjour, comment puis-je réserver une table ?"
   },
   "notFound": {
     "title": "Page introuvable",

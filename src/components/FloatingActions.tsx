@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { MessageCircle, ArrowUp } from "lucide-react";
 import { whatsappUrl } from "@/lib/site";
 
 export default function FloatingActions() {
+  const t = useTranslations("common");
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function FloatingActions() {
         </button>
       )}
       <a
-        href={whatsappUrl("Bonjour Vanisca, je souhaite réserver une table.")}
+        href={whatsappUrl(t("whatsappBooking"))}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"

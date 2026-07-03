@@ -36,6 +36,7 @@ export default async function ReservationPage({
   setRequestLocale(locale);
   const t = await getTranslations("reservation");
   const tc = await getTranslations("contact");
+  const tCommon = await getTranslations("common");
 
   return (
     <div className="bg-marble pt-28">
@@ -76,7 +77,7 @@ export default async function ReservationPage({
             </li>
             <li>
               <a
-                href={whatsappUrl("Bonjour Vanisca, je souhaite réserver une table.")}
+                href={whatsappUrl(tCommon("whatsappBooking"))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 transition-colors hover:text-gold"

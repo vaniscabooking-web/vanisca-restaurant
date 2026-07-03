@@ -190,7 +190,8 @@
     "openMenu": "افتح القائمة",
     "closeMenu": "أغلق القائمة",
     "callUs": "اتصل",
-    "messageWhatsapp": "واتساب"
+    "messageWhatsapp": "واتساب",
+    "whatsappBooking": "مرحبًا، كيف يمكنني حجز طاولة؟"
   },
   "notFound": {
     "title": "الصفحة غير موجودة",
