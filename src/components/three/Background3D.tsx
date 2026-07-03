@@ -57,6 +57,7 @@ export default function Background3D() {
     let lastT = performance.now();
     let blur = 0;
     let raf = 0;
+    let running = false;
     const loop = () => {
       const now = performance.now();
       const dy = Math.abs(window.scrollY - lastY) / Math.max(now - lastT, 1);
@@ -67,10 +68,26 @@ export default function Background3D() {
         focusRef.current.style.filter =
           blur > 0.05 ? `blur(${blur.toFixed(2)}px)` : "";
       }
+      // Sleep once the blur has settled — the scroll listener wakes it back up,
+      // so there is no rAF burning CPU/GPU while the page sits idle.
+      if (blur > 0.05) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        running = false;
+      }
+    };
+    const onScroll = () => {
+      if (running) return;
+      running = true;
+      lastT = performance.now();
+      lastY = window.scrollY;
       raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, [enabled]);
 
   if (!enabled) return null;
