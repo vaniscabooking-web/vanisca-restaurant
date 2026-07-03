@@ -52,6 +52,12 @@
       }
     }
   },
+  "houseSelection": {
+    "eyebrow": "La sélection",
+    "title": "La sélection de la maison",
+    "subtitle": "Nos plats signatures, préparés avec soin et servis à Agadir.",
+    "cta": "Voir tout le menu"
+  },
   "menu": {
     "title": "Notre Menu",
     "subtitle": "Une carte méditerranéenne, généreuse et de saison",

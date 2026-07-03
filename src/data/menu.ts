@@ -997,7 +997,12 @@ export const menu: MenuCategory[] = [
   },
 ];
 
+/** A signature dish plus the id of the category it belongs to (for imagery). */
+export type SignatureItem = MenuItem & { categoryId: string };
+
 /** Convenience: a flat list of signature dishes for the homepage. */
-export const signatureItems = menu
-  .flatMap((c) => c.items)
-  .filter((i) => i.tags?.includes("signature"));
+export const signatureItems: SignatureItem[] = menu.flatMap((c) =>
+  c.items
+    .filter((i) => i.tags?.includes("signature"))
+    .map((i) => ({ ...i, categoryId: c.id })),
+);

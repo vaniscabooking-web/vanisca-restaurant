@@ -52,6 +52,12 @@
       }
     }
   },
+  "houseSelection": {
+    "eyebrow": "The Selection",
+    "title": "The House Selection",
+    "subtitle": "Our signature dishes, prepared with care and served in Agadir.",
+    "cta": "See the full menu"
+  },
   "menu": {
     "title": "Our Menu",
     "subtitle": "A generous, seasonal Mediterranean carte",

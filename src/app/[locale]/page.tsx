@@ -10,6 +10,7 @@ import {
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Highlights from "@/components/Highlights";
+import HouseSelection from "@/components/HouseSelection";
 import Gallery from "@/components/Gallery";
 import CtaBanner from "@/components/CtaBanner";
 import SectionHeading from "@/components/SectionHeading";
@@ -53,11 +54,12 @@ export default async function HomePage({
       <Hero />
       <About />
       <Highlights />
+      <HouseSelection />
 
       {/* Gallery preview */}
       <section className="py-24 sm:py-28">
         <div className="container-px">
-          <SectionHeading eyebrow={t("title")} title={t("subtitle")} index="03" />
+          <SectionHeading eyebrow={t("title")} title={t("subtitle")} index="04" />
           <div className="mt-14">
             <Gallery limit={4} />
           </div>
