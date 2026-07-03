@@ -165,6 +165,41 @@
     animation: light-shift 22s ease-in-out infinite;
     will-change: transform, opacity;
   }
+
+  /* Hero: luxury aurora light-fields — soft drifting metallic glows that
+     replace the static hero photo, letting the 3D scene read as the backdrop.
+     Blurred, screen-blended, strictly on-palette (gold / copper / olive). */
+  .hero-aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+  }
+  .hero-aurora-1 {
+    top: -12%;
+    inset-inline-start: 6%;
+    width: min(56vw, 820px);
+    height: min(56vw, 820px);
+    background: radial-gradient(circle at 50% 50%, rgba(200, 164, 92, 0.5), rgba(200, 164, 92, 0) 68%);
+    animation: aurora-1 28s ease-in-out infinite;
+  }
+  .hero-aurora-2 {
+    top: 16%;
+    inset-inline-end: 2%;
+    width: min(48vw, 720px);
+    height: min(48vw, 720px);
+    background: radial-gradient(circle at 50% 50%, rgba(181, 118, 74, 0.4), rgba(181, 118, 74, 0) 66%);
+    animation: aurora-2 34s ease-in-out infinite;
+  }
+  .hero-aurora-3 {
+    bottom: -14%;
+    inset-inline-start: 28%;
+    width: min(60vw, 900px);
+    height: min(60vw, 900px);
+    background: radial-gradient(circle at 50% 50%, rgba(124, 132, 90, 0.28), rgba(124, 132, 90, 0) 70%);
+    animation: aurora-3 24s ease-in-out infinite;
+  }
 }
 
 @layer utilities {
@@ -227,6 +262,41 @@
   }
   50% {
     transform: translateX(6%) translateY(2%);
+    opacity: 0.9;
+  }
+}
+
+/* Hero aurora drift — each light-field wanders on its own slow path. */
+@keyframes aurora-1 {
+  0%,
+  100% {
+    transform: translate(-8%, -5%) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(7%, 6%) scale(1.16);
+    opacity: 1;
+  }
+}
+@keyframes aurora-2 {
+  0%,
+  100% {
+    transform: translate(10%, 8%) scale(1.12);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate(-7%, -4%) scale(1);
+    opacity: 0.95;
+  }
+}
+@keyframes aurora-3 {
+  0%,
+  100% {
+    transform: translate(-5%, 10%) scale(1.05);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(9%, -7%) scale(1.2);
     opacity: 0.9;
   }
 }

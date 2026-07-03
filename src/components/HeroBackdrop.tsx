@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useMemo } from "react";
-import LuxeImage from "./LuxeImage";
 
 /**
- * Cinematic hero background — a pure background layer (no UI/layout changes):
- *  - hyper-real architectural render as the base (center kept clear for UI)
- *  - slow Ken-Burns push-in + gentle pointer depth-parallax (desktop only)
- *  - floating golden dust motes (CSS, no extra WebGL context)
- *  - soft warm light sheen drifting across (slow blend-screen loop)
+ * Cinematic hero background — a pure motion layer (no stock photography):
+ *  - deep charcoal base with the site-wide 3D scene reading through it
+ *  - luxury "aurora" light-fields (blurred, screen-blended, on-palette) that
+ *    drift slowly to give the hero living depth
+ *  - gentle pointer depth-parallax on the light-fields (desktop, motion-safe)
+ *  - floating golden dust motes + soft warm light sheen
  *  - vignette + bottom blend so overlay text stays perfectly readable
- * All motion is disabled by the global prefers-reduced-motion override.
+ * All motion is disabled by the global prefers-reduced-motion override, which
+ * leaves an elegant static gradient behind.
  */
 
 // Deterministic PRNG so SSR and client render identical dust positions.
@@ -33,12 +34,12 @@ interface Mote {
   opacity: number;
 }
 
-function useMotes(count = 22): Mote[] {
+function useMotes(count = 26): Mote[] {
   return useMemo(() => {
     const rand = mulberry32(42);
     return Array.from({ length: count }, () => ({
       left: rand() * 100,
-      top: 25 + rand() * 70,
+      top: 20 + rand() * 74,
       size: 1.5 + rand() * 2.5,
       delay: rand() * 14,
       duration: 10 + rand() * 12,
@@ -61,8 +62,8 @@ export default function HeroBackdrop() {
     if (!fine || reduce) return;
 
     const onMove = (e: PointerEvent) => {
-      target.current.x = (e.clientX / window.innerWidth - 0.5) * 24;
-      target.current.y = (e.clientY / window.innerHeight - 0.5) * 16;
+      target.current.x = (e.clientX / window.innerWidth - 0.5) * 30;
+      target.current.y = (e.clientY / window.innerHeight - 0.5) * 22;
     };
 
     const tick = () => {
@@ -73,7 +74,7 @@ export default function HeroBackdrop() {
       if (parallaxRef.current) {
         parallaxRef.current.style.transform = `translate3d(${c.x.toFixed(
           2,
-        )}px, ${c.y.toFixed(2)}px, 0) scale(1.06)`;
+        )}px, ${c.y.toFixed(2)}px, 0)`;
       }
       frame.current = requestAnimationFrame(tick);
     };
@@ -88,18 +89,16 @@ export default function HeroBackdrop() {
 
   return (
     <div className="hero-open absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      {/* Base render with Ken-Burns; parallax wrapper slightly overscaled so
-          the eased translation never exposes edges. */}
-      <div ref={parallaxRef} className="absolute inset-0 scale-[1.06]">
-        <LuxeImage
-          src="/hero-cinematic.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="h-full w-full object-cover motion-safe:animate-ken-burns"
-          fallbackTone="from-[#2a2018] via-[#171310] to-[#0d0b09]"
-        />
+      {/* Translucent scrim — darkens top (under the nav) and bottom (for the
+          blend) while staying clear through the middle so the fixed 3D dining
+          scene reads softly behind the glass card. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/40 to-charcoal-950/90" />
+
+      {/* Luxury aurora light-fields with gentle pointer parallax for depth. */}
+      <div ref={parallaxRef} className="absolute inset-0">
+        <div className="hero-aurora hero-aurora-1" />
+        <div className="hero-aurora hero-aurora-2" />
+        <div className="hero-aurora hero-aurora-3" />
       </div>
 
       {/* Soft warm light sheen drifting across */}
@@ -122,9 +121,12 @@ export default function HeroBackdrop() {
         />
       ))}
 
+      {/* Fine grain for filmic texture (kept light so it doesn't veil the 3D) */}
+      <div className="absolute inset-0 bg-marble opacity-[0.18]" />
+
       {/* Vignette + bottom blend — keeps the centered UI perfectly readable */}
-      <div className="absolute inset-0 bg-[radial-gradient(90%_80%_at_50%_50%,transparent_0%,rgba(13,11,9,0.4)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-charcoal-950 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(90%_80%_at_50%_45%,transparent_0%,rgba(13,11,9,0.55)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal-950 to-transparent" />
     </div>
   );
 }
