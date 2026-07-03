@@ -149,7 +149,7 @@
     "whatsappLabel": "WhatsApp",
     "emailLabel": "Email",
     "hoursLabel": "Hours",
-    "hours": "Contact us",
+    "hours": "Fri – Sat: 12:00 – 01:30 · Sun – Thu: 12:00 – 02:00",
     "followUs": "Follow us",
     "form": {
       "name": "Name",
@@ -167,12 +167,19 @@
     "subtitle": "Book your table today.",
     "button": "Reserve now"
   },
+  "findUs": {
+    "eyebrow": "Location",
+    "title": "Find Us",
+    "subtitle": "Vanisca welcomes you in Agadir.",
+    "cta": "Open in Google Maps",
+    "mapTitle": "Map — Vanisca Restaurant, Agadir"
+  },
   "footer": {
     "tagline": "Restaurant in Agadir — Mediterranean cuisine.",
     "navTitle": "Navigation",
     "contactTitle": "Contact",
     "hoursTitle": "Hours",
-    "hours": "Contact us",
+    "hours": "Fri – Sat: 12:00 – 01:30 · Sun – Thu: 12:00 – 02:00",
     "rights": "All rights reserved.",
     "madeWith": "Crafted with care in Agadir."
   },

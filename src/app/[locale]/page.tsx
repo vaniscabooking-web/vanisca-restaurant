@@ -13,6 +13,7 @@ import Highlights from "@/components/Highlights";
 import HouseSelection from "@/components/HouseSelection";
 import Gallery from "@/components/Gallery";
 import CtaBanner from "@/components/CtaBanner";
+import FindUs from "@/components/FindUs";
 import SectionHeading from "@/components/SectionHeading";
 
 export default async function HomePage({
@@ -72,6 +73,7 @@ export default async function HomePage({
       </section>
 
       <CtaBanner />
+      <FindUs />
 
       <noscript>
         <div className="container-px py-6 text-center text-sm text-cream/70">
