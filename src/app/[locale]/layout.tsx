@@ -11,6 +11,9 @@ import FloatingActions from "@/components/FloatingActions";
 import ScrollProgress from "@/components/ScrollProgress";
 import Background3D from "@/components/three/Background3D";
 import SmoothScroll from "@/components/SmoothScroll";
+import LoadingVeil from "@/components/LoadingVeil";
+import MagneticButtons from "@/components/MagneticButtons";
+import CursorAura from "@/components/CursorAura";
 import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -113,8 +116,11 @@ export default async function LocaleLayout({
           >
             Skip
           </a>
+          <LoadingVeil />
           <Background3D />
           <SmoothScroll />
+          <MagneticButtons />
+          <CursorAura />
           <ScrollProgress />
           <Navbar />
           <main id="main">{children}</main>

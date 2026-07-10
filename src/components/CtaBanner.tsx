@@ -3,6 +3,7 @@ import { CalendarDays } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Reveal from "./Reveal";
 import LuxeImage from "./LuxeImage";
+import Parallax from "./Parallax";
 import { ctaImage } from "@/lib/images";
 
 export default function CtaBanner() {
@@ -10,16 +11,18 @@ export default function CtaBanner() {
 
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
-      {/* Cinematic photographic background */}
-      <div className="absolute inset-0 -z-20" aria-hidden="true">
-        <LuxeImage
-          src={ctaImage}
-          alt=""
-          fill
-          sizes="100vw"
-          className="h-full w-full object-cover"
-          fallbackTone="from-[#3a2a18] via-[#171310] to-[#0d0b09]"
-        />
+      {/* Cinematic photographic background — slow parallax drift for depth */}
+      <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
+        <Parallax amount={56} className="absolute inset-0">
+          <LuxeImage
+            src={ctaImage}
+            alt=""
+            fill
+            sizes="100vw"
+            className="h-full w-full scale-[1.18] object-cover"
+            fallbackTone="from-[#3a2a18] via-[#171310] to-[#0d0b09]"
+          />
+        </Parallax>
       </div>
       <div
         className="absolute inset-0 -z-10 bg-[radial-gradient(90%_120%_at_50%_50%,rgba(13,11,9,0.72)_0%,rgba(13,11,9,0.9)_100%)]"

@@ -64,7 +64,7 @@ export default function HouseSelection() {
                       <Star className="h-3 w-3" aria-hidden="true" />
                       {tm("tags.signature")}
                     </span>
-                    <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold text-gold shadow-lg backdrop-blur-sm">
+                    <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold tabular-nums text-gold shadow-lg backdrop-blur-sm">
                       {item.price} {tm("currency")}
                     </span>
                   </div>

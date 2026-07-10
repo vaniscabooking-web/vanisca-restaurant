@@ -142,7 +142,7 @@ export default function MenuList() {
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/85 via-charcoal-950/10 to-transparent" />
                       {/* Gold accent line revealed on hover */}
                       <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gold-gradient transition-transform duration-500 group-hover:scale-x-100" />
-                      <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold text-gold shadow-lg backdrop-blur-sm">
+                      <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold tabular-nums text-gold shadow-lg backdrop-blur-sm">
                         {item.price} {t("currency")}
                       </span>
                     </div>

@@ -61,14 +61,20 @@ export default function Navbar() {
               <li key={item.key}>
                 <Link
                   href={item.href}
-                  className={`relative text-xs font-medium uppercase tracking-[0.18em] transition-colors hover:text-gold ${
+                  className={`group/link relative text-xs font-medium uppercase tracking-[0.18em] transition-colors hover:text-gold ${
                     isActive(item.href) ? "text-gold" : "text-cream/80"
                   }`}
                 >
                   {t(item.key)}
-                  {isActive(item.href) && (
-                    <span className="absolute -bottom-1.5 start-0 h-px w-full bg-gold-gradient" />
-                  )}
+                  {/* Gold underline: grows in on hover, stays for the active route */}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -bottom-1.5 start-0 h-px w-full origin-left bg-gold-gradient transition-transform duration-500 ease-out rtl:origin-right ${
+                      isActive(item.href)
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover/link:scale-x-100"
+                    }`}
+                  />
                 </Link>
               </li>
             ))}
