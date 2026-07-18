@@ -157,7 +157,9 @@ export default function ReservationForm() {
       className="card-surface p-6 sm:p-8"
     >
       {/* Honeypot (visually hidden, not announced) */}
-      <div className="absolute -left-[9999px]" aria-hidden="true">
+      {/* -start- (logical) keeps the honeypot offscreen in RTL too — a physical
+          -left offset becomes a scrollable void on Arabic pages. */}
+      <div className="absolute -start-[9999px]" aria-hidden="true">
         <label>
           Company
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />
