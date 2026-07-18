@@ -143,7 +143,7 @@ export default function Navbar() {
           className="group flex w-fit flex-col leading-none"
           aria-label={`Vanisca — ${t("home")}`}
         >
-          <span className="heading-display text-[1.45rem] font-semibold tracking-[0.14em] text-cream transition-colors duration-500 group-hover:text-gold-light">
+          <span className="heading-display latin-brand text-[1.45rem] font-semibold tracking-[0.14em] text-cream transition-colors duration-500 group-hover:text-gold-light">
             VANISCA
           </span>
           <span className="mt-1 block text-[0.52rem] uppercase tracking-[0.5em] text-gold/70 transition-[letter-spacing,color] duration-500 group-hover:tracking-[0.62em] group-hover:text-gold">

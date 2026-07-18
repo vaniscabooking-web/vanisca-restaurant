@@ -61,7 +61,7 @@ export default function LoadingVeil() {
                       initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.7, delay: 0.1 + i * 0.055, ease: EASE }}
-                      className="heading-display text-4xl font-semibold tracking-[0.18em] text-cream sm:text-5xl"
+                      className="heading-display latin-brand text-4xl font-semibold tracking-[0.18em] text-cream sm:text-5xl"
                     >
                       {l}
                     </motion.span>

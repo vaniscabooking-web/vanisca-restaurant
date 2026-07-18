@@ -29,7 +29,7 @@ export default function Footer() {
       <div className="container-px grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <span className="heading-display text-3xl font-semibold tracking-wide text-cream">
+          <span className="heading-display latin-brand text-3xl font-semibold tracking-wide text-cream">
             Vanisca
           </span>
           <span className="mt-1 block text-[0.55rem] uppercase tracking-[0.5em] text-gold/80">

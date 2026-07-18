@@ -30,6 +30,18 @@
     font-family: var(--font-arabic), system-ui, sans-serif;
   }
 
+  /* Arabic display headings: Amiri (Naskh serif) instead of Cormorant, and no
+     negative tracking — letterspacing breaks connected Arabic script. */
+  /* Arabic display headings get Amiri (Naskh serif) with no negative tracking
+     (letterspacing breaks connected Arabic script). Latin-only brand marks
+     (.latin-brand: wordmark, veil letters, monogram) keep Cormorant + their
+     tracking so the brand identity is identical across locales. */
+  [lang="ar"] .heading-display:not(.latin-brand) {
+    font-family: var(--font-arabic-display), var(--font-display),
+      var(--font-arabic), serif;
+    letter-spacing: 0;
+  }
+
   ::selection {
     background-color: #c8a45c;
     color: #0d0b09;
