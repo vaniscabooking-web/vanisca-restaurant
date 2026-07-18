@@ -94,15 +94,24 @@ verified contact details and hours). When unsure, omit rather than embellish.
   the actual restaurant and dishes. When that happens, keep the dark, warm,
   candlelit grade and the existing framing/aspect ratios so layout is unaffected.
 
-### If AI-generated media is ever introduced
+### AI-generated media (owner policy, set 2026-07-13)
 
-There is **no AI media pipeline in this project today**, and the authenticity
-rule still governs. Only ever use AI imagery for clearly non-representational,
-atmospheric/decorative purposes — never to depict a specific real dish, room, or
-person as if it were a photograph of Vanisca. Any generated asset must: match
-the charcoal/gold palette and cinematic grade; contain **no baked-in text and no
-logos**; carry no third-party marks; and be reviewed and approved before use.
-Prefer real photography over generated imagery for anything a guest would read as real.
+AI-generated images and films are **sanctioned for the cinematic motion-design
+layer**: hero backgrounds, scroll-driven sequences, visual storytelling, motion
+loops, premium transitions, luxury atmosphere. Within that layer the creative
+direction is **free** — premium, realistic, high-impact culinary and interior
+artistry is welcome (including beautiful plated dishes as artistic subjects);
+do not artificially restrict it to "indistinct" imagery.
+
+The dividing line that still governs: **menu, gallery and restaurant
+photography remain real photographs.** Never place AI imagery where a guest
+would read it as a real menu item, the real room, or real staff — it is motion
+design, not documentation.
+
+Every generated asset must: match the charcoal/gold candlelit grade
+(`copy/brand-kit.md`); contain **no baked-in text, no logos, no faces, no
+third-party marks**; and pass owner review before use. The working pipeline
+(asset plan, prompts, workflow) lives in `copy/` at the repo root.
 
 ---
 
