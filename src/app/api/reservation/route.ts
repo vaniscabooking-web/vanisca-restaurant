@@ -7,7 +7,7 @@ import {
   MAX_TOTAL_ATTACH_BYTES,
 } from "@/lib/validation";
 import { rateLimit, clientIp } from "@/lib/rateLimit";
-import { forwardToN8n } from "@/lib/n8n";
+import { forwardToAutomation } from "@/lib/automation";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -89,9 +89,9 @@ export async function POST(request: Request) {
     },
   };
 
-  // 6) Forward to n8n
-  const result = await forwardToN8n(
-    process.env.N8N_RESERVATION_WEBHOOK_URL,
+  // 6) Forward to the automation platform (Activepieces)
+  const result = await forwardToAutomation(
+    process.env.ACTIVEPIECES_RESERVATION_WEBHOOK_URL,
     clean,
   );
 
