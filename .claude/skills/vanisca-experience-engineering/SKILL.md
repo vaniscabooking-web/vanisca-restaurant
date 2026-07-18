@@ -27,11 +27,14 @@ surfaces, component vocabulary, canonical eases, restraint — is owned by
 `vanisca-luxury-uiux-motion`. When guidance overlaps: build mechanics defer here;
 design values defer there.
 
-> Not applicable to Vanisca: any AI media-generation pipeline (image/video
-> models, ffmpeg keyframe video, scroll-scrubbed background film). Vanisca uses
-> curated real/stock photography and is bound by the authenticity rule — never
-> generate or pass off synthetic food/room imagery as real. Media guidance
-> lives in `vanisca-branding-content-media`.
+> AI media pipeline (owner-sanctioned 2026-07-13): AI-generated images/films
+> are used for the **cinematic motion-design layer** — hero backgrounds,
+> scroll-driven sequences, ambient loops, transitions — planned in `copy/`
+> (brand-kit, asset-plan, prompts) and generated only group-by-group with
+> owner approval. The **menu, gallery and restaurant photography remain real
+> photographs**. Creative/brand rules for media live in
+> `vanisca-branding-content-media`; encode films all-keyframe H.264, ship
+> lazily with poster + reduced-motion/mobile fallbacks, budget intact.
 
 ---
 
@@ -39,7 +42,7 @@ design values defer there.
 
 - You are improving an **existing production project**. Never recreate, replace
   or redesign what already works. Enhance over rewrite.
-- **Protected systems are behavior-frozen** (reservation, contact, APIs, n8n,
+- **Protected systems are behavior-frozen** (reservation, contact, APIs, Activepieces,
   Google Sheets, Gmail, WhatsApp, env vars, routing, i18n, SEO, rate-limiting,
   validation, file-upload). You may restyle their UI; never change their logic
   without explicit approval.

@@ -3,7 +3,7 @@ name: vanisca-fullstack-integrations
 description: >-
   Backend, APIs and integrations for Vanisca Restaurant.
   Use whenever working with Next.js server actions, API routes,
-  Google Sheets, n8n workflows, Gmail, WhatsApp Business,
+  Google Sheets, Activepieces workflows, Gmail, WhatsApp Business,
   reservations, contact forms, environment variables,
   deployment or security.
 ---
@@ -18,7 +18,7 @@ enhance carefully, never break a working integration, never weaken validation.
 
 ## Request pipeline (both forms)
 
-Website form → `POST /api/reservation` (or `/api/contact`) → n8n webhook →
+Website form → `POST /api/reservation` (or `/api/contact`) → Activepieces webhook →
 Google Sheets (+ Drive / Gmail / WhatsApp) → `{ ok: true }` → success/fallback UI.
 
 Both routes: `runtime = "nodejs"`, `dynamic = "force-dynamic"`. Order of
@@ -30,7 +30,7 @@ operations in `route.ts` (do not reorder — each step guards the next):
 4. **Honeypot**: if `company` is non-empty, return `{ ok: true }` (fake success so bots learn nothing).
 5. **Server-side attachment re-validation** (never trust the client).
 6. **Sanitize** every free-text field.
-7. **Forward to n8n** with the shared secret.
+7. **Forward to Activepieces** with the shared secret.
 
 `GET` is rejected 405.
 
@@ -56,11 +56,11 @@ sanitized `clean` object.
 
 ---
 
-## n8n forwarding (`src/lib/n8n.ts`)
+## Automation forwarding (`src/lib/automation.ts`)
 
-`forwardToN8n(webhookUrl, payload)`:
+`forwardToAutomation(webhookUrl, payload)`:
 - Missing URL → `503` (logged).
-- `POST` JSON with header `X-Webhook-Secret: process.env.N8N_WEBHOOK_SECRET`.
+- `POST` JSON with header `X-Webhook-Secret: process.env.ACTIVEPIECES_WEBHOOK_SECRET`.
 - 12s `AbortController` timeout, `cache: "no-store"`.
 - Non-2xx or throw → `502`. The UI shows a graceful fallback on any non-ok.
 
@@ -78,21 +78,27 @@ KV — keep the `rateLimit(key)` interface. `clientIp()` reads
 
 ---
 
-## n8n workflows (host `vironica.app.n8n.cloud`, project `vaniscabooking`)
+## Activepieces workflows (cloud.activepieces.com, project `iSXJXfefZWD2nhpB9nmjl`)
 
-Both **active + E2E-tested**:
+Both flows **live** (published + enabled):
 
-- **Vanisca — Reservation** (`/webhook/vanisca-reservation`): Webhook → Normalize
-  → IF attachments → [Split base64→binary → **Google Drive** upload → collect links]
-  → Build Row → **Google Sheets** append (`Status=Pending`; columns: Submitted At,
-  Name, Phone, WhatsApp, Email, Date, Time, Guests, Menu Items, Occasion, Message,
-  Attachments, Status) → **Gmail** owner email → **WhatsApp** alert → respond `{ok:true}`.
-- **Vanisca — Contact** (`/webhook/vanisca-contact`): Webhook → Normalize →
-  ensure "Contacts" tab → append (`Status=New`) → Gmail → respond.
+- **Vanisca — Reservation** (flow `0oq7M0Sn0FJiS4G8KqFB0`): Catch Webhook →
+  Verify Secret + Build Row (code; secret gate active only when `expectedSecret`
+  set) → **Google Sheets** Add Row (`Status=Pending`; columns: Submitted At,
+  Name, Phone, WhatsApp, Email, Date, Time, Guests, Menu Items, Occasion,
+  Message, Attachments, Status) → Respond `{ok:true}`.
+- **Vanisca — Contact** (flow `55MAKgW2843RvXuTnTnPQ`): Catch Webhook → Verify
+  Secret + Build Row → **Google Sheets** Add Row to "Contacts" (`Status=New`) →
+  Respond `{ok:true}`.
 
-Drive / Gmail / WhatsApp nodes are `onError: continue` (fail-safe) and stay
-disabled until their OAuth/credential is connected. **Owner-gated TODO:** connect
-Google Drive OAuth + folder, Gmail OAuth, WhatsApp Business (Meta) credential.
+Live webhook URL format: `https://cloud.activepieces.com/api/v1/webhooks/<FLOW_ID>`.
+**Gotcha:** the Sheets Add Row `values` object is keyed by **column letter** (`A`,
+`B`, `C`…), not header name — header-name keys crash (`Invalid array length`) or
+silently write nothing. Reservation = A–M in column order; Contact = A–F.
+**Owner-gated TODO:** create the Google Sheets connection
+(`vanisca.booking@gmail.com`) in Activepieces, assign it to both Add Row steps
+(point the Contact flow's `sheetId` at the "Contacts" tab), publish both flows;
+optionally add Gmail / WhatsApp notification steps (fail-safe).
 
 - **Sheets:** spreadsheet "Vanisca Reservations"
   (`1JPUhZp_V4Ac8OT_FveLBHABME9VBw5dv0qfz8vuCB6E`), tabs "Feuille 1" + "Contacts".
@@ -104,16 +110,16 @@ Google Drive OAuth + folder, Gmail OAuth, WhatsApp Business (Meta) credential.
 - Public: `NEXT_PUBLIC_SITE_URL/NAME`, `NEXT_PUBLIC_CONTACT_EMAIL`,
   `NEXT_PUBLIC_PHONE` (`0528202202`), `NEXT_PUBLIC_WHATSAPP` (`212611700033`),
   `NEXT_PUBLIC_INSTAGRAM`, `NEXT_PUBLIC_FACEBOOK`. All have safe fallbacks in `src/lib/site.ts`.
-- Server-only: `N8N_RESERVATION_WEBHOOK_URL`, `N8N_CONTACT_WEBHOOK_URL`,
-  `N8N_WEBHOOK_SECRET`, `RATE_LIMIT_WINDOW_MS`, `RATE_LIMIT_MAX`.
-- Setting the two `N8N_*_WEBHOOK_URL` vars is what connects the live forms to the pipeline.
+- Server-only: `ACTIVEPIECES_RESERVATION_WEBHOOK_URL`, `ACTIVEPIECES_CONTACT_WEBHOOK_URL`,
+  `ACTIVEPIECES_WEBHOOK_SECRET`, `RATE_LIMIT_WINDOW_MS`, `RATE_LIMIT_MAX`.
+- Setting the two `ACTIVEPIECES_*_WEBHOOK_URL` vars is what connects the live forms to the pipeline.
 
 ---
 
 ## Rules
 
 - Never log or expose secrets; keep them server-only. Robots disallows `/api/`.
-- Any new payload field: schema → sanitize → n8n → Sheets column, in that order.
+- Any new payload field: schema → sanitize → Activepieces → Sheets column, in that order.
 - Preserve fail-safe behavior — a downstream node outage must not 500 the form;
   it degrades to the graceful fallback message.
 - Contact numbers: **call `0528202202`**, **WhatsApp `0611700033`**. Public email
