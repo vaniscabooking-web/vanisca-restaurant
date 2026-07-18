@@ -37,11 +37,16 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/40 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
+    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
   const labelClass = "mb-1.5 block text-sm font-medium text-cream/80";
 
   return (
-    <form onSubmit={onSubmit} noValidate className="card-surface p-6 sm:p-8">
+    <form
+      onSubmit={onSubmit}
+      noValidate
+      aria-busy={status === "submitting"}
+      className="card-surface p-6 sm:p-8"
+    >
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label>
           Company

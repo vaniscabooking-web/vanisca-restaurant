@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import {
   CheckCircle2,
@@ -42,7 +42,14 @@ export default function ReservationForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [fieldError, setFieldError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const today = new Date().toISOString().split("T")[0];
+
+  // The form is replaced by the confirmation on success — move focus to it so
+  // keyboard and screen-reader users are told the booking was sent.
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -113,8 +120,14 @@ export default function ReservationForm() {
 
   if (status === "success") {
     return (
-      <div className="card-surface flex flex-col items-center p-10 text-center">
-        <CheckCircle2 className="h-14 w-14 text-emerald-400" />
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
+        className="card-surface flex flex-col items-center p-10 text-center outline-none"
+      >
+        <CheckCircle2 className="h-14 w-14 text-emerald-400" aria-hidden="true" />
         <h3 className="heading-display mt-5 text-2xl font-semibold text-cream">
           {t("success.title")}
         </h3>
@@ -131,12 +144,18 @@ export default function ReservationForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/40 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
+    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
   const labelClass =
     "mb-1.5 flex items-center gap-2 text-sm font-medium text-cream/80";
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} noValidate className="card-surface p-6 sm:p-8">
+    <form
+      ref={formRef}
+      onSubmit={onSubmit}
+      noValidate
+      aria-busy={status === "submitting"}
+      className="card-surface p-6 sm:p-8"
+    >
       {/* Honeypot (visually hidden, not announced) */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label>
@@ -288,7 +307,7 @@ export default function ReservationForm() {
             accept={ALLOWED_FILE_TYPES.join(",")}
             className="block w-full text-sm text-cream/70 file:me-4 file:rounded-full file:border-0 file:bg-gold/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-gold hover:file:bg-gold/25"
           />
-          <p className="mt-1.5 text-xs text-cream/45">{t("form.attachmentHint")}</p>
+          <p className="mt-1.5 text-xs text-cream/60">{t("form.attachmentHint")}</p>
         </div>
       </div>
 

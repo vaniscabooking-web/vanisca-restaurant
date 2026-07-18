@@ -179,7 +179,7 @@ export default function MenuList() {
       </div>
 
       <p className="mt-16 text-center text-sm text-cream/50">{t("downloadNote")}</p>
-      <p className="mt-2 text-center text-[0.7rem] uppercase tracking-wide text-cream/30">
+      <p className="mt-2 text-center text-[0.7rem] uppercase tracking-wide text-cream/50">
         Photographies ·{" "}
         <a
           href="https://www.pexels.com"
