@@ -45,8 +45,6 @@ export const heroImages = [IMG.interior1, IMG.interior2, IMG.kitchen].map((id) =
 
 export const aboutImage = unsplash(IMG.interior2, 1000, 72);
 
-export const ctaImage = unsplash(IMG.interior1, 1920, 65);
-
 export const galleryPool: { id: string; label: string }[] = [
   { id: IMG.interior1, label: "gallery.tiles.interior" },
   { id: IMG.gourmet, label: "gallery.tiles.plating" },
