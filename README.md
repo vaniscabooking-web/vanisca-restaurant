@@ -2,7 +2,7 @@
 
 Premium, production-ready website for **Vanisca Restaurant Agadir** — a trilingual
 (Français / English / العربية) restaurant site with an online reservation system
-wired into n8n → Google Sheets → Google Drive → Gmail, ready to deploy on Vercel.
+wired into Activepieces → Google Sheets → Gmail, ready to deploy on Vercel.
 
 Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**,
 **next-intl** (i18n + RTL), and **Framer Motion**.
@@ -19,7 +19,7 @@ Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**,
 - **Reservation system** with date/time/guests, optional file upload, validation,
   honeypot spam protection, and rate limiting.
 - **Contact form** with the same protections.
-- **n8n automation**: webhook → secret check → Google Sheets + Google Drive + Gmail.
+- **Activepieces automation**: webhook → secret check → Google Sheets + Gmail.
 - **SEO**: per-locale metadata, `hreflang`, sitemap, robots, JSON-LD `Restaurant` schema,
   Open Graph image generated on the fly.
 - **Security headers**, input sanitization, server-side re-validation, secret-protected webhooks.
@@ -57,57 +57,49 @@ Settings → Environment Variables** (production). Never commit real secrets.
 | `NEXT_PUBLIC_PHONE` | ✅ | Phone shown on the site |
 | `NEXT_PUBLIC_WHATSAPP` | ✅ | WhatsApp number (intl format, no `+`) |
 | `NEXT_PUBLIC_INSTAGRAM` | ✅ | Instagram handle |
-| `N8N_RESERVATION_WEBHOOK_URL` | 🔒 | n8n production webhook for reservations |
-| `N8N_CONTACT_WEBHOOK_URL` | 🔒 | n8n production webhook for contact messages |
-| `N8N_WEBHOOK_SECRET` | 🔒 | Shared secret sent as `X-Webhook-Secret`; must match n8n |
+| `ACTIVEPIECES_RESERVATION_WEBHOOK_URL` | 🔒 | Activepieces webhook for reservations |
+| `ACTIVEPIECES_CONTACT_WEBHOOK_URL` | 🔒 | Activepieces webhook for contact messages |
+| `ACTIVEPIECES_WEBHOOK_SECRET` | 🔒 | Shared secret sent as `X-Webhook-Secret`; must match the flows |
 | `RATE_LIMIT_WINDOW_MS` | 🔒 | Rate-limit window (default 60000) |
 | `RATE_LIMIT_MAX` | 🔒 | Max requests per window per IP (default 5) |
 
 > **Account separation rule:** the public website email is
 > `vanisca.restaurant@gmail.com`. The automation account
-> `vanisca.booking@gmail.com` is used **only** inside n8n (Sheets / Drive / Gmail)
+> `vanisca.booking@gmail.com` is used **only** inside Activepieces (Sheets / Gmail)
 > and never appears as a public contact.
 
 ---
 
-## 🤖 n8n automation setup
+## 🤖 Activepieces automation setup
 
-Two workflows have already been created in the connected n8n instance:
+Two flows already exist in the connected Activepieces project:
 
-- **Vanisca — Reservation** (`vanisca-reservation` webhook path)
-- **Vanisca — Contact** (`vanisca-contact` webhook path)
+- **Vanisca — Reservation** (flow `0oq7M0Sn0FJiS4G8KqFB0`)
+- **Vanisca — Contact** (flow `55MAKgW2843RvXuTnTnPQ`)
+
+Each flow: **Catch Webhook → Verify Secret + Build Row (code) → Google Sheets
+Add Row → Respond `{ok:true}`** — appending to the *Vanisca Reservations*
+spreadsheet (`Feuille 1` with `Status=Pending`, `Contacts` with `Status=New`).
 
 To finish wiring them (one-time, requires the `vanisca.booking@gmail.com` Google login):
 
-1. In n8n, create **Google Sheets**, **Google Drive**, and **Gmail** credentials by
-   signing in with `vanisca.booking@gmail.com`. Assign them to the nodes that ask for them.
-2. Create a Google Sheet (e.g. *Vanisca Reservations*) with two tabs:
-   - `Reservations` — header row: `Submitted At, Name, Phone, WhatsApp, Email, Date, Time, Guests, Occasion, Message, Attachment`
-   - `Contacts` — header row: `Submitted At, Name, Email, Subject, Message`
-   Paste the **Spreadsheet ID** into the *Append* nodes.
-3. Create the Drive folder structure (below) and paste the **Reservations Uploads**
-   folder ID into the *Upload Attachment to Drive* node.
-4. In each workflow's **Verify Secret** node, paste the same value you set for
-   `N8N_WEBHOOK_SECRET`.
-5. **Activate** both workflows and copy their **Production** webhook URLs into
-   `N8N_RESERVATION_WEBHOOK_URL` and `N8N_CONTACT_WEBHOOK_URL` in Vercel.
-
-Suggested Google Drive structure:
-
-```
-Vanisca Restaurant/
-├── Reservations Uploads/
-├── Restaurant Images/
-├── Menu Media/
-└── Future Content/
-```
+1. In Activepieces, create a **Google Sheets** connection (and optionally
+   **Gmail**) by signing in with `vanisca.booking@gmail.com`, then assign it to
+   the *Add Row* step in both flows (the Contact flow's `sheetId` must point at
+   the `Contacts` tab).
+2. (Optional) Set the same secret in each flow's **Verify Secret + Build Row**
+   step (`expectedSecret` input) and in `ACTIVEPIECES_WEBHOOK_SECRET` — empty
+   disables the gate.
+3. **Publish** both flows and set the webhook URLs
+   (`https://cloud.activepieces.com/api/v1/webhooks/<FLOW_ID>`) in Vercel as
+   `ACTIVEPIECES_RESERVATION_WEBHOOK_URL` / `ACTIVEPIECES_CONTACT_WEBHOOK_URL`.
 
 **Reservation data flow:**
 
 ```
 Website form → /api/reservation (validate, sanitize, rate-limit, honeypot)
-            → n8n webhook (verify secret)
-            → Normalize → [Drive upload if file] → Google Sheets → Gmail → respond
+            → Activepieces webhook (verify secret)
+            → Build row → Google Sheets append → respond {ok:true}
 ```
 
 ---
@@ -128,14 +120,14 @@ Website form → /api/reservation (validate, sanitize, rate-limit, honeypot)
 src/
 ├── app/
 │   ├── [locale]/                 # localized pages (home, menu, gallery, contact, reservation)
-│   ├── api/                      # reservation & contact API routes (validate → n8n)
+│   ├── api/                      # reservation & contact API routes (validate → Activepieces)
 │   ├── sitemap.ts / robots.ts    # SEO
 │   ├── manifest.ts / icon.svg    # PWA + favicon
 │   └── opengraph-image.tsx       # dynamic OG image
 ├── components/                   # UI (Navbar, Hero, MenuList, forms, Gallery…)
 ├── data/menu.ts                  # single source of truth for the menu (FR/EN/AR)
 ├── i18n/                         # next-intl routing + request config
-├── lib/                          # site config, validation, rate limit, n8n forwarding
+├── lib/                          # site config, validation, rate limit, automation forwarding
 └── middleware.ts                 # locale routing
 messages/                         # fr.json / en.json / ar.json (UI strings)
 ```

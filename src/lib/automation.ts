@@ -1,13 +1,17 @@
 /**
- * Forward a validated payload to an n8n webhook.
- * The shared secret lets the n8n workflow verify the request origin.
+ * Forward a validated payload to the automation platform (Activepieces).
+ * The shared secret lets the workflow verify the request origin.
+ *
+ * Failure contract: missing URL → 503, 12s timeout, non-OK → 502 — the API
+ * routes translate any failure into the form's graceful fallback, so a
+ * workflow outage never 500s the site.
  */
-export async function forwardToN8n(
+export async function forwardToAutomation(
   webhookUrl: string | undefined,
   payload: unknown,
 ): Promise<{ ok: boolean; status: number }> {
   if (!webhookUrl) {
-    console.error("[n8n] Webhook URL is not configured.");
+    console.error("[automation] Webhook URL is not configured.");
     return { ok: false, status: 503 };
   }
 
@@ -19,7 +23,7 @@ export async function forwardToN8n(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Webhook-Secret": process.env.N8N_WEBHOOK_SECRET ?? "",
+        "X-Webhook-Secret": process.env.ACTIVEPIECES_WEBHOOK_SECRET ?? "",
       },
       body: JSON.stringify(payload),
       signal: controller.signal,
@@ -29,12 +33,12 @@ export async function forwardToN8n(
     clearTimeout(timeout);
 
     if (!res.ok) {
-      console.error(`[n8n] Webhook responded ${res.status}`);
+      console.error(`[automation] Webhook responded ${res.status}`);
       return { ok: false, status: 502 };
     }
     return { ok: true, status: 200 };
   } catch (err) {
-    console.error("[n8n] Forwarding failed:", err);
+    console.error("[automation] Forwarding failed:", err);
     return { ok: false, status: 502 };
   }
 }

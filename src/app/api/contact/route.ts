@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { contactSchema, sanitize } from "@/lib/validation";
 import { rateLimit, clientIp } from "@/lib/rateLimit";
-import { forwardToN8n } from "@/lib/n8n";
+import { forwardToAutomation } from "@/lib/automation";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -50,7 +50,10 @@ export async function POST(request: Request) {
     },
   };
 
-  const result = await forwardToN8n(process.env.N8N_CONTACT_WEBHOOK_URL, clean);
+  const result = await forwardToAutomation(
+    process.env.ACTIVEPIECES_CONTACT_WEBHOOK_URL,
+    clean,
+  );
   if (!result.ok) {
     return NextResponse.json(
       { ok: false, error: "forwarding_failed" },
