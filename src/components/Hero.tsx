@@ -51,18 +51,38 @@ export default function Hero() {
       if (cancelled || !root.current) return;
       gsap.registerPlugin(ScrollTrigger);
 
+      // Wait for the opening veil to lift so the headline rises through its
+      // fade (choreographed handoff). Resolves immediately when the veil has
+      // already gone; the timeout is a safety net, never the normal path.
+      await new Promise<void>((resolve) => {
+        if (document.documentElement.hasAttribute("data-veil-done")) return resolve();
+        const done = () => {
+          window.clearTimeout(tmr);
+          resolve();
+        };
+        const tmr = window.setTimeout(done, 3000);
+        window.addEventListener("vanisca:veil-lift", done, { once: true });
+      });
+      if (cancelled || !root.current) return;
+
       const q = gsap.utils.selector(el);
+      const rtl = getComputedStyle(el).direction === "rtl";
       const ctx = gsap.context(() => {
         // Initial states in JS so no-JS / reduced-motion paint the finished hero.
         // The media (LCP image) is never hidden — it shows immediately; only the
         // copy animates in, so a stalled timeline can never blank the hero.
         gsap.set(q("[data-media]"), { scale: 1.04 }); // slight overscan for the scroll drift
         gsap.set(q("[data-headline]"), { yPercent: 118 });
+        gsap.set(q("[data-rule]"), {
+          scaleX: 0,
+          transformOrigin: rtl ? "100% 50%" : "0% 50%",
+        });
         gsap.set(q("[data-soft]"), { autoAlpha: 0, y: 24 });
 
-        const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.1 });
-        tl.to(q("[data-headline]"), { yPercent: 0, duration: 1.25, stagger: 0.14 }, 0.2)
-          .to(q("[data-soft]"), { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.8);
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        tl.to(q("[data-headline]"), { yPercent: 0, duration: 1.25, stagger: 0.14 }, 0.15)
+          .to(q("[data-rule]"), { scaleX: 1, duration: 1.0, ease: "power3.inOut" }, 0.7)
+          .to(q("[data-soft]"), { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.85);
 
         // Slow Ken-Burns push-in on scroll (mimics the future film) + copy drift.
         gsap.to(q("[data-media]"), {
@@ -95,8 +115,9 @@ export default function Hero() {
         <HeroMedia image={HERO_IMAGE} video={HERO_VIDEO} />
       </div>
 
-      {/* ——— Layer 1 · legibility scrims + soft vignette ——— */}
+      {/* ——— Layer 1 · candle-glow ambience + legibility scrims ——— */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="hero-glow absolute inset-0 mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/35 to-charcoal-950/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/75 via-charcoal-950/10 to-transparent rtl:bg-gradient-to-l" />
         <div className="absolute inset-0 shadow-[inset_0_0_180px_50px_rgba(13,11,9,0.6)]" />
@@ -132,6 +153,7 @@ export default function Hero() {
         </div>
 
         <div className="container-px pb-16 sm:pb-14">
+          <span data-rule aria-hidden="true" className="rule-gold mb-6 block w-24" />
           <p
             data-soft
             className="max-w-md text-pretty text-sm font-light leading-relaxed text-cream/80 sm:text-base"
@@ -151,10 +173,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Elegant scroll cue */}
-      <div data-soft aria-hidden="true" className="absolute bottom-5 end-6 sm:end-10">
-        <span className="flex h-9 w-[22px] items-start justify-center rounded-full border border-gold/40 p-1.5">
-          <span className="h-2 w-0.5 rounded-full bg-gold/80 motion-safe:animate-bounce" />
+      {/* Scroll cue — dot descending a hairline track (calm, never bouncy) */}
+      <div data-soft aria-hidden="true" className="absolute bottom-6 end-6 sm:end-10">
+        <span className="relative block h-12 w-px bg-gold/25">
+          <span className="cue-dot absolute -start-[1.5px] top-0 h-1 w-1 rounded-full bg-gold/90" />
         </span>
       </div>
     </section>

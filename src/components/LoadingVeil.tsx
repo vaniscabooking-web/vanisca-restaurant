@@ -18,6 +18,13 @@ const KEY = "vanisca-veil";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const LETTERS = "VANISCA".split("");
 
+/** Signal the hero that the veil is lifting so its entrance rises through the
+ *  fade — a choreographed handoff instead of two independent timelines. */
+function announceLift() {
+  document.documentElement.setAttribute("data-veil-done", "");
+  window.dispatchEvent(new Event("vanisca:veil-lift"));
+}
+
 export default function LoadingVeil() {
   const [phase, setPhase] = useState<"boot" | "play" | "done">("boot");
   const reduce = useReducedMotion();
@@ -32,10 +39,14 @@ export default function LoadingVeil() {
     }
     if (seen || reduce) {
       setPhase("done");
+      announceLift();
       return;
     }
     setPhase("play");
-    const tmr = window.setTimeout(() => setPhase("done"), 1900);
+    const tmr = window.setTimeout(() => {
+      setPhase("done");
+      announceLift();
+    }, 1900);
     return () => window.clearTimeout(tmr);
   }, [reduce]);
 
