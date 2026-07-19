@@ -13,6 +13,7 @@ import About from "@/components/About";
 import Highlights from "@/components/Highlights";
 import HouseSelection from "@/components/HouseSelection";
 import Gallery from "@/components/Gallery";
+import ChapterSeam from "@/components/ChapterSeam";
 import CtaBanner from "@/components/CtaBanner";
 import FindUs from "@/components/FindUs";
 import SectionHeading from "@/components/SectionHeading";
@@ -77,6 +78,9 @@ export default async function HomePage({
       <Hero />
       <About />
       <Highlights />
+      {/* Chapter seam — the kitchen's embers carry chapter 02 (signatures)
+          into chapter 03 (the house selection): fire, then the plate. */}
+      <ChapterSeam image="/media/textures/vanisca-texture-ember.jpg" />
       <HouseSelection />
 
       {/* Gallery preview */}

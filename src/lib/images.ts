@@ -43,7 +43,9 @@ export const heroImages = [IMG.interior1, IMG.interior2, IMG.kitchen].map((id) =
   unsplash(id, 1920, 70),
 );
 
-export const aboutImage = unsplash(IMG.interior2, 1000, 72);
+// The approved Vanisca interior ambience (media phase) — replaces the stock
+// portrait. Local, optimized 4:5 crop of the master still.
+export const aboutImage = "/media/about/vanisca-interior-room.jpg";
 
 export const galleryPool: { id: string; label: string }[] = [
   { id: IMG.interior1, label: "gallery.tiles.interior" },
