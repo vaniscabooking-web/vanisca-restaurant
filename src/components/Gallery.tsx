@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Reveal from "./Reveal";
@@ -50,7 +50,7 @@ function GalleryTile({ tile, onOpen }: { tile: Tile; onOpen: () => void }) {
         alt={tile.label}
         fill
         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="h-full w-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-[1.06]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <span className="absolute bottom-4 start-4 translate-y-2 text-sm font-medium tracking-wide text-cream opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -65,6 +65,8 @@ export default function Gallery({ limit }: { limit?: number }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const reduce = useReducedMotion();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const step = useCallback(
     (dir: 1 | -1) =>
@@ -74,19 +76,52 @@ export default function Gallery({ limit }: { limit?: number }) {
     [shown.length],
   );
 
-  // The cinematic lightbox is also a keyboard citizen: Esc closes, arrows browse.
+  // The cinematic lightbox is a full keyboard citizen: Esc closes, arrows
+  // browse, and Tab is trapped inside the dialog (aria-modal contract).
   const open = activeIdx !== null;
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveIdx(null);
-      else if (e.key === "ArrowRight") step(1);
-      else if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "Escape") {
+        setActiveIdx(null);
+      } else if (e.key === "ArrowRight") {
+        step(1);
+      } else if (e.key === "ArrowLeft") {
+        step(-1);
+      } else if (e.key === "Tab") {
+        const focusable = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+        if (!focusable || focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
     closeRef.current?.focus({ preventScroll: true });
     return () => window.removeEventListener("keydown", onKey);
   }, [open, step]);
+
+  // Touch swipe — the only way to browse on mobile, where the side arrows are
+  // hidden. A horizontal drag past the threshold steps; vertical scroll is
+  // untouched.
+  const onTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  };
+  const onTouchEnd = (e: TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = (e.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(dx) < 45) return;
+    // Natural direction, mirrored for RTL: swipe toward the incoming image.
+    const rtl = document.documentElement.dir === "rtl";
+    step(((dx < 0 ? 1 : -1) * (rtl ? -1 : 1)) as 1 | -1);
+  };
 
   const active = activeIdx === null ? null : shown[activeIdx];
 
@@ -107,6 +142,7 @@ export default function Gallery({ limit }: { limit?: number }) {
       <AnimatePresence>
         {active && (
           <motion.div
+            ref={dialogRef}
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
@@ -161,6 +197,8 @@ export default function Gallery({ limit }: { limit?: number }) {
               transition={{ duration: 0.5, ease: EASE }}
               className="relative aspect-[3/2] w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 shadow-luxe"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
             >
               <LuxeImage src={active.full} alt={active.label} fill className="object-cover" />
               <div
