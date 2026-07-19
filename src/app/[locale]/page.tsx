@@ -80,7 +80,7 @@ export default async function HomePage({
       <HouseSelection />
 
       {/* Gallery preview */}
-      <section className="py-24 sm:py-28">
+      <section className="py-24 sm:py-32">
         <div className="container-px">
           <SectionHeading eyebrow={t("title")} title={t("subtitle")} index="04" />
           <div className="mt-14">

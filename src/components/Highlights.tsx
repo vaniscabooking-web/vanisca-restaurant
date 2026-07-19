@@ -81,7 +81,7 @@ export default function Highlights() {
   }, []);
 
   return (
-    <section ref={root} className="relative py-28 sm:py-32">
+    <section ref={root} className="relative py-28 sm:py-36">
       <div className="container-px">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} index="02" />
 

@@ -17,7 +17,7 @@ export default function CtaBanner() {
   const t = useTranslations("cta");
 
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36">
+    <section className="relative overflow-hidden py-32 sm:py-44">
       {/* Cinematic background — approved Steam Loop (video-ready) with a slow
           parallax drift for depth. */}
       <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
@@ -39,7 +39,7 @@ export default function CtaBanner() {
       <div className="container-px text-center">
         <Reveal>
           <span className="rule-gold mx-auto mb-7 block" />
-          <h2 className="heading-display text-shadow-luxe mx-auto max-w-3xl text-4xl font-medium text-cream sm:text-5xl md:text-6xl">
+          <h2 className="heading-display text-shadow-luxe mx-auto max-w-3xl text-balance text-[clamp(2.5rem,5.5vw,3.9rem)] font-medium leading-[1.06] text-cream">
             {t("title")}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base font-light text-cream/80 sm:text-lg">
