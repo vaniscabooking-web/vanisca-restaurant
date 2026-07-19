@@ -9,6 +9,7 @@ import {
   Facebook,
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import OpeningHours from "./OpeningHours";
 import {
   navItems,
   siteConfig,
@@ -143,10 +144,10 @@ export default function Footer() {
           <h3 className="text-sm font-semibold uppercase tracking-wider text-gold">
             {t("footer.hoursTitle")}
           </h3>
-          <p className="mt-4 flex items-start gap-3 text-sm text-cream/70">
-            <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold/80" />
-            <span>{t("footer.hours")}</span>
-          </p>
+          <div className="mt-4 flex items-start gap-3">
+            <Clock className="mt-1.5 h-4 w-4 shrink-0 text-gold/80" aria-hidden="true" />
+            <OpeningHours />
+          </div>
           <Link href="/reservation" className="btn-outline mt-5 !px-5 !py-2.5">
             {t("nav.reserve")}
           </Link>

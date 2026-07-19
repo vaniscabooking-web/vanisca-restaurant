@@ -49,3 +49,45 @@ export function bookingSlots(weekday: number): string[] {
 export function isValidSlot(weekday: number, time: string): boolean {
   return bookingSlots(weekday).includes(time);
 }
+
+/* ------------------------------------------------------------------ *
+ * Display helpers — presentation only.
+ * Derived from SERVICE above so the published schedule can never drift
+ * from booking-slot validation or the JSON-LD opening hours.
+ * ------------------------------------------------------------------ */
+
+/** Owner-defined reading order: the week starts on Monday. */
+export const WEEK_ORDER = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
+export type DayKey = (typeof WEEK_ORDER)[number];
+
+/** JS getDay() index per day key (0 = Sunday). */
+const DAY_INDEX: Record<DayKey, number> = {
+  sun: 0,
+  mon: 1,
+  tue: 2,
+  wed: 3,
+  thu: 4,
+  fri: 5,
+  sat: 6,
+};
+
+function minutesToHhmm(min: number): string {
+  return `${pad(Math.floor(min / 60))}:${pad(min % 60)}`;
+}
+
+export interface DaySchedule {
+  key: DayKey;
+  opens: string;
+  closes: string;
+}
+
+/** The week's service, Monday → Sunday, ready to render. */
+export const weekSchedule: DaySchedule[] = WEEK_ORDER.map((key) => ({
+  key,
+  opens: `${pad(SERVICE.openHour)}:00`,
+  closes: minutesToHhmm(
+    isWeekendService(DAY_INDEX[key])
+      ? SERVICE.weekendCloseMin
+      : SERVICE.weekdayCloseMin,
+  ),
+}));

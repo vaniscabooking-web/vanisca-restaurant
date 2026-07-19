@@ -9,6 +9,7 @@ import {
   Instagram,
 } from "lucide-react";
 import ReservationForm from "@/components/ReservationForm";
+import OpeningHours from "@/components/OpeningHours";
 import {
   siteConfig,
   telUrl,
@@ -54,12 +55,6 @@ export default async function ReservationPage({
           <ul className="mt-9 space-y-4 text-cream/80">
             <li className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
-                <Clock className="h-5 w-5" />
-              </span>
-              {tc("hours")}
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold">
                 <MapPin className="h-5 w-5" />
               </span>
               {tc("address")}
@@ -89,6 +84,16 @@ export default async function ReservationPage({
               </a>
             </li>
           </ul>
+
+          {/* The week's service — same block as the contact page, so the
+              schedule reads identically everywhere it appears. */}
+          <div className="mt-10">
+            <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold">
+              <Clock className="h-4 w-4" aria-hidden="true" />
+              {tc("hoursLabel")}
+            </h2>
+            <OpeningHours className="mt-4" />
+          </div>
 
           {/* Social */}
           <div className="mt-8 flex items-center gap-3">
