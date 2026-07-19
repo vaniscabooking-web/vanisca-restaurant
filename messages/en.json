@@ -149,7 +149,6 @@
     "whatsappLabel": "WhatsApp",
     "emailLabel": "Email",
     "hoursLabel": "Hours",
-    "hours": "Fri – Sat: 12:00 – 01:30 · Sun – Thu: 12:00 – 02:00",
     "followUs": "Follow us",
     "form": {
       "name": "Name",
@@ -179,7 +178,6 @@
     "navTitle": "Navigation",
     "contactTitle": "Contact",
     "hoursTitle": "Hours",
-    "hours": "Fri – Sat: 12:00 – 01:30 · Sun – Thu: 12:00 – 02:00",
     "rights": "All rights reserved.",
     "madeWith": "Crafted with care in Agadir."
   },
@@ -197,5 +195,16 @@
     "title": "Page not found",
     "body": "The page you're looking for doesn't exist or has been moved.",
     "home": "Back to home"
+  },
+  "hours": {
+    "days": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    }
   }
 }

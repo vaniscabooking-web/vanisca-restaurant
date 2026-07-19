@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Menu, X, CalendarDays, Facebook, Instagram } from "lucide-react";
@@ -26,12 +27,16 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Navbar() {
   const t = useTranslations("nav");
+  const tc = useTranslations("common");
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const reduce = useReducedMotion();
   const lastY = useRef(0);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const veilRef = useRef<HTMLDivElement>(null);
+  const wasOpen = useRef(false);
 
   useEffect(() => {
     let raf = 0;
@@ -68,6 +73,43 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Mobile veil focus management (modal semantics): move focus in on open,
+  // return it to the toggle on close.
+  useEffect(() => {
+    if (open) {
+      veilRef.current
+        ?.querySelector<HTMLElement>(
+          'a[href], button, [tabindex]:not([tabindex="-1"])',
+        )
+        ?.focus();
+    } else if (wasOpen.current) {
+      toggleRef.current?.focus();
+    }
+    wasOpen.current = open;
+  }, [open]);
+
+  // Trap Tab within the open veil (Esc still closes it).
+  const onVeilKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== "Tab") return;
+    const veil = veilRef.current;
+    if (!veil) return;
+    const focusables = Array.from(
+      veil.querySelectorAll<HTMLElement>(
+        'a[href], button, [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -101,7 +143,7 @@ export default function Navbar() {
           className="group flex w-fit flex-col leading-none"
           aria-label={`Vanisca — ${t("home")}`}
         >
-          <span className="heading-display text-[1.45rem] font-semibold tracking-[0.14em] text-cream transition-colors duration-500 group-hover:text-gold-light">
+          <span className="heading-display latin-brand text-[1.45rem] font-semibold tracking-[0.14em] text-cream transition-colors duration-500 group-hover:text-gold-light">
             VANISCA
           </span>
           <span className="mt-1 block text-[0.52rem] uppercase tracking-[0.5em] text-gold/70 transition-[letter-spacing,color] duration-500 group-hover:tracking-[0.62em] group-hover:text-gold">
@@ -148,10 +190,12 @@ export default function Navbar() {
         <div className="col-start-3 flex items-center justify-end gap-2 justify-self-end lg:hidden">
           <LanguageSwitcher compact />
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? tc("closeMenu") : tc("openMenu")}
             aria-expanded={open}
+            aria-controls="mobile-menu"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-cream transition-colors duration-300 hover:border-gold/50 hover:text-gold"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -163,6 +207,12 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={veilRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            onKeyDown={onVeilKeyDown}
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.35, ease: EASE } }}

@@ -32,7 +32,7 @@ export default function SectionHeading({
           </span>
         )}
         {eyebrow && <span className="eyebrow mb-3">{eyebrow}</span>}
-        <h2 className="heading-display text-balance text-4xl font-medium text-cream sm:text-5xl md:text-[3.4rem] md:leading-[1.08]">
+        <h2 className="heading-display text-balance text-[clamp(2.25rem,4.2vw,3.4rem)] font-medium leading-[1.08] text-cream">
           {title}
         </h2>
         {subtitle && (

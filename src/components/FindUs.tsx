@@ -29,9 +29,16 @@ export default function FindUs() {
     <section id="find-us" className="relative overflow-hidden py-28 sm:py-36">
       <div className="container-px">
         <Reveal>
-          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
+            {/* Chapter numeral — closes the site-wide 01–05 editorial thread */}
+            <span
+              aria-hidden="true"
+              className="heading-display pointer-events-none absolute -top-14 start-1/2 -translate-x-1/2 select-none text-[7rem] font-semibold leading-none text-white/[0.045] sm:-top-20 sm:text-[10rem] rtl:translate-x-1/2"
+            >
+              05
+            </span>
             <span className="eyebrow">{t("eyebrow")}</span>
-            <h2 className="heading-display mt-3 text-balance text-4xl font-medium text-cream sm:text-5xl md:text-[3.4rem] md:leading-[1.08]">
+            <h2 className="heading-display mt-3 text-balance text-[clamp(2.25rem,4.2vw,3.4rem)] font-medium leading-[1.08] text-cream">
               {t("title")}
             </h2>
             <p className="mt-4 flex items-center gap-2 text-base text-cream/70 sm:text-lg">

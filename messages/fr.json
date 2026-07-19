@@ -149,7 +149,6 @@
     "whatsappLabel": "WhatsApp",
     "emailLabel": "E-mail",
     "hoursLabel": "Horaires",
-    "hours": "Ven. – Sam. : 12h00 – 01h30 · Dim. – Jeu. : 12h00 – 02h00",
     "followUs": "Suivez-nous",
     "form": {
       "name": "Nom",
@@ -179,7 +178,6 @@
     "navTitle": "Navigation",
     "contactTitle": "Contact",
     "hoursTitle": "Horaires",
-    "hours": "Ven. – Sam. : 12h00 – 01h30 · Dim. – Jeu. : 12h00 – 02h00",
     "rights": "Tous droits réservés.",
     "madeWith": "Conçu avec soin à Agadir."
   },
@@ -197,5 +195,16 @@
     "title": "Page introuvable",
     "body": "La page que vous cherchez n'existe pas ou a été déplacée.",
     "home": "Retour à l'accueil"
+  },
+  "hours": {
+    "days": {
+      "mon": "Lundi",
+      "tue": "Mardi",
+      "wed": "Mercredi",
+      "thu": "Jeudi",
+      "fri": "Vendredi",
+      "sat": "Samedi",
+      "sun": "Dimanche"
+    }
   }
 }

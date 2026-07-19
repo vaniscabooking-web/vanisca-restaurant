@@ -10,6 +10,7 @@ import {
   Facebook,
 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import OpeningHours from "@/components/OpeningHours";
 import {
   siteConfig,
   telUrl,
@@ -53,7 +54,6 @@ export default async function ContactPage({
       value: siteConfig.email,
       href: `mailto:${siteConfig.email}`,
     },
-    { icon: Clock, label: t("hoursLabel"), value: t("hours") },
   ];
 
   return (
@@ -110,7 +110,17 @@ export default async function ContactPage({
             })}
           </ul>
 
-          <div className="mt-8">
+          {/* The week's service gets its own block: a 7-row schedule inside the
+              uniform icon+value list above would break that list's rhythm. */}
+          <div className="mt-10">
+            <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold">
+              <Clock className="h-4 w-4" aria-hidden="true" />
+              {t("hoursLabel")}
+            </h2>
+            <OpeningHours className="mt-4" />
+          </div>
+
+          <div className="mt-10">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-gold">
               {t("followUs")}
             </h2>

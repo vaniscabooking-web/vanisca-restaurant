@@ -7,11 +7,13 @@ import {
   instagramUrl,
   facebookUrl,
 } from "@/lib/site";
+import { SERVICE } from "@/lib/hours";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Highlights from "@/components/Highlights";
 import HouseSelection from "@/components/HouseSelection";
 import Gallery from "@/components/Gallery";
+import ChapterSeam from "@/components/ChapterSeam";
 import CtaBanner from "@/components/CtaBanner";
 import FindUs from "@/components/FindUs";
 import SectionHeading from "@/components/SectionHeading";
@@ -25,6 +27,12 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations("gallery");
   const tNav = await getTranslations("nav");
+
+  // Opening hours mirror the single source of truth in lib/hours.ts, so the
+  // structured data can never drift from the displayed / bookable schedule.
+  const hhmm = (min: number) =>
+    `${String(Math.floor(min / 60)).padStart(2, "0")}:${String(min % 60).padStart(2, "0")}`;
+  const opens = `${String(SERVICE.openHour).padStart(2, "0")}:00`;
 
   // Restaurant structured data for rich search results.
   const jsonLd = {
@@ -41,6 +49,21 @@ export default async function HomePage({
       addressLocality: siteConfig.city,
       addressCountry: "MA",
     },
+    hasMenu: `${siteConfig.url}/${locale}/menu`,
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Friday", "Saturday"],
+        opens,
+        closes: hhmm(SERVICE.weekendCloseMin),
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens,
+        closes: hhmm(SERVICE.weekdayCloseMin),
+      },
+    ],
     sameAs: [facebookUrl, instagramUrl, whatsappUrl()],
     acceptsReservations: "True",
   };
@@ -55,10 +78,13 @@ export default async function HomePage({
       <Hero />
       <About />
       <Highlights />
+      {/* Chapter seam — the kitchen's embers carry chapter 02 (signatures)
+          into chapter 03 (the house selection): fire, then the plate. */}
+      <ChapterSeam image="/media/textures/vanisca-texture-ember.jpg" />
       <HouseSelection />
 
       {/* Gallery preview */}
-      <section className="py-24 sm:py-28">
+      <section className="py-24 sm:py-32">
         <div className="container-px">
           <SectionHeading eyebrow={t("title")} title={t("subtitle")} index="04" />
           <div className="mt-14">

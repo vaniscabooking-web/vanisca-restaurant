@@ -44,10 +44,19 @@ export default function HouseSelection() {
           index="03"
         />
 
+        {/* Editorial rhythm: on desktop the middle column sits lower, like
+            courses plated in sequence rather than a flat grid. The offset
+            lives on the real <li> — not the Framer-animated Reveal, whose
+            inline transform would otherwise win — which also restores valid
+            ul > li semantics. */}
         <ul className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SELECTION.map((item, i) => (
-            <Reveal as="li" key={item.id} delay={(i % 3) * 0.06}>
-              <TiltCard className="h-full rounded-2xl">
+            <li
+              key={item.id}
+              className={`h-full ${i % 3 === 1 ? "lg:translate-y-10" : ""}`}
+            >
+              <Reveal className="h-full" delay={(i % 3) * 0.06}>
+                <TiltCard className="h-full rounded-2xl">
                 <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-colors duration-500 hover:border-gold/40 hover:bg-white/[0.05]">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <LuxeImage
@@ -69,7 +78,7 @@ export default function HouseSelection() {
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold text-cream transition-colors group-hover:text-gold-light">
+                    <h3 className="heading-display flex flex-wrap items-center gap-2 text-xl font-semibold text-cream transition-colors group-hover:text-gold-light">
                       <span>{item.name[locale]}</span>
                       {item.tags
                         ?.filter((tag) => tag !== "signature")
@@ -94,13 +103,14 @@ export default function HouseSelection() {
                     )}
                   </div>
                 </article>
-              </TiltCard>
-            </Reveal>
+                </TiltCard>
+              </Reveal>
+            </li>
           ))}
         </ul>
 
         <Reveal>
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center lg:mt-20">
             <Link href="/menu" className="btn-primary">
               {t("cta")}
             </Link>

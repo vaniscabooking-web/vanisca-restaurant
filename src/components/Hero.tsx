@@ -4,30 +4,28 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { CalendarDays, UtensilsCrossed } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import LuxeImage from "./LuxeImage";
-import { unsplash } from "@/lib/images";
+import HeroMedia from "./HeroMedia";
 
 /**
- * "Le Rideau" — a cinematic triptych hero. Three full-height photographic
- * panels (seafood · fresh pasta · the room) stand behind hairline gold seams
- * like a gallery campaign wall, and the monumental serif headline runs across
- * all three. On entrance each panel's charcoal curtain lifts in sequence,
- * the seams draw themselves, then the headline rises line by line and the
- * brand word settles in italic gold.
+ * Vanisca Hero — a single cinematic full-bleed frame.
  *
- * Scroll gives each panel its own parallax depth (GSAP scrub); the copy
- * drifts slower, so the wall feels dimensional. Reduced-motion (or no JS)
- * shows the finished composition statically — curtains are pre-lifted in
- * markup only when JS animates them, so nothing depends on scripting.
- * All text is i18n (hero.*), CTAs are the same routed links, and the section
- * is a fixed 100svh stage: zero CLS.
+ * The background is the approved candlelit dining-room still (HeroMedia), which
+ * is deliberately a **video-ready** layer: when the cinematic film is encoded,
+ * set HERO_VIDEO below and the film drops in over the same still (which becomes
+ * its poster) — no other change. A slow Ken-Burns push-in mimics the film's
+ * motion so the swap is seamless.
+ *
+ * Layer hierarchy (kept stable for the future video): media → legibility
+ * scrims + vignette → copy stage. The copy keeps the word-reveal, i18n
+ * (hero.*), routed CTAs, RTL logical props, a fixed 100svh stage (CLS 0) and
+ * reduced-motion / no-JS safety — initial states are set in JS, so without
+ * scripting the finished hero paints statically.
  */
 
-const PANELS = [
-  { id: "1467003909585-2f8a72700288", pos: "object-[50%_60%]" }, // fruits de mer
-  { id: "1481931098730-318b6f776db0", pos: "object-center" }, // assiette sombre du chef
-  { id: "1414235077428-338989a2e8c0", pos: "object-center" }, // la salle
-] as const;
+const HERO_IMAGE = "/media/hero/vanisca-hero-atmosphere.jpg";
+// When the approved cinematic film is encoded, set this — it drops in over the
+// still with no other change:  const HERO_VIDEO = "/media/hero/vanisca-hero-film.mp4";
+const HERO_VIDEO: string | undefined = undefined;
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -53,38 +51,49 @@ export default function Hero() {
       if (cancelled || !root.current) return;
       gsap.registerPlugin(ScrollTrigger);
 
+      // Wait for the opening veil to lift so the headline rises through its
+      // fade (choreographed handoff). Resolves immediately when the veil has
+      // already gone; the timeout is a safety net, never the normal path.
+      await new Promise<void>((resolve) => {
+        if (document.documentElement.hasAttribute("data-veil-done")) return resolve();
+        const done = () => {
+          window.clearTimeout(tmr);
+          resolve();
+        };
+        const tmr = window.setTimeout(done, 3000);
+        window.addEventListener("vanisca:veil-lift", done, { once: true });
+      });
+      if (cancelled || !root.current) return;
+
       const q = gsap.utils.selector(el);
+      const rtl = getComputedStyle(el).direction === "rtl";
       const ctx = gsap.context(() => {
-        // Initial states live in JS so no-JS users see the finished wall.
-        gsap.set(q("[data-curtain]"), { scaleY: 1 });
-        gsap.set(q("[data-panel-img]"), { scale: 1.18 });
-        gsap.set(q("[data-seam]"), { scaleY: 0 });
+        // Initial states in JS so no-JS / reduced-motion paint the finished hero.
+        // The media (LCP image) is never hidden — it shows immediately; only the
+        // copy animates in, so a stalled timeline can never blank the hero.
+        gsap.set(q("[data-media]"), { scale: 1.04 }); // slight overscan for the scroll drift
         gsap.set(q("[data-headline]"), { yPercent: 118 });
+        gsap.set(q("[data-rule]"), {
+          scaleX: 0,
+          transformOrigin: rtl ? "100% 50%" : "0% 50%",
+        });
         gsap.set(q("[data-soft]"), { autoAlpha: 0, y: 24 });
 
-        const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.1 });
-        tl.to(q("[data-curtain]"), {
-          scaleY: 0,
-          duration: 1.3,
-          stagger: 0.16,
-          ease: "power3.inOut",
-        })
-          .to(q("[data-panel-img]"), { scale: 1.06, duration: 2.4, ease: "power2.out" }, 0.2)
-          .to(q("[data-seam]"), { scaleY: 1, duration: 1.1, stagger: 0.1 }, 0.8)
-          .to(q("[data-headline]"), { yPercent: 0, duration: 1.25, stagger: 0.14 }, 0.9)
-          .to(q("[data-soft]"), { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12 }, 1.5);
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        tl.to(q("[data-headline]"), { yPercent: 0, duration: 1.25, stagger: 0.14 }, 0.15)
+          .to(q("[data-rule]"), { scaleX: 1, duration: 1.0, ease: "power3.inOut" }, 0.7)
+          .to(q("[data-soft]"), { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.85);
 
-        // Depth: each panel scrolls at its own pace, the copy slower still.
-        q("[data-panel-img]").forEach((img, i) => {
-          gsap.to(img, {
-            yPercent: [7, 12, 9][i % 3],
-            ease: "none",
-            scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: 0.6 },
-          });
+        // Slow Ken-Burns push-in on scroll (mimics the future film) + copy drift.
+        gsap.to(q("[data-media]"), {
+          scale: 1.12,
+          yPercent: 4,
+          ease: "none",
+          scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: 0.6 },
         });
         gsap.to(q("[data-stage]"), {
-          yPercent: -5,
-          autoAlpha: 0.4,
+          yPercent: -6,
+          autoAlpha: 0.5,
           ease: "none",
           scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: 0.6 },
         });
@@ -101,45 +110,20 @@ export default function Hero() {
 
   return (
     <section ref={root} className="relative h-[100svh] w-full overflow-hidden bg-charcoal-950">
-      {/* ——— The photographic wall ——— */}
-      <div className="absolute inset-0 grid grid-cols-3" aria-hidden="true">
-        {PANELS.map((p, i) => (
-          <div key={p.id} className="relative overflow-hidden">
-            <div data-panel-img className="absolute -inset-y-8 inset-x-0 will-change-transform">
-              <LuxeImage
-                src={unsplash(p.id, 900, 72)}
-                alt=""
-                fill
-                priority={i === 0}
-                sizes="34vw"
-                className={`h-full w-full object-cover ${p.pos}`}
-              />
-            </div>
-            {/* Charcoal grade so the wall reads as one candlelit room */}
-            <div className="absolute inset-0 bg-charcoal-950/55" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/30 to-charcoal-950/75" />
-            {/* Entrance curtain (JS lifts it; static/no-JS never sees it) */}
-            <div
-              data-curtain
-              className="absolute inset-0 origin-top scale-y-0 bg-charcoal-950 will-change-transform"
-            />
-          </div>
-        ))}
+      {/* ——— Layer 0 · cinematic media (image now, video-ready) ——— */}
+      <div data-media className="absolute inset-0 will-change-transform">
+        <HeroMedia image={HERO_IMAGE} video={HERO_VIDEO} />
       </div>
 
-      {/* Gold seams between the panels */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-10 left-1/3 w-px origin-bottom bg-gradient-to-b from-transparent via-gold/45 to-transparent"
-        data-seam
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-10 left-2/3 w-px origin-top bg-gradient-to-b from-transparent via-gold/45 to-transparent"
-        data-seam
-      />
+      {/* ——— Layer 1 · candle-glow ambience + legibility scrims ——— */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="hero-glow absolute inset-0 mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/35 to-charcoal-950/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/75 via-charcoal-950/10 to-transparent rtl:bg-gradient-to-l" />
+        <div className="absolute inset-0 shadow-[inset_0_0_180px_50px_rgba(13,11,9,0.6)]" />
+      </div>
 
-      {/* ——— The copy stage, running across the wall ——— */}
+      {/* ——— Layer 2 · copy stage ——— */}
       <div data-stage className="relative flex h-full flex-col justify-between">
         <div className="container-px pt-28 sm:pt-32">
           <span data-soft className="eyebrow">
@@ -150,7 +134,10 @@ export default function Hero() {
         <div className="container-px">
           <h1 className="heading-display text-shadow-luxe text-balance font-medium leading-[0.94] text-cream">
             <span className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
-              <span data-headline className="block text-[clamp(2.6rem,7.5vw,6.5rem)] will-change-transform">
+              <span
+                data-headline
+                className="block text-[clamp(2.6rem,7.5vw,6.5rem)] will-change-transform"
+              >
                 {lineOne}
               </span>
             </span>
@@ -166,6 +153,7 @@ export default function Hero() {
         </div>
 
         <div className="container-px pb-16 sm:pb-14">
+          <span data-rule aria-hidden="true" className="rule-gold mb-6 block w-24" />
           <p
             data-soft
             className="max-w-md text-pretty text-sm font-light leading-relaxed text-cream/80 sm:text-base"
@@ -185,10 +173,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Elegant scroll cue */}
-      <div data-soft aria-hidden="true" className="absolute bottom-5 end-6 sm:end-10">
-        <span className="flex h-9 w-[22px] items-start justify-center rounded-full border border-gold/40 p-1.5">
-          <span className="h-2 w-0.5 rounded-full bg-gold/80 motion-safe:animate-bounce" />
+      {/* Scroll cue — dot descending a hairline track (calm, never bouncy) */}
+      <div data-soft aria-hidden="true" className="absolute bottom-6 end-6 sm:end-10">
+        <span className="relative block h-12 w-px bg-gold/25">
+          <span className="cue-dot absolute -start-[1.5px] top-0 h-1 w-1 rounded-full bg-gold/90" />
         </span>
       </div>
     </section>

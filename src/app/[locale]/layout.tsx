@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, getMessages, setRequestLocale } from "next-intl/server";
-import { Cormorant_Garamond, Inter, Cairo } from "next/font/google";
+import { Cormorant_Garamond, Inter, Cairo, Amiri } from "next/font/google";
 import { routing, localeMeta, type Locale } from "@/i18n/routing";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
@@ -31,6 +31,17 @@ const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-arabic",
   display: "swap",
+});
+// Arabic display serif for headings — the Naskh counterpart to Cormorant.
+// Only referenced by the [lang="ar"] heading rule, so Latin pages never load it.
+const amiri = Amiri({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  variable: "--font-arabic-display",
+  display: "swap",
+  // No synthetic fallback: Latin glyphs (e.g. the VANISCA wordmark) must fall
+  // through to Cormorant, not a metric-adjusted Times stand-in.
+  adjustFontFallback: false,
 });
 
 export const viewport: Viewport = {
@@ -105,7 +116,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${cormorant.variable} ${inter.variable} ${cairo.variable}`}
+      className={`${cormorant.variable} ${inter.variable} ${cairo.variable} ${amiri.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">

@@ -31,7 +31,7 @@ export default function LuxeImage({
         className={`bg-gradient-to-br ${fallbackTone} ${className ?? ""}`}
       >
         <span className="flex h-full w-full items-center justify-center">
-          <span className="heading-display text-4xl font-semibold text-gold/25">
+          <span className="heading-display latin-brand text-4xl font-semibold text-gold/25">
             V
           </span>
         </span>
