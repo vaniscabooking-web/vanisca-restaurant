@@ -127,11 +127,12 @@ export default function ReservationForm() {
         aria-live="polite"
         className="card-surface flex flex-col items-center p-10 text-center outline-none"
       >
-        <CheckCircle2 className="h-14 w-14 text-emerald-400" aria-hidden="true" />
+        <CheckCircle2 className="h-14 w-14 text-gold" aria-hidden="true" />
         <h3 className="heading-display mt-5 text-2xl font-semibold text-cream">
           {t("success.title")}
         </h3>
-        <p className="mt-3 max-w-md text-cream/70">{t("success.body")}</p>
+        <span className="rule-gold mt-4" aria-hidden="true" />
+        <p className="mt-4 max-w-md text-cream/70">{t("success.body")}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
@@ -144,9 +145,9 @@ export default function ReservationForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
+    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-[border-color,background-color,box-shadow] duration-300 focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-gold/25";
   const labelClass =
-    "mb-1.5 flex items-center gap-2 text-sm font-medium text-cream/80";
+    "mb-1.5 flex items-center gap-2 text-sm font-medium tracking-wide text-cream/80";
 
   return (
     <form
@@ -154,7 +155,7 @@ export default function ReservationForm() {
       onSubmit={onSubmit}
       noValidate
       aria-busy={status === "submitting"}
-      className="card-surface p-6 sm:p-8"
+      className="card-surface p-6 sm:p-10"
     >
       {/* Honeypot (visually hidden, not announced) */}
       {/* -start- (logical) keeps the honeypot offscreen in RTL too — a physical
@@ -307,7 +308,7 @@ export default function ReservationForm() {
             type="file"
             multiple
             accept={ALLOWED_FILE_TYPES.join(",")}
-            className="block w-full text-sm text-cream/70 file:me-4 file:rounded-full file:border-0 file:bg-gold/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-gold hover:file:bg-gold/25"
+            className="block w-full cursor-pointer text-sm text-cream/70 file:me-4 file:cursor-pointer file:rounded-full file:border-0 file:bg-gold/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-gold file:transition-colors hover:file:bg-gold/25"
           />
           <p className="mt-1.5 text-xs text-cream/60">{t("form.attachmentHint")}</p>
         </div>
