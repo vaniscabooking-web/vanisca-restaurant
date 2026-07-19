@@ -9,11 +9,13 @@ import Reveal from "./Reveal";
 import LuxeImage from "./LuxeImage";
 import TiltCard from "./TiltCard";
 
+// Tag hues stay inside the brand family (gold / olive / copper + the one
+// restrained marine) — never generic UI blue/green/red.
 const TAG_META: Record<MenuTag, { icon: typeof Star; className: string }> = {
   signature: { icon: Star, className: "text-gold" },
-  seafood: { icon: Fish, className: "text-sky-300/80" },
-  vegetarian: { icon: Leaf, className: "text-emerald-300/80" },
-  spicy: { icon: Flame, className: "text-red-400/80" },
+  seafood: { icon: Fish, className: "text-[#8aa9b4]/90" },
+  vegetarian: { icon: Leaf, className: "text-olive-light" },
+  spicy: { icon: Flame, className: "text-copper-light" },
 };
 
 export default function MenuList() {
@@ -81,7 +83,7 @@ export default function MenuList() {
                 data-cat={cat.id}
                 aria-current={active === cat.id ? "true" : undefined}
                 onClick={() => scrollTo(cat.id)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wide transition-colors ${
+                className={`flex min-h-11 items-center whitespace-nowrap rounded-full px-4 py-2.5 text-xs font-medium uppercase tracking-wide transition-colors ${
                   active === cat.id
                     ? "bg-gold-gradient text-charcoal-950"
                     : "text-cream/70 hover:bg-white/5 hover:text-cream"
@@ -117,7 +119,7 @@ export default function MenuList() {
                 <div className="absolute inset-y-0 start-7 flex flex-col justify-center sm:start-10">
                   <h2
                     id={`h-${cat.id}`}
-                    className="heading-display text-3xl font-medium text-cream sm:text-5xl"
+                    className="heading-display text-[clamp(1.875rem,3.8vw,3rem)] font-medium leading-[1.1] text-cream"
                   >
                     {t(`categories.${cat.id}`)}
                   </h2>
@@ -128,7 +130,10 @@ export default function MenuList() {
 
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cat.items.map((item, i) => (
-                <Reveal as="li" key={item.id} delay={(i % 3) * 0.05}>
+                // Real <li> for list semantics — Reveal renders a div and
+                // ignores `as` (documented gotcha), so it nests inside.
+                <li key={item.id}>
+                  <Reveal delay={(i % 3) * 0.05} className="h-full">
                   <TiltCard className="h-full rounded-2xl">
                     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-luxe transition-colors duration-500 hover:border-gold/40 hover:bg-white/[0.05]">
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -137,17 +142,17 @@ export default function MenuList() {
                         alt={item.name[locale]}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.12]"
+                        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/85 via-charcoal-950/10 to-transparent" />
-                      {/* Gold accent line revealed on hover */}
-                      <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gold-gradient transition-transform duration-500 group-hover:scale-x-100" />
-                      <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold tabular-nums text-gold shadow-lg backdrop-blur-sm">
+                      {/* Gold accent line revealed on hover — draws from the reading side */}
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 scale-x-0 bg-gold-gradient transition-transform duration-500 group-hover:scale-x-100 ltr:origin-left rtl:origin-right" />
+                      <span className="absolute end-3 top-3 rounded-full border border-gold/30 bg-charcoal-950/85 px-3 py-1 text-sm font-semibold tabular-nums text-gold shadow-luxe backdrop-blur-sm">
                         {item.price} {t("currency")}
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold text-cream transition-colors group-hover:text-gold-light">
+                      <h3 className="heading-display flex flex-wrap items-center gap-2 text-lg font-semibold leading-snug text-cream transition-colors group-hover:text-gold-light">
                         <span>{item.name[locale]}</span>
                         {item.tags?.map((tag) => {
                           const { icon: Icon, className } = TAG_META[tag];
@@ -171,7 +176,8 @@ export default function MenuList() {
                     </div>
                     </article>
                   </TiltCard>
-                </Reveal>
+                  </Reveal>
+                </li>
               ))}
             </ul>
           </section>
