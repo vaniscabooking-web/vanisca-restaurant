@@ -36,16 +36,18 @@ export default function ContactForm() {
     }
   }
 
+  // Focus/label treatment mirrors ReservationForm so both booking surfaces feel
+  // like one couture system.
   const inputClass =
-    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-colors focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none";
-  const labelClass = "mb-1.5 block text-sm font-medium text-cream/80";
+    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/55 transition-[border-color,background-color,box-shadow] duration-300 focus:border-gold/60 focus:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-gold/25";
+  const labelClass = "mb-1.5 block text-sm font-medium tracking-wide text-cream/80";
 
   return (
     <form
       onSubmit={onSubmit}
       noValidate
       aria-busy={status === "submitting"}
-      className="card-surface p-6 sm:p-8"
+      className="card-surface p-6 sm:p-10"
     >
       {/* -start- (logical) keeps the honeypot offscreen in RTL too — a physical
           -left offset becomes a scrollable void on Arabic pages. */}
@@ -98,7 +100,7 @@ export default function ContactForm() {
       </div>
 
       {status === "success" && (
-        <p className="mt-4 flex items-center gap-2 text-sm text-emerald-400" role="status">
+        <p className="mt-4 flex items-center gap-2 text-sm text-gold" role="status">
           <CheckCircle2 className="h-4 w-4" /> {t("success")}
         </p>
       )}
