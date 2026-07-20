@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Reveal from "./Reveal";
 import LuxeImage from "./LuxeImage";
-import { galleryPool, unsplash } from "@/lib/images";
+import { galleryPool } from "@/lib/images";
 
 interface Tile {
   id: string;
@@ -15,26 +16,13 @@ interface Tile {
   tall?: boolean;
 }
 
-const LABELS = [
-  "Salle & lumière",
-  "Dressage",
-  "Ambiance",
-  "Cuisine ouverte",
-  "Fruits de mer",
-  "Pâtes fraîches",
-  "L'expérience",
-  "Douceurs",
-];
-
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const tiles: Tile[] = galleryPool.map((g, i) => ({
-  id: g.id,
-  label: LABELS[i] ?? "Vanisca",
-  src: unsplash(g.id, 700),
-  full: unsplash(g.id, 1600, 78),
-  tall: i === 0 || i === 3,
-}));
+/**
+ * Tall tiles repeat the original 8-tile motif (outer tiles of the first row)
+ * so the masonry rhythm is unchanged as the pool grows: 0, 3, 8, 11, …
+ */
+const isTall = (i: number) => i % 8 === 0 || i % 8 === 3;
 
 function GalleryTile({ tile, onOpen }: { tile: Tile; onOpen: () => void }) {
   const span = tile.tall ? "aspect-[3/4]" : "aspect-[4/3]";
@@ -61,6 +49,20 @@ function GalleryTile({ tile, onOpen }: { tile: Tile; onOpen: () => void }) {
 }
 
 export default function Gallery({ limit }: { limit?: number }) {
+  const t = useTranslations("gallery");
+  // Captions come from i18n, so English and Arabic visitors no longer read
+  // French labels. Built here (not at module scope) because they're localized.
+  const tiles: Tile[] = useMemo(
+    () =>
+      galleryPool.map((g, i) => ({
+        id: g.id,
+        label: t(`tiles.${g.labelKey}`),
+        src: g.src,
+        full: g.src,
+        tall: isTall(i),
+      })),
+    [t],
+  );
   const shown = limit ? tiles.slice(0, limit) : tiles;
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const reduce = useReducedMotion();

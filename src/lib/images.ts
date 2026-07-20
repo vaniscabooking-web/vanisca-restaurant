@@ -47,15 +47,28 @@ export const heroImages = [IMG.interior1, IMG.interior2, IMG.kitchen].map((id) =
 // portrait. Local, optimized 4:5 crop of the master still.
 export const aboutImage = "/media/about/vanisca-interior-room.jpg";
 
-export const galleryPool: { id: string; label: string }[] = [
-  { id: IMG.interior1, label: "gallery.tiles.interior" },
-  { id: IMG.gourmet, label: "gallery.tiles.plating" },
-  { id: IMG.interior3, label: "gallery.tiles.ambiance" },
-  { id: IMG.kitchen, label: "gallery.tiles.kitchen" },
-  { id: IMG.seafood, label: "gallery.tiles.seafood" },
-  { id: IMG.pasta, label: "gallery.tiles.pasta" },
-  { id: IMG.interior2, label: "gallery.tiles.table" },
-  { id: IMG.berries, label: "gallery.tiles.dessert" },
+/**
+ * The gallery — real Vanisca photography (owner-supplied), served locally.
+ * No stock imagery here: the branding policy keeps the gallery authentic.
+ *
+ * `labelKey` resolves under the `gallery.tiles.*` i18n namespace, so captions
+ * are translated per locale instead of being hardcoded French.
+ * Order is the storytelling order; the tall-tile rhythm is applied in Gallery.
+ */
+export const galleryPool: { id: string; src: string; labelKey: string }[] = [
+  { id: "geste-du-chef", src: "/media/gallery/vanisca-geste-du-chef.jpg", labelKey: "chefTouch" },
+  { id: "dressage", src: "/media/gallery/vanisca-dressage.jpg", labelKey: "plating" },
+  { id: "pates-fraiches", src: "/media/gallery/vanisca-pates-fraiches.jpg", labelKey: "pasta" },
+  { id: "chevre-chaud", src: "/media/gallery/vanisca-chevre-chaud.jpg", labelKey: "goatCheese" },
+  { id: "fruits-de-mer", src: "/media/gallery/vanisca-fruits-de-mer.jpg", labelKey: "seafood" },
+  { id: "pizza-blanche", src: "/media/gallery/vanisca-pizza-blanche.jpg", labelKey: "whitePizza" },
+  { id: "poissons-grilles", src: "/media/gallery/vanisca-poissons-grilles.jpg", labelKey: "grilledFish" },
+  { id: "jardin-mediterraneen", src: "/media/gallery/vanisca-jardin-mediterraneen.jpg", labelKey: "garden" },
+  { id: "viandes-sauces", src: "/media/gallery/vanisca-viandes-sauces.jpg", labelKey: "meats" },
+  { id: "legumes-grilles", src: "/media/gallery/vanisca-legumes-grilles.jpg", labelKey: "grilledVegetables" },
+  { id: "poelee-de-la-mer", src: "/media/gallery/vanisca-poelee-de-la-mer.jpg", labelKey: "seafoodPan" },
+  { id: "table-experience", src: "/media/gallery/vanisca-table-experience.jpg", labelKey: "table" },
+  { id: "jus-smoothies", src: "/media/gallery/vanisca-jus-smoothies.jpg", labelKey: "juices" },
 ];
 
 /** Homepage "signatures" highlight images, keyed to the highlight keys. */
