@@ -90,7 +90,22 @@
   },
   "gallery": {
     "title": "Gallery",
-    "subtitle": "The Vanisca atmosphere in pictures"
+    "subtitle": "The Vanisca atmosphere in pictures",
+    "tiles": {
+      "chefTouch": "The Chef's Touch",
+      "plating": "Plating",
+      "pasta": "Fresh Pasta",
+      "goatCheese": "Warm Goat Cheese",
+      "seafood": "Seafood",
+      "whitePizza": "White Pizza",
+      "grilledFish": "Grilled Fish",
+      "garden": "Mediterranean Garden",
+      "meats": "Meats & Sauces",
+      "grilledVegetables": "Grilled Vegetables",
+      "seafoodPan": "Seafood Pan",
+      "table": "The Table",
+      "juices": "Juices & Smoothies"
+    }
   },
   "reservation": {
     "eyebrow": "Reservation",

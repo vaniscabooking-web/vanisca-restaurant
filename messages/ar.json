@@ -90,7 +90,22 @@
   },
   "gallery": {
     "title": "معرض الصور",
-    "subtitle": "أجواء فانيسكا في صور"
+    "subtitle": "أجواء فانيسكا في صور",
+    "tiles": {
+      "chefTouch": "لمسة الشيف",
+      "plating": "التقديم",
+      "pasta": "معكرونة طازجة",
+      "goatCheese": "جبن الماعز الدافئ",
+      "seafood": "ثمار البحر",
+      "whitePizza": "بيتزا بيضاء",
+      "grilledFish": "أسماك مشوية",
+      "garden": "حديقة متوسطية",
+      "meats": "لحوم وصلصات",
+      "grilledVegetables": "خضار مشوية",
+      "seafoodPan": "مقلاة بحرية",
+      "table": "تجربة المائدة",
+      "juices": "عصائر وسموذي"
+    }
   },
   "reservation": {
     "eyebrow": "الحجز",
